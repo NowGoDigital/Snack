@@ -194,6 +194,8 @@
             display: flex;
             align-items: center;
             overflow: hidden;
+            /* ✅ PERBAIKAN: Tambah padding-top agar tidak mepet navbar */
+            padding-top: 100px;
         }
 
         .hero::before {
@@ -288,27 +290,50 @@
             50% { transform: scale(1.2) rotate(180deg); }
         }
 
+        /* ✅ PERBAIKAN: Hero Title - 2 baris saja */
         .hero-title {
             font-family: 'Playfair Display', serif;
             font-size: 4rem;
             font-weight: 800;
             color: var(--white);
-            line-height: 1.1;
+            line-height: 1.15;
             margin-bottom: 20px;
         }
 
-        .hero-title span {
+        .hero-title .line1 {
+            display: block;
+            color: var(--white);
+            font-size: 0.65em;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            -webkit-text-fill-color: rgba(255,255,255,0.9);
+        }
+
+        .hero-title .line2 {
+            display: block;
+        }
+
+        .hero-title .line2 .green-text {
             background: linear-gradient(135deg, #4caf50, #81c784);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero-title .orange-text {
+        .hero-title .line2 .orange-text {
             background: linear-gradient(135deg, #ff9800, #ffb74d);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .hero-title .line2 .ampersand {
+            color: rgba(255,255,255,0.5);
+            -webkit-text-fill-color: rgba(255,255,255,0.5);
+            font-weight: 400;
+            margin: 0 5px;
         }
 
         .hero-tagline {
@@ -1350,6 +1375,10 @@
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
+            .hero {
+                padding-top: 120px;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1391,6 +1420,12 @@
         }
 
         @media (max-width: 768px) {
+            .hero {
+                padding-top: 100px;
+                min-height: auto;
+                padding-bottom: 60px;
+            }
+
             .nav-links {
                 display: none;
                 position: fixed;
@@ -1420,7 +1455,11 @@
             }
 
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
+            }
+
+            .hero-title .line1 {
+                font-size: 0.55em;
             }
 
             .hero-tagline {
@@ -1589,15 +1628,20 @@
         <div class="hero-particles" id="particles"></div>
         <div class="hero-content">
             <div class="hero-text">
+                <!-- ✅ Badge sekarang punya jarak yang pas dari navbar -->
                 <div class="hero-badge">
                     <i class="fas fa-star"></i>
                     Cemilan Sehat #1 Indonesia
                 </div>
+
+                <!-- ✅ PERBAIKAN: Judul 2 baris saja -->
                 <h1 class="hero-title">
-                    Cemilan Sehat<br>
-                    <span>Stik Bayam</span> &
-                    <span class="orange-text">Stik Wortel</span>
+                    <span class="line1">Cemilan Sehat</span>
+                    <span class="line2">
+                        <span class="green-text">Stik Bayam</span><span class="ampersand"> & </span><span class="orange-text">Stik Wortel</span>
+                    </span>
                 </h1>
+
                 <p class="hero-tagline">
                     Renyah bikin nagih! Dibuat dari bahan alami pilihan tanpa pengawet dan pewarna buatan. Nikmati sensasi camilan sehat yang kaya nutrisi untuk seluruh keluarga.
                 </p>
@@ -2335,7 +2379,6 @@
             document.getElementById('navLinks').classList.toggle('active');
         }
 
-        // Close menu on link click
         var navLinksAll = document.querySelectorAll('.nav-links a');
         for (var j = 0; j < navLinksAll.length; j++) {
             navLinksAll[j].addEventListener('click', function() {
@@ -2348,7 +2391,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ========== PARTICLES (Optimized: 15 instead of 30) ==========
+        // ========== PARTICLES ==========
         function createParticles() {
             var container = document.getElementById('particles');
             var colors = ['#4caf50', '#ff9800', '#81c784', '#ffb74d'];
@@ -2381,7 +2424,7 @@
 
         window.addEventListener('scroll', revealOnScroll);
 
-        // ========== LOADER (Fast: no delay) ==========
+        // ========== LOADER ==========
         window.addEventListener('load', function() {
             document.getElementById('loader').classList.add('hidden');
             createParticles();
