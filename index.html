@@ -34,1561 +34,474 @@
             --gradient-hero: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark);
-            overflow-x: hidden;
-            background: var(--white);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; color: var(--dark); overflow-x: hidden; background: var(--white); }
 
         /* ========== NAVBAR ========== */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.4s ease;
-            background: transparent;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.4s ease; background: transparent;
         }
-
         .navbar.scrolled {
-            background: rgba(255,255,255,0.98);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
-            padding: 10px 5%;
+            background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
+            box-shadow: 0 2px 30px rgba(0,0,0,0.1); padding: 10px 5%;
         }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
+        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .nav-logo-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--gradient-green);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: white;
-            font-weight: 800;
+            width: 45px; height: 45px; background: var(--gradient-green); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: white; font-weight: 800;
         }
-
-        .nav-logo-text {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--white);
-            transition: color 0.3s;
-        }
-
-        .navbar.scrolled .nav-logo-text {
-            color: var(--dark);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-            align-items: center;
-        }
-
+        .nav-logo-text { font-size: 1.5rem; font-weight: 800; color: var(--white); transition: color 0.3s; }
+        .navbar.scrolled .nav-logo-text { color: var(--dark); }
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
         .nav-links a {
-            text-decoration: none;
-            color: rgba(255,255,255,0.9);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            position: relative;
+            text-decoration: none; color: rgba(255,255,255,0.9); font-weight: 600;
+            font-size: 0.95rem; transition: all 0.3s; position: relative;
         }
-
-        .navbar.scrolled .nav-links a {
-            color: var(--dark);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-green);
-        }
-
+        .navbar.scrolled .nav-links a { color: var(--dark); }
+        .nav-links a:hover { color: var(--primary-green); }
         .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-green);
-            transition: width 0.3s;
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+            background: var(--primary-green); transition: width 0.3s;
         }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
+        .nav-links a:hover::after { width: 100%; }
         .nav-cta {
-            background: var(--gradient-green);
-            color: white !important;
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: 600 !important;
-            box-shadow: 0 4px 15px rgba(45,138,78,0.3);
-            transition: all 0.3s !important;
+            background: var(--gradient-green); color: white !important; padding: 10px 25px;
+            border-radius: 50px; font-weight: 600 !important;
+            box-shadow: 0 4px 15px rgba(45,138,78,0.3); transition: all 0.3s !important;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(45,138,78,0.4); }
+        .nav-cta::after { display: none !important; }
+        .mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+        .mobile-toggle span { width: 28px; height: 3px; background: var(--white); border-radius: 3px; transition: all 0.3s; }
+        .navbar.scrolled .mobile-toggle span { background: var(--dark); }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(45,138,78,0.4);
-        }
-
-        .nav-cta::after {
-            display: none !important;
-        }
-
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .mobile-toggle span {
-            width: 28px;
-            height: 3px;
-            background: var(--white);
-            border-radius: 3px;
-            transition: all 0.3s;
-        }
-
-        .navbar.scrolled .mobile-toggle span {
-            background: var(--dark);
-        }
-
-        /* ========== HERO SECTION ========== */
+        /* ========== HERO ========== */
         .hero {
-            min-height: 100vh;
-            background: var(--gradient-hero);
-            position: relative;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            /* ✅ FIX: Kurangi padding-top, pakai padding yang lebih pas */
-            padding-top: 80px;
-            padding-bottom: 40px;
+            min-height: 100vh; background: var(--gradient-hero); position: relative;
+            display: flex; align-items: center; overflow: hidden;
+            padding-top: 80px; padding-bottom: 40px;
         }
-
         .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 80%;
-            height: 200%;
+            content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 200%;
             background: radial-gradient(ellipse, rgba(45,138,78,0.15) 0%, transparent 70%);
             animation: pulse-glow 4s ease-in-out infinite;
         }
-
         .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 60%;
-            height: 150%;
+            content: ''; position: absolute; bottom: -30%; left: -10%; width: 60%; height: 150%;
             background: radial-gradient(ellipse, rgba(232,114,42,0.1) 0%, transparent 70%);
             animation: pulse-glow 4s ease-in-out infinite 2s;
         }
-
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.05); }
-        }
-
-        .hero-particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            animation: float-particle linear infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes float-particle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.3; }
-            90% { opacity: 0.3; }
-            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
-        }
-
-        /* ✅ FIX: Komposisi kolom - teks lebih lebar (1.15fr), gambar lebih kecil (0.85fr) */
+        @keyframes pulse-glow { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:1;transform:scale(1.05)} }
+        .hero-particles { position: absolute; top:0; left:0; width:100%; height:100%; overflow:hidden; z-index:1; }
+        .particle { position: absolute; border-radius: 50%; animation: float-particle linear infinite; opacity: 0.3; }
+        @keyframes float-particle { 0%{transform:translateY(100vh) rotate(0);opacity:0} 10%{opacity:.3} 90%{opacity:.3} 100%{transform:translateY(-100px) rotate(720deg);opacity:0} }
         .hero-content {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 5%;
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 40px;
-            align-items: center;
+            position: relative; z-index: 10; width: 100%; max-width: 1400px; margin: 0 auto;
+            padding: 0 5%; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center;
         }
-
-        .hero-text {
-            animation: fadeInUp 1s ease;
-        }
-
+        .hero-text { animation: fadeInUp 1s ease; }
         .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(45,138,78,0.2);
-            border: 1px solid rgba(45,138,78,0.3);
-            padding: 8px 20px;
-            border-radius: 50px;
-            color: #4caf50;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 25px;
-            backdrop-filter: blur(10px);
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(45,138,78,0.2); border: 1px solid rgba(45,138,78,0.3);
+            padding: 8px 20px; border-radius: 50px; color: #4caf50;
+            font-size: 0.85rem; font-weight: 500; margin-bottom: 25px; backdrop-filter: blur(10px);
         }
-
-        .hero-badge i {
-            animation: sparkle 2s ease-in-out infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.2) rotate(180deg); }
-        }
-
-        /* ✅ FIX: Hero Title - font lebih kecil agar muat 2 baris */
+        .hero-badge i { animation: sparkle 2s ease-in-out infinite; }
+        @keyframes sparkle { 0%,100%{transform:scale(1) rotate(0)} 50%{transform:scale(1.2) rotate(180deg)} }
         .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.2rem;
-            font-weight: 800;
-            color: var(--white);
-            line-height: 1.2;
-            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 800;
+            color: var(--white); line-height: 1.2; margin-bottom: 20px;
         }
-
         .hero-title .line1 {
-            display: block;
-            color: var(--white);
-            font-size: 0.55em;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
+            display: block; color: var(--white); font-size: 0.55em; font-family: 'Poppins', sans-serif;
+            font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;
             -webkit-text-fill-color: rgba(255,255,255,0.85);
         }
-
-        /* ✅ FIX: nowrap agar tidak pecah ke baris ke-3 */
-        .hero-title .line2 {
-            display: block;
-            white-space: nowrap;
-        }
-
-        .hero-title .line2 .green-text {
-            background: linear-gradient(135deg, #4caf50, #81c784);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-title .line2 .orange-text {
-            background: linear-gradient(135deg, #ff9800, #ffb74d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-title .line2 .ampersand {
-            color: rgba(255,255,255,0.5);
-            -webkit-text-fill-color: rgba(255,255,255,0.5);
-            font-weight: 400;
-            margin: 0 5px;
-        }
-
-        .hero-tagline {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.8;
-            margin-bottom: 35px;
-            max-width: 520px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
+        .hero-title .line2 { display: block; white-space: nowrap; }
+        .hero-title .line2 .green-text { background: linear-gradient(135deg,#4caf50,#81c784); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .hero-title .line2 .orange-text { background: linear-gradient(135deg,#ff9800,#ffb74d); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .hero-title .line2 .ampersand { color:rgba(255,255,255,0.5); -webkit-text-fill-color:rgba(255,255,255,0.5); font-weight:400; margin:0 5px; }
+        .hero-tagline { font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 35px; max-width: 520px; }
+        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
         .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 35px;
-            background: var(--gradient-green);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s;
-            box-shadow: 0 8px 30px rgba(45,138,78,0.4);
-            border: none;
-            cursor: pointer;
+            display: inline-flex; align-items: center; gap: 10px; padding: 16px 35px;
+            background: var(--gradient-green); color: white; text-decoration: none; border-radius: 50px;
+            font-weight: 600; font-size: 1rem; transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(45,138,78,0.4); border: none; cursor: pointer;
         }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(45,138,78,0.5);
-        }
-
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(45,138,78,0.5); }
         .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 35px;
-            background: transparent;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s;
-            border: 2px solid rgba(255,255,255,0.3);
-            cursor: pointer;
+            display: inline-flex; align-items: center; gap: 10px; padding: 16px 35px;
+            background: transparent; color: white; text-decoration: none; border-radius: 50px;
+            font-weight: 600; font-size: 1rem; transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.3); cursor: pointer;
         }
-
-        .btn-secondary:hover {
-            border-color: var(--primary-green);
-            background: rgba(45,138,78,0.1);
-            transform: translateY(-3px);
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--white);
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-            margin-top: 5px;
-        }
-
-        /* ✅ FIX: Hero visual - diperkecil agar proporsional */
-        .hero-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: fadeInRight 1s ease;
-        }
-
+        .btn-secondary:hover { border-color: var(--primary-green); background: rgba(45,138,78,0.1); transform: translateY(-3px); }
+        .hero-stats { display: flex; gap: 40px; margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2rem; font-weight: 800; color: var(--white); }
+        .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 5px; }
+        .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; animation: fadeInRight 1s ease; }
         .hero-image-container {
-            position: relative;
-            width: 420px;
-            height: 420px;
-            border-radius: 50%;
+            position: relative; width: 420px; height: 420px; border-radius: 50%;
             background: radial-gradient(circle, rgba(45,138,78,0.2) 0%, transparent 70%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: float 6s ease-in-out infinite;
+            display: flex; align-items: center; justify-content: center; animation: float 6s ease-in-out infinite;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
         .hero-main-image {
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(76,175,80,0.3);
-            box-shadow: 0 30px 80px rgba(45,138,78,0.3);
+            width: 320px; height: 320px; border-radius: 50%; object-fit: cover;
+            border: 4px solid rgba(76,175,80,0.3); box-shadow: 0 30px 80px rgba(45,138,78,0.3);
         }
-
         .floating-card {
-            position: absolute;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            animation: float 4s ease-in-out infinite;
+            position: absolute; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
+            border-radius: 16px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15); animation: float 4s ease-in-out infinite;
         }
+        .floating-card.card-1 { top:5%; right:-5%; animation-delay:0s; }
+        .floating-card.card-2 { bottom:10%; left:-5%; animation-delay:1.5s; }
+        .floating-card.card-3 { top:55%; right:-10%; animation-delay:3s; }
+        .floating-card-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1rem; }
+        .floating-card-icon.green { background:var(--light-green); color:var(--primary-green); }
+        .floating-card-icon.orange { background:var(--light-orange); color:var(--primary-orange); }
+        .floating-card-text { font-size:0.75rem; }
+        .floating-card-text strong { display:block; font-size:0.85rem; color:var(--dark); }
+        .floating-card-text span { color:var(--gray-600); }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes fadeInRight { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
 
-        .floating-card.card-1 {
-            top: 5%;
-            right: -5%;
-            animation-delay: 0s;
-        }
-
-        .floating-card.card-2 {
-            bottom: 10%;
-            left: -5%;
-            animation-delay: 1.5s;
-        }
-
-        .floating-card.card-3 {
-            top: 55%;
-            right: -10%;
-            animation-delay: 3s;
-        }
-
-        .floating-card-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-
-        .floating-card-icon.green {
-            background: var(--light-green);
-            color: var(--primary-green);
-        }
-
-        .floating-card-icon.orange {
-            background: var(--light-orange);
-            color: var(--primary-orange);
-        }
-
-        .floating-card-text {
-            font-size: 0.75rem;
-        }
-
-        .floating-card-text strong {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--dark);
-        }
-
-        .floating-card-text span {
-            color: var(--gray-600);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        /* ========== ABOUT SECTION ========== */
-        .about {
-            padding: 120px 5%;
-            background: var(--white);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 70px;
-        }
-
-        .section-subtitle {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary-green);
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--dark);
-            line-height: 1.2;
-        }
-
-        .section-desc {
-            max-width: 600px;
-            margin: 20px auto 0;
-            color: var(--gray-600);
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
+        /* ========== ABOUT ========== */
+        .about { padding: 120px 5%; background: var(--white); }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-subtitle { display:inline-flex; align-items:center; gap:8px; color:var(--primary-green); font-weight:600; font-size:0.95rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:15px; }
+        .section-title { font-family:'Playfair Display',serif; font-size:3rem; font-weight:800; color:var(--dark); line-height:1.2; }
+        .section-desc { max-width:600px; margin:20px auto 0; color:var(--gray-600); line-height:1.8; font-size:1.05rem; }
+        .about-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:30px; max-width:1200px; margin:0 auto; }
         .about-card {
-            background: var(--gray-100);
-            border-radius: 24px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
+            background:var(--gray-100); border-radius:24px; padding:40px 30px; text-align:center;
+            transition:all 0.4s ease; border:1px solid transparent; position:relative; overflow:hidden;
         }
+        .about-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--gradient-green); transform:scaleX(0); transition:transform 0.4s; }
+        .about-card:hover::before { transform:scaleX(1); }
+        .about-card:hover { transform:translateY(-10px); box-shadow:var(--shadow-lg); border-color:rgba(45,138,78,0.1); background:white; }
+        .about-card-icon { width:80px; height:80px; border-radius:20px; display:flex; align-items:center; justify-content:center; margin:0 auto 25px; font-size:2rem; background:var(--light-green); color:var(--primary-green); transition:all 0.3s; }
+        .about-card:hover .about-card-icon { background:var(--gradient-green); color:white; transform:scale(1.1) rotate(5deg); }
+        .about-card h3 { font-size:1.3rem; font-weight:700; margin-bottom:12px; color:var(--dark); }
+        .about-card p { color:var(--gray-600); line-height:1.7; font-size:0.95rem; }
 
-        .about-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-green);
-            transform: scaleX(0);
-            transition: transform 0.4s;
-        }
-
-        .about-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .about-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(45,138,78,0.1);
-            background: white;
-        }
-
-        .about-card-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 2rem;
-            background: var(--light-green);
-            color: var(--primary-green);
-            transition: all 0.3s;
-        }
-
-        .about-card:hover .about-card-icon {
-            background: var(--gradient-green);
-            color: white;
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .about-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--dark);
-        }
-
-        .about-card p {
-            color: var(--gray-600);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        /* ========== PRODUCTS SECTION ========== */
-        .products {
-            padding: 120px 5%;
-            background: var(--gray-100);
-            position: relative;
-        }
-
-        .products::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 200px;
-            background: linear-gradient(to bottom, var(--white), var(--gray-100));
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 5;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: white;
-        }
-
-        .badge-bestseller {
-            background: linear-gradient(135deg, #e53935, #ff5252);
-        }
-
-        .badge-new {
-            background: linear-gradient(135deg, #2d8a4e, #4caf50);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.05);
-        }
-
-        .product-image-wrapper {
-            overflow: hidden;
-            position: relative;
-        }
-
-        .product-image-wrapper::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(to top, rgba(0,0,0,0.05), transparent);
-        }
-
-        .product-info {
-            padding: 30px;
-        }
-
-        .product-category {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            color: var(--primary-green);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .product-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 8px;
-        }
-
-        .product-desc {
-            color: var(--gray-600);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .product-rating {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 15px;
-        }
-
-        .product-rating .stars {
-            color: #ffc107;
-            font-size: 0.85rem;
-        }
-
-        .product-rating .rating-text {
-            font-size: 0.85rem;
-            color: var(--gray-600);
-        }
-
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 20px;
-            border-top: 1px solid var(--gray-200);
-        }
-
-        .product-price {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-green);
-        }
-
-        .product-price small {
-            font-size: 0.8rem;
-            color: var(--gray-600);
-            font-weight: 400;
-            text-decoration: line-through;
-            display: block;
-        }
-
-        .btn-order {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: var(--gradient-green);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-order:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(45,138,78,0.4);
-        }
+        /* ========== PRODUCTS ========== */
+        .products { padding:120px 5%; background:var(--gray-100); position:relative; }
+        .products::before { content:''; position:absolute; top:0; left:0; right:0; height:200px; background:linear-gradient(to bottom,var(--white),var(--gray-100)); }
+        .products-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(350px,1fr)); gap:40px; max-width:1200px; margin:0 auto; position:relative; z-index:2; }
+        .product-card { background:white; border-radius:24px; overflow:hidden; transition:all 0.4s ease; box-shadow:0 5px 20px rgba(0,0,0,0.05); position:relative; }
+        .product-card:hover { transform:translateY(-10px); box-shadow:0 20px 60px rgba(0,0,0,0.12); }
+        .product-badge { position:absolute; top:20px; left:20px; z-index:5; padding:6px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; color:white; }
+        .badge-bestseller { background:linear-gradient(135deg,#e53935,#ff5252); }
+        .badge-new { background:linear-gradient(135deg,#2d8a4e,#4caf50); }
+        .product-image { width:100%; height:280px; object-fit:cover; transition:transform 0.5s; }
+        .product-card:hover .product-image { transform:scale(1.05); }
+        .product-image-wrapper { overflow:hidden; position:relative; }
+        .product-image-wrapper::after { content:''; position:absolute; bottom:0; left:0; right:0; height:50%; background:linear-gradient(to top,rgba(0,0,0,0.05),transparent); }
+        .product-info { padding:30px; }
+        .product-category { display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; color:var(--primary-green); font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+        .product-name { font-size:1.4rem; font-weight:700; color:var(--dark); margin-bottom:8px; }
+        .product-desc { color:var(--gray-600); font-size:0.9rem; line-height:1.6; margin-bottom:20px; }
+        .product-rating { display:flex; align-items:center; gap:5px; margin-bottom:15px; }
+        .product-rating .stars { color:#ffc107; font-size:0.85rem; }
+        .product-rating .rating-text { font-size:0.85rem; color:var(--gray-600); }
+        .product-footer { display:flex; justify-content:space-between; align-items:center; padding-top:20px; border-top:1px solid var(--gray-200); }
+        .product-price { font-size:1.5rem; font-weight:800; color:var(--primary-green); }
+        .product-price small { font-size:0.8rem; color:var(--gray-600); font-weight:400; text-decoration:line-through; display:block; }
+        .btn-order { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; background:var(--gradient-green); color:white; text-decoration:none; border-radius:50px; font-weight:600; font-size:0.9rem; transition:all 0.3s; border:none; cursor:pointer; }
+        .btn-order:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(45,138,78,0.4); }
 
         /* ========== ORDER SECTION ========== */
-        .order-section {
-            padding: 120px 5%;
-            background: white;
+        .order-section { padding:120px 5%; background:white; }
+        .order-container { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+        .order-left h2 { font-family:'Playfair Display',serif; font-size:2.5rem; margin-bottom:15px; color:var(--dark); }
+        .order-left p { color:var(--gray-600); line-height:1.8; margin-bottom:30px; }
+        .order-features { list-style:none; display:flex; flex-direction:column; gap:15px; }
+        .order-features li { display:flex; align-items:center; gap:12px; font-size:0.95rem; color:var(--dark); }
+        .order-features li i { width:30px; height:30px; background:var(--light-green); color:var(--primary-green); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; flex-shrink:0; }
+        .order-card { background:white; border-radius:24px; box-shadow:0 10px 50px rgba(0,0,0,0.08); border:1px solid var(--gray-200); overflow:hidden; }
+        .order-card-header { background:var(--gradient-green); padding:25px 30px; color:white; display:flex; align-items:center; gap:12px; }
+        .order-card-header i { font-size:1.3rem; }
+        .order-card-header h3 { font-size:1.1rem; font-weight:600; }
+        .order-card-body { padding:30px; }
+        .order-item { display:flex; gap:15px; padding:20px 0; border-bottom:1px solid var(--gray-200); align-items:center; }
+        .order-item:last-child { border-bottom:none; }
+        .order-item-image { width:70px; height:70px; border-radius:12px; object-fit:cover; flex-shrink:0; }
+        .order-item-info { flex:1; }
+        .order-item-name { font-weight:600; font-size:0.95rem; color:var(--dark); margin-bottom:4px; }
+        .order-item-variant { font-size:0.8rem; color:var(--gray-600); margin-bottom:8px; }
+        .order-item-price { font-weight:700; color:var(--primary-green); }
+        .order-item-qty { display:flex; align-items:center; gap:10px; }
+        .qty-btn { width:32px; height:32px; border:1px solid var(--gray-200); background:white; border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:0.9rem; transition:all 0.2s; color:var(--dark); }
+        .qty-btn:hover { background:var(--light-green); border-color:var(--primary-green); color:var(--primary-green); }
+        .qty-value { font-weight:600; font-size:1rem; min-width:30px; text-align:center; }
+        .order-summary { padding:25px 30px; background:var(--gray-100); border-radius:16px; margin:20px 30px; }
+        .summary-row { display:flex; justify-content:space-between; margin-bottom:12px; font-size:0.9rem; color:var(--gray-600); }
+        .summary-row.total { font-size:1.2rem; font-weight:700; color:var(--dark); padding-top:12px; border-top:2px dashed var(--gray-200); margin-top:12px; margin-bottom:0; }
+        .summary-row.total span:last-child { color:var(--primary-green); }
+        .order-card-footer { padding:20px 30px 30px; }
+        .order-note { text-align:center; margin-top:15px; font-size:0.8rem; color:var(--gray-600); }
+        .order-note i { color:var(--primary-orange); }
+
+        /* ✅ NEW: Form Pemesan */
+        .order-form { padding: 0 30px 20px; }
+        .order-form-title {
+            font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 18px;
+            display: flex; align-items: center; gap: 8px;
+            padding-top: 5px; border-top: 1px solid var(--gray-200); padding-top: 20px;
+        }
+        .order-form-title i { color: var(--primary-green); }
+        .form-group { margin-bottom: 16px; }
+        .form-group label {
+            display: block; font-size: 0.85rem; font-weight: 600; color: var(--dark);
+            margin-bottom: 6px;
+        }
+        .form-group label .required { color: #e53935; }
+        .form-group input,
+        .form-group textarea {
+            width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-200);
+            border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 0.9rem;
+            color: var(--dark); background: var(--gray-100); transition: all 0.3s;
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-green); background: white;
+            box-shadow: 0 0 0 3px rgba(45,138,78,0.1);
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: #bbb; }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        .form-group .input-icon-wrapper {
+            position: relative;
+        }
+        .form-group .input-icon-wrapper i {
+            position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+            color: var(--gray-600); font-size: 0.85rem;
+        }
+        .form-group .input-icon-wrapper input {
+            padding-left: 40px;
         }
 
-        .order-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        .order-left h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .order-left p {
-            color: var(--gray-600);
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .order-features {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .order-features li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.95rem;
-            color: var(--dark);
-        }
-
-        .order-features li i {
-            width: 30px;
-            height: 30px;
-            background: var(--light-green);
-            color: var(--primary-green);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            flex-shrink: 0;
-        }
-
-        .order-card {
-            background: white;
-            border-radius: 24px;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.08);
-            border: 1px solid var(--gray-200);
-            overflow: hidden;
-        }
-
-        .order-card-header {
-            background: var(--gradient-green);
-            padding: 25px 30px;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .order-card-header i {
-            font-size: 1.3rem;
-        }
-
-        .order-card-header h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .order-card-body {
-            padding: 30px;
-        }
-
-        .order-item {
-            display: flex;
-            gap: 15px;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--gray-200);
-            align-items: center;
-        }
-
-        .order-item:last-child {
-            border-bottom: none;
-        }
-
-        .order-item-image {
-            width: 70px;
-            height: 70px;
-            border-radius: 12px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .order-item-info {
-            flex: 1;
-        }
-
-        .order-item-name {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--dark);
-            margin-bottom: 4px;
-        }
-
-        .order-item-variant {
-            font-size: 0.8rem;
-            color: var(--gray-600);
-            margin-bottom: 8px;
-        }
-
-        .order-item-price {
-            font-weight: 700;
-            color: var(--primary-green);
-        }
-
-        .order-item-qty {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .qty-btn {
-            width: 32px;
-            height: 32px;
-            border: 1px solid var(--gray-200);
-            background: white;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-            color: var(--dark);
-        }
-
-        .qty-btn:hover {
-            background: var(--light-green);
-            border-color: var(--primary-green);
-            color: var(--primary-green);
-        }
-
-        .qty-value {
-            font-weight: 600;
-            font-size: 1rem;
-            min-width: 30px;
-            text-align: center;
-        }
-
-        .order-summary {
-            padding: 25px 30px;
-            background: var(--gray-100);
-            border-radius: 16px;
-            margin: 20px 30px;
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-            color: var(--gray-600);
-        }
-
-        .summary-row.total {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--dark);
-            padding-top: 12px;
-            border-top: 2px dashed var(--gray-200);
-            margin-top: 12px;
-            margin-bottom: 0;
-        }
-
-        .summary-row.total span:last-child {
-            color: var(--primary-green);
-        }
-
-        .order-card-footer {
-            padding: 20px 30px 30px;
-        }
-
-        .btn-whatsapp {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            border: none;
-            border-radius: 16px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s;
+        /* ✅ NEW: Tombol Konfirmasi Pesanan */
+        .btn-confirm-order {
+            width: 100%; padding: 18px; background: var(--gradient-green);
+            color: white; border: none; border-radius: 16px; font-size: 1.05rem;
+            font-weight: 600; cursor: pointer; display: flex; align-items: center;
+            justify-content: center; gap: 10px; transition: all 0.3s;
             font-family: 'Poppins', sans-serif;
         }
-
-        .btn-whatsapp:hover {
+        .btn-confirm-order:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+            box-shadow: 0 10px 30px rgba(45,138,78,0.4);
+        }
+        .btn-confirm-order:disabled {
+            opacity: 0.5; cursor: not-allowed; transform: none;
+            box-shadow: none;
         }
 
-        .btn-whatsapp i {
-            font-size: 1.3rem;
+        /* ✅ NEW: Modal Konfirmasi */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+            z-index: 10000; display: none; align-items: center; justify-content: center;
+            padding: 20px; animation: fadeIn 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+        .modal-box {
+            background: white; border-radius: 24px; width: 100%; max-width: 520px;
+            max-height: 90vh; overflow-y: auto; animation: slideUp 0.4s ease;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+        }
+        @keyframes slideUp { from{opacity:0;transform:translateY(50px)} to{opacity:1;transform:translateY(0)} }
+
+        .modal-header {
+            background: var(--gradient-green); padding: 25px 30px; border-radius: 24px 24px 0 0;
+            display: flex; align-items: center; justify-content: space-between; color: white;
+        }
+        .modal-header-left { display: flex; align-items: center; gap: 12px; }
+        .modal-header-left i { font-size: 1.3rem; }
+        .modal-header-left h3 { font-size: 1.1rem; font-weight: 600; }
+        .modal-close {
+            width: 36px; height: 36px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3);
+            background: transparent; color: white; font-size: 1.1rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; transition: all 0.3s;
+        }
+        .modal-close:hover { background: rgba(255,255,255,0.2); border-color: white; }
+
+        .modal-body { padding: 30px; }
+
+        .confirm-section { margin-bottom: 25px; }
+        .confirm-section-title {
+            font-size: 0.8rem; font-weight: 600; color: var(--primary-green);
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .confirm-section-title i { font-size: 0.75rem; }
+        .confirm-section-title::after {
+            content: ''; flex: 1; height: 1px; background: var(--gray-200);
         }
 
-        .order-note {
-            text-align: center;
+        .confirm-buyer-info {
+            background: var(--gray-100); border-radius: 14px; padding: 18px;
+        }
+        .confirm-buyer-row {
+            display: flex; gap: 10px; margin-bottom: 10px; font-size: 0.9rem;
+        }
+        .confirm-buyer-row:last-child { margin-bottom: 0; }
+        .confirm-buyer-row .label {
+            color: var(--gray-600); min-width: 70px; flex-shrink: 0;
+        }
+        .confirm-buyer-row .value {
+            color: var(--dark); font-weight: 600; word-break: break-word;
+        }
+
+        .confirm-items { display: flex; flex-direction: column; gap: 12px; }
+        .confirm-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 16px; background: var(--gray-100); border-radius: 12px;
+            font-size: 0.9rem;
+        }
+        .confirm-item-left { display: flex; flex-direction: column; gap: 2px; }
+        .confirm-item-name { font-weight: 600; color: var(--dark); }
+        .confirm-item-qty { font-size: 0.8rem; color: var(--gray-600); }
+        .confirm-item-price { font-weight: 700; color: var(--primary-green); white-space: nowrap; }
+
+        .confirm-total {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 18px; background: var(--light-green); border-radius: 14px;
             margin-top: 15px;
-            font-size: 0.8rem;
-            color: var(--gray-600);
         }
+        .confirm-total .label { font-size: 1rem; font-weight: 600; color: var(--dark); }
+        .confirm-total .value { font-size: 1.3rem; font-weight: 800; color: var(--primary-green); }
 
-        .order-note i {
-            color: var(--primary-orange);
+        .modal-footer { padding: 0 30px 30px; }
+        .btn-whatsapp {
+            width: 100%; padding: 18px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white; border: none; border-radius: 16px; font-size: 1.05rem;
+            font-weight: 600; cursor: pointer; display: flex; align-items: center;
+            justify-content: center; gap: 10px; transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
         }
+        .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+        .btn-whatsapp i { font-size: 1.3rem; }
+        .modal-edit-note {
+            text-align: center; margin-top: 12px; font-size: 0.8rem; color: var(--gray-600);
+        }
+        .modal-edit-note a {
+            color: var(--primary-green); font-weight: 600; text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-edit-note a:hover { text-decoration: underline; }
 
-        /* ========== TESTIMONIAL SECTION ========== */
-        .testimonials {
-            padding: 120px 5%;
-            background: var(--gradient-hero);
-            position: relative;
-            overflow: hidden;
-        }
+        /* ========== TESTIMONIAL ========== */
+        .testimonials { padding:120px 5%; background:var(--gradient-hero); position:relative; overflow:hidden; }
+        .testimonials::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        .testimonials .section-title { color:white; }
+        .testimonials .section-desc { color:rgba(255,255,255,0.7); }
+        .testimonials .section-subtitle { color:#4caf50; }
+        .testimonial-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:30px; max-width:1200px; margin:0 auto; position:relative; z-index:2; }
+        .testimonial-card { background:rgba(255,255,255,0.05); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:35px; transition:all 0.3s; }
+        .testimonial-card:hover { background:rgba(255,255,255,0.1); transform:translateY(-5px); }
+        .testimonial-quote { font-size:2rem; color:var(--primary-green); margin-bottom:15px; }
+        .testimonial-text { color:rgba(255,255,255,0.85); line-height:1.8; font-size:0.95rem; margin-bottom:25px; font-style:italic; }
+        .testimonial-author { display:flex; align-items:center; gap:12px; }
+        .testimonial-avatar { width:48px; height:48px; border-radius:50%; background:var(--gradient-green); display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:1.1rem; }
+        .testimonial-name { font-weight:600; color:white; font-size:0.95rem; }
+        .testimonial-role { font-size:0.8rem; color:rgba(255,255,255,0.5); }
+        .testimonial-stars { color:#ffc107; font-size:0.8rem; margin-bottom:15px; }
 
-        .testimonials::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .testimonials .section-title {
-            color: white;
-        }
-
-        .testimonials .section-desc {
-            color: rgba(255,255,255,0.7);
-        }
-
-        .testimonials .section-subtitle {
-            color: #4caf50;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .testimonial-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 35px;
-            transition: all 0.3s;
-        }
-
-        .testimonial-card:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
-        }
-
-        .testimonial-quote {
-            font-size: 2rem;
-            color: var(--primary-green);
-            margin-bottom: 15px;
-        }
-
-        .testimonial-text {
-            color: rgba(255,255,255,0.85);
-            line-height: 1.8;
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .testimonial-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--gradient-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .testimonial-name {
-            font-weight: 600;
-            color: white;
-            font-size: 0.95rem;
-        }
-
-        .testimonial-role {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.5);
-        }
-
-        .testimonial-stars {
-            color: #ffc107;
-            font-size: 0.8rem;
-            margin-bottom: 15px;
-        }
-
-        /* ========== CTA SECTION ========== */
-        .cta-section {
-            padding: 100px 5%;
-            background: white;
-            text-align: center;
-        }
-
-        .cta-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--gradient-green);
-            border-radius: 30px;
-            padding: 70px 50px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 60%;
-            height: 200%;
-            background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
-        }
-
-        .cta-container h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .cta-container p {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.1rem;
-            margin-bottom: 35px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .btn-cta-white {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 18px 40px;
-            background: white;
-            color: var(--primary-green);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.05rem;
-            transition: all 0.3s;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .btn-cta-white:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
+        /* ========== CTA ========== */
+        .cta-section { padding:100px 5%; background:white; text-align:center; }
+        .cta-container { max-width:800px; margin:0 auto; background:var(--gradient-green); border-radius:30px; padding:70px 50px; position:relative; overflow:hidden; }
+        .cta-container::before { content:''; position:absolute; top:-50%; right:-20%; width:60%; height:200%; background:radial-gradient(ellipse,rgba(255,255,255,0.1) 0%,transparent 70%); }
+        .cta-container h2 { font-family:'Playfair Display',serif; font-size:2.5rem; color:white; margin-bottom:15px; position:relative; z-index:2; }
+        .cta-container p { color:rgba(255,255,255,0.9); font-size:1.1rem; margin-bottom:35px; position:relative; z-index:2; }
+        .btn-cta-white { display:inline-flex; align-items:center; gap:10px; padding:18px 40px; background:white; color:var(--primary-green); text-decoration:none; border-radius:50px; font-weight:700; font-size:1.05rem; transition:all 0.3s; position:relative; z-index:2; box-shadow:0 10px 30px rgba(0,0,0,0.2); }
+        .btn-cta-white:hover { transform:translateY(-3px); box-shadow:0 15px 40px rgba(0,0,0,0.3); }
 
         /* ========== FOOTER ========== */
-        .footer {
-            background: var(--darker);
-            padding: 80px 5% 30px;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 50px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 50px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-brand h3 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 15px;
-        }
-
-        .footer-brand p {
-            line-height: 1.8;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-socials {
-            display: flex;
-            gap: 12px;
-        }
-
-        .footer-socials a {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .footer-socials a:hover {
-            background: var(--primary-green);
-            transform: translateY(-3px);
-        }
-
-        .footer-col h4 {
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-col ul li a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--primary-green);
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-        }
+        .footer { background:var(--darker); padding:80px 5% 30px; color:rgba(255,255,255,0.7); }
+        .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:50px; max-width:1200px; margin:0 auto; padding-bottom:50px; border-bottom:1px solid rgba(255,255,255,0.1); }
+        .footer-brand h3 { font-size:1.5rem; font-weight:800; color:white; margin-bottom:15px; }
+        .footer-brand p { line-height:1.8; font-size:0.9rem; margin-bottom:20px; }
+        .footer-socials { display:flex; gap:12px; }
+        .footer-socials a { width:40px; height:40px; border-radius:10px; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; color:white; text-decoration:none; transition:all 0.3s; }
+        .footer-socials a:hover { background:var(--primary-green); transform:translateY(-3px); }
+        .footer-col h4 { color:white; font-size:1rem; font-weight:600; margin-bottom:20px; }
+        .footer-col ul { list-style:none; }
+        .footer-col ul li { margin-bottom:12px; }
+        .footer-col ul li a { color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.9rem; transition:all 0.3s; }
+        .footer-col ul li a:hover { color:var(--primary-green); padding-left:5px; }
+        .footer-bottom { max-width:1200px; margin:0 auto; padding-top:30px; display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; }
 
         /* ========== SCROLL TO TOP ========== */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(45,138,78,0.4);
-            border: none;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-3px);
-        }
-
-        /* ========== WHATSAPP FLOAT ========== */
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            z-index: 999;
-            text-decoration: none;
-            box-shadow: 0 5px 25px rgba(37,211,102,0.4);
-            transition: all 0.3s;
-            animation: bounce-wa 2s ease-in-out infinite;
-        }
-
-        .wa-float:hover {
-            transform: scale(1.1);
-        }
-
-        @keyframes bounce-wa {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
+        .scroll-top { position:fixed; bottom:30px; right:30px; width:50px; height:50px; background:var(--gradient-green); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:1.2rem; cursor:pointer; z-index:999; opacity:0; visibility:hidden; transition:all 0.3s; box-shadow:0 5px 20px rgba(45,138,78,0.4); border:none; }
+        .scroll-top.visible { opacity:1; visibility:visible; }
+        .scroll-top:hover { transform:translateY(-3px); }
+        .wa-float { position:fixed; bottom:30px; left:30px; width:60px; height:60px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:1.8rem; z-index:999; text-decoration:none; box-shadow:0 5px 25px rgba(37,211,102,0.4); transition:all 0.3s; animation:bounce-wa 2s ease-in-out infinite; }
+        .wa-float:hover { transform:scale(1.1); }
+        @keyframes bounce-wa { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
 
         /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .hero-tagline {
-                max-width: 100%;
-                margin: 0 auto 35px;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-
-            .hero-title {
-                font-size: 2.8rem;
-            }
-
-            .order-container {
-                grid-template-columns: 1fr;
-            }
-
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-                max-width: 500px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+        @media (max-width:1024px) {
+            .hero-content { grid-template-columns:1fr; text-align:center; }
+            .hero-visual { display:none; }
+            .hero-tagline { max-width:100%; margin:0 auto 35px; }
+            .hero-buttons { justify-content:center; }
+            .hero-stats { justify-content:center; }
+            .hero-title { font-size:2.8rem; }
+            .order-container { grid-template-columns:1fr; }
+            .testimonial-grid { grid-template-columns:1fr; max-width:500px; }
+            .footer-grid { grid-template-columns:1fr 1fr; }
+        }
+        @media (max-width:768px) {
+            .hero { padding-top:90px; min-height:auto; padding-bottom:60px; }
+            .nav-links { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:white; flex-direction:column; align-items:center; justify-content:center; gap:30px; z-index:1000; }
+            .nav-links.active { display:flex; }
+            .nav-links a { color:var(--dark)!important; font-size:1.2rem; }
+            .mobile-toggle { display:flex; }
+            .hero-title { font-size:2rem; }
+            .hero-title .line1 { font-size:0.5em; }
+            .hero-tagline { font-size:1rem; }
+            .section-title { font-size:2rem; }
+            .about-grid { grid-template-columns:1fr; max-width:400px; margin:0 auto; }
+            .products-grid { grid-template-columns:1fr; max-width:400px; margin:0 auto; }
+            .hero-stats { gap:20px; }
+            .stat-number { font-size:1.5rem; }
+            .footer-grid { grid-template-columns:1fr; }
+            .footer-bottom { flex-direction:column; gap:10px; text-align:center; }
+            .cta-container { padding:50px 30px; }
+            .cta-container h2 { font-size:1.8rem; }
+            .modal-box { border-radius: 20px; }
+            .modal-header { border-radius: 20px 20px 0 0; padding: 20px; }
+            .modal-body { padding: 20px; }
+            .modal-footer { padding: 0 20px 20px; }
         }
 
-        @media (max-width: 768px) {
-            .hero {
-                padding-top: 90px;
-                min-height: auto;
-                padding-bottom: 60px;
-            }
+        .reveal { opacity:0; transform:translateY(30px); transition:all 0.8s ease; }
+        .reveal.active { opacity:1; transform:translateY(0); }
 
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 30px;
-                z-index: 1000;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links a {
-                color: var(--dark) !important;
-                font-size: 1.2rem;
-            }
-
-            .mobile-toggle {
-                display: flex;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-title .line1 {
-                font-size: 0.5em;
-            }
-
-            .hero-tagline {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .hero-stats {
-                gap: 20px;
-            }
-
-            .stat-number {
-                font-size: 1.5rem;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-
-            .cta-container {
-                padding: 50px 30px;
-            }
-
-            .cta-container h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* ========== SCROLL REVEAL ========== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ========== LOADER ========== */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--darker);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.3s, visibility 0.3s;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-content {
-            text-align: center;
-        }
-
-        .loader-logo {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
-            animation: pulse 1s ease-in-out infinite;
-        }
-
-        .loader-bar {
-            width: 200px;
-            height: 3px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
-            overflow: hidden;
-            margin: 0 auto;
-        }
-
-        .loader-bar::after {
-            content: '';
-            display: block;
-            width: 50%;
-            height: 100%;
-            background: var(--gradient-green);
-            border-radius: 3px;
-            animation: loading 1s ease-in-out infinite;
-        }
-
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(300%); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        @keyframes slideInRight {
-            from { transform: translateX(100px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes slideOutRight {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100px); opacity: 0; }
-        }
+        .loader { position:fixed; top:0; left:0; right:0; bottom:0; background:var(--darker); display:flex; align-items:center; justify-content:center; z-index:9999; transition:opacity 0.3s,visibility 0.3s; }
+        .loader.hidden { opacity:0; visibility:hidden; }
+        .loader-content { text-align:center; }
+        .loader-logo { font-size:2.5rem; font-weight:800; color:white; margin-bottom:20px; animation:pulse 1s ease-in-out infinite; }
+        .loader-bar { width:200px; height:3px; background:rgba(255,255,255,0.1); border-radius:3px; overflow:hidden; margin:0 auto; }
+        .loader-bar::after { content:''; display:block; width:50%; height:100%; background:var(--gradient-green); border-radius:3px; animation:loading 1s ease-in-out infinite; }
+        @keyframes loading { 0%{transform:translateX(-100%)} 100%{transform:translateX(300%)} }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+        @keyframes slideInRight { from{transform:translateX(100px);opacity:0} to{transform:translateX(0);opacity:1} }
+        @keyframes slideOutRight { from{transform:translateX(0);opacity:1} to{transform:translateX(100px);opacity:0} }
     </style>
 </head>
 <body>
@@ -1615,9 +528,7 @@
             <li><a href="#order" class="nav-cta">Pesan Sekarang</a></li>
         </ul>
         <div class="mobile-toggle" id="mobileToggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
     </nav>
 
@@ -1626,76 +537,36 @@
         <div class="hero-particles" id="particles"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <div class="hero-badge">
-                    <i class="fas fa-star"></i>
-                    Cemilan Sehat #1 Indonesia
-                </div>
-
-                <!-- ✅ JUDUL 2 BARIS: line1 kecil + line2 nowrap -->
+                <div class="hero-badge"><i class="fas fa-star"></i> Cemilan Sehat #1 Indonesia</div>
                 <h1 class="hero-title">
                     <span class="line1">Cemilan Sehat</span>
                     <span class="line2"><span class="green-text">Stik Bayam</span><span class="ampersand"> & </span><span class="orange-text">Stik Wortel</span></span>
                 </h1>
-
-                <p class="hero-tagline">
-                    Renyah bikin nagih! Dibuat dari bahan alami pilihan tanpa pengawet dan pewarna buatan. Nikmati sensasi camilan sehat yang kaya nutrisi untuk seluruh keluarga.
-                </p>
+                <p class="hero-tagline">Renyah bikin nagih! Dibuat dari bahan alami pilihan tanpa pengawet dan pewarna buatan. Nikmati sensasi camilan sehat yang kaya nutrisi untuk seluruh keluarga.</p>
                 <div class="hero-buttons">
-                    <a href="#order" class="btn-primary">
-                        <i class="fas fa-shopping-bag"></i> Pesan Sekarang
-                    </a>
-                    <a href="#products" class="btn-secondary">
-                        <i class="fas fa-play-circle"></i> Lihat Produk
-                    </a>
+                    <a href="#order" class="btn-primary"><i class="fas fa-shopping-bag"></i> Pesan Sekarang</a>
+                    <a href="#products" class="btn-secondary"><i class="fas fa-play-circle"></i> Lihat Produk</a>
                 </div>
                 <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">10K+</div>
-                        <div class="stat-label">Pelanggan Puas</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Kota Terjangkau</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">4.9</div>
-                        <div class="stat-label">Rating Produk</div>
-                    </div>
+                    <div class="stat-item"><div class="stat-number">10K+</div><div class="stat-label">Pelanggan Puas</div></div>
+                    <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Kota Terjangkau</div></div>
+                    <div class="stat-item"><div class="stat-number">4.9</div><div class="stat-label">Rating Produk</div></div>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="hero-image-container">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=75" 
-                         alt="YOCHI Snack Healthy Food" class="hero-main-image" loading="eager">
-                    
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=75" alt="YOCHI Snack Healthy Food" class="hero-main-image" loading="eager">
                     <div class="floating-card card-1">
-                        <div class="floating-card-icon green">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <div class="floating-card-text">
-                            <strong>100% Alami</strong>
-                            <span>Tanpa Pengawet</span>
-                        </div>
+                        <div class="floating-card-icon green"><i class="fas fa-leaf"></i></div>
+                        <div class="floating-card-text"><strong>100% Alami</strong><span>Tanpa Pengawet</span></div>
                     </div>
-                    
                     <div class="floating-card card-2">
-                        <div class="floating-card-icon orange">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                        <div class="floating-card-text">
-                            <strong>Renyah Nagih</strong>
-                            <span>Crispy & Gurih</span>
-                        </div>
+                        <div class="floating-card-icon orange"><i class="fas fa-fire"></i></div>
+                        <div class="floating-card-text"><strong>Renyah Nagih</strong><span>Crispy & Gurih</span></div>
                     </div>
-                    
                     <div class="floating-card card-3">
-                        <div class="floating-card-icon green">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <div class="floating-card-text">
-                            <strong>BPOM Certified</strong>
-                            <span>Aman & Halal</span>
-                        </div>
+                        <div class="floating-card-icon green"><i class="fas fa-award"></i></div>
+                        <div class="floating-card-text"><strong>BPOM Certified</strong><span>Aman & Halal</span></div>
                     </div>
                 </div>
             </div>
@@ -1705,249 +576,92 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="section-header reveal">
-            <div class="section-subtitle">
-                <i class="fas fa-seedling"></i> Tentang Kami
-            </div>
+            <div class="section-subtitle"><i class="fas fa-seedling"></i> Tentang Kami</div>
             <h2 class="section-title">Mengapa Memilih YOCHI SNACK?</h2>
-            <p class="section-desc">
-                Kami berkomitmen menghadirkan camilan sehat berkualitas tinggi yang terbuat dari bahan alami terbaik Indonesia, diolah dengan teknologi modern dan standar higienis.
-            </p>
+            <p class="section-desc">Kami berkomitmen menghadirkan camilan sehat berkualitas tinggi yang terbuat dari bahan alami terbaik Indonesia, diolah dengan teknologi modern dan standar higienis.</p>
         </div>
         <div class="about-grid">
-            <div class="about-card reveal">
-                <div class="about-card-icon">
-                    <i class="fas fa-leaf"></i>
-                </div>
-                <h3>Bahan Alami Premium</h3>
-                <p>Menggunakan bayam dan wortel segar pilihan dari petani lokal Indonesia tanpa pestisida berbahaya.</p>
-            </div>
-            <div class="about-card reveal">
-                <div class="about-card-icon">
-                    <i class="fas fa-flask"></i>
-                </div>
-                <h3>Proses Higienis</h3>
-                <p>Diolah dengan teknologi modern dan standar kebersihan tinggi untuk menjamin kualitas produk terbaik.</p>
-            </div>
-            <div class="about-card reveal">
-                <div class="about-card-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <h3>Sehat & Bernutrisi</h3>
-                <p>Kaya vitamin dan mineral dari sayuran asli, cocok untuk camilan keluarga dan anak-anak setiap hari.</p>
-            </div>
-            <div class="about-card reveal">
-                <div class="about-card-icon">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <h3>Bersertifikat Halal</h3>
-                <p>Produk telah terdaftar dan bersertifikat halal, aman dikonsumsi seluruh anggota keluarga.</p>
-            </div>
-            <div class="about-card reveal">
-                <div class="about-card-icon">
-                    <i class="fas fa-truck-fast"></i>
-                </div>
-                <h3>Pengiriman Cepat</h3>
-                <p>Pengiriman ke seluruh Indonesia dengan packaging khusus agar produk tetap renyah dan terjaga kualitasnya.</p>
-            </div>
-            <div class="about-card reveal">
-                <div class="about-card-icon">
-                    <i class="fas fa-hand-holding-heart"></i>
-                </div>
-                <h3>Support UMKM Lokal</h3>
-                <p>Dengan membeli YOCHI SNACK, Anda turut mendukung petani lokal dan pemberdayaan UMKM Indonesia.</p>
-            </div>
+            <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-leaf"></i></div><h3>Bahan Alami Premium</h3><p>Menggunakan bayam dan wortel segar pilihan dari petani lokal Indonesia tanpa pestisida berbahaya.</p></div>
+            <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-flask"></i></div><h3>Proses Higienis</h3><p>Diolah dengan teknologi modern dan standar kebersihan tinggi untuk menjamin kualitas produk terbaik.</p></div>
+            <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-heart"></i></div><h3>Sehat & Bernutrisi</h3><p>Kaya vitamin dan mineral dari sayuran asli, cocok untuk camilan keluarga dan anak-anak setiap hari.</p></div>
+            <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-certificate"></i></div><h3>Bersertifikat Halal</h3><p>Produk telah terdaftar dan bersertifikat halal, aman dikonsumsi seluruh anggota keluarga.</p></div>
+            <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-truck-fast"></i></div><h3>Pengiriman Cepat</h3><p>Pengiriman ke seluruh Indonesia dengan packaging khusus agar produk tetap renyah dan terjaga kualitasnya.</p></div>
+            <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-hand-holding-heart"></i></div><h3>Support UMKM Lokal</h3><p>Dengan membeli YOCHI SNACK, Anda turut mendukung petani lokal dan pemberdayaan UMKM Indonesia.</p></div>
         </div>
     </section>
 
     <!-- Products Section -->
     <section class="products" id="products">
         <div class="section-header reveal">
-            <div class="section-subtitle">
-                <i class="fas fa-store"></i> Produk Kami
-            </div>
+            <div class="section-subtitle"><i class="fas fa-store"></i> Produk Kami</div>
             <h2 class="section-title">Varian Produk YOCHI SNACK</h2>
-            <p class="section-desc">
-                Tersedia dalam berbagai varian rasa dan ukuran. Semua dibuat fresh setiap hari dengan bahan pilihan terbaik.
-            </p>
+            <p class="section-desc">Tersedia dalam berbagai varian rasa dan ukuran. Semua dibuat fresh setiap hari dengan bahan pilihan terbaik.</p>
         </div>
         <div class="products-grid">
             <div class="product-card reveal">
                 <span class="product-badge badge-bestseller">🔥 Best Seller</span>
-                <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=400&q=75" 
-                         alt="Stik Bayam Original" class="product-image" loading="lazy">
-                </div>
+                <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=400&q=75" alt="Stik Bayam Original" class="product-image" loading="lazy"></div>
                 <div class="product-info">
-                    <div class="product-category">
-                        <i class="fas fa-leaf"></i> Stik Bayam
-                    </div>
+                    <div class="product-category"><i class="fas fa-leaf"></i> Stik Bayam</div>
                     <h3 class="product-name">Stik Bayam Original</h3>
                     <p class="product-desc">Stik renyah dari bayam segar asli, kaya zat besi dan vitamin. Rasa gurih alami yang bikin nagih!</p>
-                    <div class="product-rating">
-                        <span class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </span>
-                        <span class="rating-text">5.0 (328 ulasan)</span>
-                    </div>
-                    <div class="product-footer">
-                        <div class="product-price">
-                            <small>Rp 35.000</small>
-                            Rp 25.000
-                        </div>
-                        <button class="btn-order" onclick="addToOrder('Stik Bayam Original', 25000)">
-                            <i class="fas fa-cart-plus"></i> + Keranjang
-                        </button>
-                    </div>
+                    <div class="product-rating"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span><span class="rating-text">5.0 (328 ulasan)</span></div>
+                    <div class="product-footer"><div class="product-price"><small>Rp 35.000</small>Rp 25.000</div><button class="btn-order" onclick="addToOrder('Stik Bayam Original', 25000)"><i class="fas fa-cart-plus"></i> + Keranjang</button></div>
                 </div>
             </div>
-
             <div class="product-card reveal">
                 <span class="product-badge badge-bestseller">⭐ Favorit</span>
-                <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=75" 
-                         alt="Stik Wortel Original" class="product-image" loading="lazy">
-                </div>
+                <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=75" alt="Stik Wortel Original" class="product-image" loading="lazy"></div>
                 <div class="product-info">
-                    <div class="product-category">
-                        <i class="fas fa-carrot"></i> Stik Wortel
-                    </div>
+                    <div class="product-category"><i class="fas fa-carrot"></i> Stik Wortel</div>
                     <h3 class="product-name">Stik Wortel Original</h3>
                     <p class="product-desc">Stik wortel renyah kaya beta karoten. Camilan sehat yang baik untuk mata dan kulit, disukai anak-anak!</p>
-                    <div class="product-rating">
-                        <span class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </span>
-                        <span class="rating-text">4.9 (256 ulasan)</span>
-                    </div>
-                    <div class="product-footer">
-                        <div class="product-price">
-                            <small>Rp 35.000</small>
-                            Rp 25.000
-                        </div>
-                        <button class="btn-order" onclick="addToOrder('Stik Wortel Original', 25000)">
-                            <i class="fas fa-cart-plus"></i> + Keranjang
-                        </button>
-                    </div>
+                    <div class="product-rating"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span><span class="rating-text">4.9 (256 ulasan)</span></div>
+                    <div class="product-footer"><div class="product-price"><small>Rp 35.000</small>Rp 25.000</div><button class="btn-order" onclick="addToOrder('Stik Wortel Original', 25000)"><i class="fas fa-cart-plus"></i> + Keranjang</button></div>
                 </div>
             </div>
-
             <div class="product-card reveal">
                 <span class="product-badge badge-new">✨ Baru</span>
-                <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=75" 
-                         alt="Paket Combo Bayam Wortel" class="product-image" loading="lazy">
-                </div>
+                <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=75" alt="Paket Combo" class="product-image" loading="lazy"></div>
                 <div class="product-info">
-                    <div class="product-category">
-                        <i class="fas fa-box-open"></i> Paket Hemat
-                    </div>
+                    <div class="product-category"><i class="fas fa-box-open"></i> Paket Hemat</div>
                     <h3 class="product-name">Paket Combo (Bayam + Wortel)</h3>
                     <p class="product-desc">Dapatkan kedua varian stik bayam dan wortel dalam satu paket hemat! Lebih untung dan lebih lengkap.</p>
-                    <div class="product-rating">
-                        <span class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        </span>
-                        <span class="rating-text">4.8 (189 ulasan)</span>
-                    </div>
-                    <div class="product-footer">
-                        <div class="product-price">
-                            <small>Rp 50.000</small>
-                            Rp 40.000
-                        </div>
-                        <button class="btn-order" onclick="addToOrder('Paket Combo (Bayam + Wortel)', 40000)">
-                            <i class="fas fa-cart-plus"></i> + Keranjang
-                        </button>
-                    </div>
+                    <div class="product-rating"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span><span class="rating-text">4.8 (189 ulasan)</span></div>
+                    <div class="product-footer"><div class="product-price"><small>Rp 50.000</small>Rp 40.000</div><button class="btn-order" onclick="addToOrder('Paket Combo (Bayam + Wortel)', 40000)"><i class="fas fa-cart-plus"></i> + Keranjang</button></div>
                 </div>
             </div>
-
             <div class="product-card reveal">
                 <span class="product-badge badge-new">🌶️ Spicy</span>
-                <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1599490659213-e2b9537bd087?w=400&q=75" 
-                         alt="Stik Bayam Pedas Manis" class="product-image" loading="lazy">
-                </div>
+                <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1599490659213-e2b9537bd087?w=400&q=75" alt="Stik Bayam Pedas Manis" class="product-image" loading="lazy"></div>
                 <div class="product-info">
-                    <div class="product-category">
-                        <i class="fas fa-pepper-hot"></i> Stik Bayam
-                    </div>
+                    <div class="product-category"><i class="fas fa-pepper-hot"></i> Stik Bayam</div>
                     <h3 class="product-name">Stik Bayam Pedas Manis</h3>
                     <p class="product-desc">Perpaduan rasa pedas dan manis yang sempurna! Cocok untuk pecinta camilan dengan sensasi rasa yang berani.</p>
-                    <div class="product-rating">
-                        <span class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </span>
-                        <span class="rating-text">4.9 (142 ulasan)</span>
-                    </div>
-                    <div class="product-footer">
-                        <div class="product-price">
-                            <small>Rp 38.000</small>
-                            Rp 28.000
-                        </div>
-                        <button class="btn-order" onclick="addToOrder('Stik Bayam Pedas Manis', 28000)">
-                            <i class="fas fa-cart-plus"></i> + Keranjang
-                        </button>
-                    </div>
+                    <div class="product-rating"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span><span class="rating-text">4.9 (142 ulasan)</span></div>
+                    <div class="product-footer"><div class="product-price"><small>Rp 38.000</small>Rp 28.000</div><button class="btn-order" onclick="addToOrder('Stik Bayam Pedas Manis', 28000)"><i class="fas fa-cart-plus"></i> + Keranjang</button></div>
                 </div>
             </div>
-
             <div class="product-card reveal">
                 <span class="product-badge badge-bestseller">🏆 Premium</span>
-                <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1543339308-d595b10a5251?w=400&q=75" 
-                         alt="Stik Wortel Rasa Keju" class="product-image" loading="lazy">
-                </div>
+                <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1543339308-d595b10a5251?w=400&q=75" alt="Stik Wortel Keju" class="product-image" loading="lazy"></div>
                 <div class="product-info">
-                    <div class="product-category">
-                        <i class="fas fa-cheese"></i> Stik Wortel
-                    </div>
+                    <div class="product-category"><i class="fas fa-cheese"></i> Stik Wortel</div>
                     <h3 class="product-name">Stik Wortel Rasa Keju</h3>
                     <p class="product-desc">Stik wortel dengan taburan keju premium yang gurih. Favorit anak-anak dan dewasa yang menyukai rasa keju!</p>
-                    <div class="product-rating">
-                        <span class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        </span>
-                        <span class="rating-text">4.7 (98 ulasan)</span>
-                    </div>
-                    <div class="product-footer">
-                        <div class="product-price">
-                            <small>Rp 38.000</small>
-                            Rp 28.000
-                        </div>
-                        <button class="btn-order" onclick="addToOrder('Stik Wortel Rasa Keju', 28000)">
-                            <i class="fas fa-cart-plus"></i> + Keranjang
-                        </button>
-                    </div>
+                    <div class="product-rating"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span><span class="rating-text">4.7 (98 ulasan)</span></div>
+                    <div class="product-footer"><div class="product-price"><small>Rp 38.000</small>Rp 28.000</div><button class="btn-order" onclick="addToOrder('Stik Wortel Rasa Keju', 28000)"><i class="fas fa-cart-plus"></i> + Keranjang</button></div>
                 </div>
             </div>
-
             <div class="product-card reveal">
                 <span class="product-badge badge-new">🎁 Gift Set</span>
-                <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=75" 
-                         alt="Paket Hampers Premium" class="product-image" loading="lazy">
-                </div>
+                <div class="product-image-wrapper"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=75" alt="Paket Hampers" class="product-image" loading="lazy"></div>
                 <div class="product-info">
-                    <div class="product-category">
-                        <i class="fas fa-gift"></i> Hampers
-                    </div>
+                    <div class="product-category"><i class="fas fa-gift"></i> Hampers</div>
                     <h3 class="product-name">Paket Hampers Premium</h3>
                     <p class="product-desc">Paket hampers eksklusif berisi 4 varian produk YOCHI SNACK. Cocok untuk hadiah dan oleh-oleh spesial!</p>
-                    <div class="product-rating">
-                        <span class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </span>
-                        <span class="rating-text">5.0 (76 ulasan)</span>
-                    </div>
-                    <div class="product-footer">
-                        <div class="product-price">
-                            <small>Rp 120.000</small>
-                            Rp 95.000
-                        </div>
-                        <button class="btn-order" onclick="addToOrder('Paket Hampers Premium', 95000)">
-                            <i class="fas fa-cart-plus"></i> + Keranjang
-                        </button>
-                    </div>
+                    <div class="product-rating"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span><span class="rating-text">5.0 (76 ulasan)</span></div>
+                    <div class="product-footer"><div class="product-price"><small>Rp 120.000</small>Rp 95.000</div><button class="btn-order" onclick="addToOrder('Paket Hampers Premium', 95000)"><i class="fas fa-cart-plus"></i> + Keranjang</button></div>
                 </div>
             </div>
         </div>
@@ -1956,24 +670,20 @@
     <!-- Order Section -->
     <section class="order-section" id="order">
         <div class="section-header reveal">
-            <div class="section-subtitle">
-                <i class="fas fa-shopping-cart"></i> Pemesanan
-            </div>
+            <div class="section-subtitle"><i class="fas fa-shopping-cart"></i> Pemesanan</div>
             <h2 class="section-title">Pesan Sekarang via WhatsApp</h2>
-            <p class="section-desc">
-                Pilih produk favorit Anda, atur jumlah pesanan, lalu kirim langsung ke WhatsApp kami untuk proses cepat!
-            </p>
+            <p class="section-desc">Pilih produk favorit Anda, isi data pemesanan, konfirmasi, lalu kirim langsung ke WhatsApp kami!</p>
         </div>
         <div class="order-container">
             <div class="order-left reveal">
                 <h2>Cara Pesan Mudah & Cepat</h2>
-                <p>Cukup tambahkan produk ke keranjang, atur jumlahnya, dan klik tombol pesan. Pesanan Anda akan otomatis terkirim ke WhatsApp kami untuk konfirmasi dan pembayaran.</p>
+                <p>Cukup tambahkan produk ke keranjang, atur jumlahnya, isi data diri Anda, lalu konfirmasi pesanan. Pesanan akan otomatis terkirim ke WhatsApp kami.</p>
                 <ul class="order-features">
                     <li><i class="fas fa-check"></i><span>Tanpa registrasi, langsung order</span></li>
-                    <li><i class="fas fa-check"></i><span>Konfirmasi cepat via WhatsApp</span></li>
-                    <li><i class="fas fa-check"></i><span>Free ongkir untuk pembelian minimal Rp 100.000</span></li>
+                    <li><i class="fas fa-check"></i><span>Konfirmasi pesanan sebelum kirim</span></li>
+                    <li><i class="fas fa-check"></i><span>Kirim langsung via WhatsApp</span></li>
+                    <li><i class="fas fa-check"></i><span>Free ongkir minimal Rp 100.000</span></li>
                     <li><i class="fas fa-check"></i><span>Garansi produk fresh & renyah</span></li>
-                    <li><i class="fas fa-check"></i><span>Bisa COD area tertentu</span></li>
                     <li><i class="fas fa-check"></i><span>Pembayaran via transfer / e-wallet</span></li>
                 </ul>
             </div>
@@ -1985,7 +695,7 @@
                 <div class="order-card-body" id="cartBody">
                     <div class="empty-cart" id="emptyCart">
                         <div style="text-align:center; padding: 40px 0;">
-                            <i class="fas fa-shopping-basket" style="font-size: 3rem; color: #e0e0e0; margin-bottom: 15px;"></i>
+                            <i class="fas fa-shopping-basket" style="font-size: 3rem; color: #e0e0e0; margin-bottom: 15px; display:block;"></i>
                             <p style="color: #999; font-size: 0.95rem;">Keranjang masih kosong</p>
                             <p style="color: #bbb; font-size: 0.85rem;">Klik tombol "+ Keranjang" pada produk di atas</p>
                         </div>
@@ -1993,84 +703,137 @@
                     <div id="cartItems"></div>
                 </div>
                 <div class="order-summary" id="orderSummary" style="display:none;">
-                    <div class="summary-row">
-                        <span>Subtotal</span>
-                        <span id="subtotal">Rp 0</span>
+                    <div class="summary-row"><span>Subtotal</span><span id="subtotal">Rp 0</span></div>
+                    <div class="summary-row"><span>Ongkos Kirim</span><span id="shipping">Dikonfirmasi via WA</span></div>
+                    <div class="summary-row total"><span>Total</span><span id="totalPrice">Rp 0</span></div>
+                </div>
+
+                <!-- ✅ NEW: Form Data Pemesan -->
+                <div class="order-form" id="orderForm" style="display:none;">
+                    <div class="order-form-title">
+                        <i class="fas fa-user-edit"></i> Data Pemesan
                     </div>
-                    <div class="summary-row">
-                        <span>Ongkos Kirim</span>
-                        <span id="shipping">Dikonfirmasi via WA</span>
+                    <div class="form-group">
+                        <label>Nama Lengkap <span class="required">*</span></label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="inputNama" placeholder="Contoh: Budi Santoso" autocomplete="name">
+                        </div>
                     </div>
-                    <div class="summary-row total">
-                        <span>Total</span>
-                        <span id="totalPrice">Rp 0</span>
+                    <div class="form-group">
+                        <label>No. WhatsApp <span class="required">*</span></label>
+                        <div class="input-icon-wrapper">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="inputPhone" placeholder="Contoh: 081234567890" autocomplete="tel">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat Lengkap <span class="required">*</span></label>
+                        <textarea id="inputAlamat" placeholder="Contoh: Jl. Merdeka No. 10, RT 02/RW 05, Kel. Sukamaju, Kec. Cilandak, Jakarta Selatan 12345" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Catatan <span style="color:var(--gray-600);font-weight:400;">(opsional)</span></label>
+                        <input type="text" id="inputCatatan" placeholder="Contoh: Jangan terlalu pedas, kirim pagi dll">
                     </div>
                 </div>
+
                 <div class="order-card-footer">
-                    <button class="btn-whatsapp" id="btnWhatsApp" onclick="sendToWhatsApp()">
-                        <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                    <!-- ✅ Tombol sekarang: Konfirmasi Pesanan (bukan langsung WA) -->
+                    <button class="btn-confirm-order" id="btnConfirmOrder" onclick="showConfirmation()" style="display:none;">
+                        <i class="fas fa-clipboard-check"></i> Konfirmasi Pesanan
                     </button>
-                    <p class="order-note">
-                        <i class="fas fa-info-circle"></i> Pastikan jumlah pesanan sudah benar sebelum mengirim
+                    <p class="order-note" id="orderNote" style="display:none;">
+                        <i class="fas fa-info-circle"></i> Pastikan data dan pesanan sudah benar sebelum konfirmasi
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ✅ NEW: Modal Konfirmasi Pesanan -->
+    <div class="modal-overlay" id="modalConfirm">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Konfirmasi Pesanan</h3>
+                </div>
+                <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <!-- Data Pemesan -->
+                <div class="confirm-section">
+                    <div class="confirm-section-title">
+                        <i class="fas fa-user"></i> Data Pemesan
+                    </div>
+                    <div class="confirm-buyer-info">
+                        <div class="confirm-buyer-row">
+                            <span class="label">Nama</span>
+                            <span class="value" id="confirmNama">-</span>
+                        </div>
+                        <div class="confirm-buyer-row">
+                            <span class="label">No. WA</span>
+                            <span class="value" id="confirmPhone">-</span>
+                        </div>
+                        <div class="confirm-buyer-row">
+                            <span class="label">Alamat</span>
+                            <span class="value" id="confirmAlamat">-</span>
+                        </div>
+                        <div class="confirm-buyer-row" id="confirmCatatanRow" style="display:none;">
+                            <span class="label">Catatan</span>
+                            <span class="value" id="confirmCatatan">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daftar Pesanan -->
+                <div class="confirm-section">
+                    <div class="confirm-section-title">
+                        <i class="fas fa-shopping-bag"></i> Detail Pesanan
+                    </div>
+                    <div class="confirm-items" id="confirmItems"></div>
+                    <div class="confirm-total">
+                        <span class="label">Total Pembayaran</span>
+                        <span class="value" id="confirmTotal">Rp 0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-whatsapp" onclick="sendToWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Kirim Pesanan via WhatsApp
+                </button>
+                <p class="modal-edit-note">
+                    Data salah? <a onclick="closeModal()">Kembali & Edit</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
     <!-- Testimonials Section -->
     <section class="testimonials" id="testimonials">
         <div class="section-header reveal">
-            <div class="section-subtitle">
-                <i class="fas fa-comments"></i> Testimoni
-            </div>
+            <div class="section-subtitle"><i class="fas fa-comments"></i> Testimoni</div>
             <h2 class="section-title">Apa Kata Pelanggan Kami?</h2>
-            <p class="section-desc">
-                Ribuan pelanggan sudah membuktikan kualitas dan kelezatan YOCHI SNACK. Ini kata mereka!
-            </p>
+            <p class="section-desc">Ribuan pelanggan sudah membuktikan kualitas dan kelezatan YOCHI SNACK. Ini kata mereka!</p>
         </div>
         <div class="testimonial-grid">
             <div class="testimonial-card reveal">
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                 <p class="testimonial-text">"Anak saya yang biasanya susah makan sayur, sekarang malah ketagihan stik bayam YOCHI! Rasanya enak banget, renyah dan gurih. Recommended banget buat ibu-ibu!"</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">SR</div>
-                    <div>
-                        <div class="testimonial-name">Sari Rahmawati</div>
-                        <div class="testimonial-role">Ibu Rumah Tangga, Jakarta</div>
-                    </div>
-                </div>
+                <div class="testimonial-author"><div class="testimonial-avatar">SR</div><div><div class="testimonial-name">Sari Rahmawati</div><div class="testimonial-role">Ibu Rumah Tangga, Jakarta</div></div></div>
             </div>
             <div class="testimonial-card reveal">
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                 <p class="testimonial-text">"Saya jual lagi di toko saya dan laku keras! Pelanggan pada repeat order terus. Kualitas produknya konsisten dan packagingnya bagus banget."</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">BH</div>
-                    <div>
-                        <div class="testimonial-name">Budi Hartono</div>
-                        <div class="testimonial-role">Reseller, Surabaya</div>
-                    </div>
-                </div>
+                <div class="testimonial-author"><div class="testimonial-avatar">BH</div><div><div class="testimonial-name">Budi Hartono</div><div class="testimonial-role">Reseller, Surabaya</div></div></div>
             </div>
             <div class="testimonial-card reveal">
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
                 <p class="testimonial-text">"Sebagai food blogger, saya sudah coba banyak camilan sehat. YOCHI SNACK ini top! Rasanya premium, harganya terjangkau, dan yang paling penting sehat!"</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">DA</div>
-                    <div>
-                        <div class="testimonial-name">Dian Anggraeni</div>
-                        <div class="testimonial-role">Food Blogger, Bandung</div>
-                    </div>
-                </div>
+                <div class="testimonial-author"><div class="testimonial-avatar">DA</div><div><div class="testimonial-name">Dian Anggraeni</div><div class="testimonial-role">Food Blogger, Bandung</div></div></div>
             </div>
         </div>
     </section>
@@ -2080,9 +843,7 @@
         <div class="cta-container reveal">
             <h2>Siap Menikmati Cemilan Sehat?</h2>
             <p>Pesan sekarang dan dapatkan diskon spesial untuk pembelian pertama Anda!</p>
-            <a href="#order" class="btn-cta-white">
-                <i class="fab fa-whatsapp"></i> Order via WhatsApp
-            </a>
+            <a href="#order" class="btn-cta-white"><i class="fab fa-whatsapp"></i> Order via WhatsApp</a>
         </div>
     </section>
 
@@ -2099,36 +860,9 @@
                     <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Menu</h4>
-                <ul>
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="#about">Tentang Kami</a></li>
-                    <li><a href="#products">Produk</a></li>
-                    <li><a href="#order">Pemesanan</a></li>
-                    <li><a href="#testimonials">Testimoni</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Produk</h4>
-                <ul>
-                    <li><a href="#products">Stik Bayam Original</a></li>
-                    <li><a href="#products">Stik Wortel Original</a></li>
-                    <li><a href="#products">Stik Bayam Pedas</a></li>
-                    <li><a href="#products">Stik Wortel Keju</a></li>
-                    <li><a href="#products">Paket Combo</a></li>
-                    <li><a href="#products">Hampers Premium</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Kontak</h4>
-                <ul>
-                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Indonesia</a></li>
-                    <li><a href="#"><i class="fas fa-phone"></i> +62 812-3456-7890</a></li>
-                    <li><a href="#"><i class="fas fa-envelope"></i> info@yochisnack.com</a></li>
-                    <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Kami</a></li>
-                </ul>
-            </div>
+            <div class="footer-col"><h4>Menu</h4><ul><li><a href="#home">Beranda</a></li><li><a href="#about">Tentang Kami</a></li><li><a href="#products">Produk</a></li><li><a href="#order">Pemesanan</a></li><li><a href="#testimonials">Testimoni</a></li></ul></div>
+            <div class="footer-col"><h4>Produk</h4><ul><li><a href="#products">Stik Bayam Original</a></li><li><a href="#products">Stik Wortel Original</a></li><li><a href="#products">Stik Bayam Pedas</a></li><li><a href="#products">Stik Wortel Keju</a></li><li><a href="#products">Paket Combo</a></li><li><a href="#products">Hampers Premium</a></li></ul></div>
+            <div class="footer-col"><h4>Kontak</h4><ul><li><a href="#"><i class="fas fa-map-marker-alt"></i> Indonesia</a></li><li><a href="#"><i class="fas fa-phone"></i> +62 812-3456-7890</a></li><li><a href="#"><i class="fas fa-envelope"></i> info@yochisnack.com</a></li><li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Kami</a></li></ul></div>
         </div>
         <div class="footer-bottom">
             <span>© 2026 YOCHI SNACK. All rights reserved.</span>
@@ -2136,25 +870,19 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/6281234567890?text=Halo%20YOCHI%20SNACK!%20Saya%20ingin%20bertanya%20tentang%20produk%20Anda." 
-       class="wa-float" target="_blank" title="Chat WhatsApp" rel="noopener">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Scroll to Top -->
-    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <a href="https://wa.me/6281234567890?text=Halo%20YOCHI%20SNACK!" class="wa-float" target="_blank" title="Chat WhatsApp" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        const WHATSAPP_NUMBER = "6281234567890";
-        const STORE_NAME = "YOCHI SNACK";
+        // ========== CONFIGURATION ==========
+        var WHATSAPP_NUMBER = "628175761165"; // Ganti dengan nomor WA Anda
+        var STORE_NAME = "YOCHI SNACK";
 
-        let cart = [];
+        // ========== CART SYSTEM ==========
+        var cart = [];
 
         function addToOrder(productName, price) {
-            const existingItem = cart.find(item => item.name === productName);
+            var existingItem = cart.find(function(item) { return item.name === productName; });
             if (existingItem) {
                 existingItem.qty += 1;
             } else {
@@ -2179,16 +907,25 @@
             var cartItems = document.getElementById('cartItems');
             var emptyCart = document.getElementById('emptyCart');
             var orderSummary = document.getElementById('orderSummary');
+            var orderForm = document.getElementById('orderForm');
+            var btnConfirmOrder = document.getElementById('btnConfirmOrder');
+            var orderNote = document.getElementById('orderNote');
 
             if (cart.length === 0) {
                 emptyCart.style.display = 'block';
                 cartItems.innerHTML = '';
                 orderSummary.style.display = 'none';
+                orderForm.style.display = 'none';
+                btnConfirmOrder.style.display = 'none';
+                orderNote.style.display = 'none';
                 return;
             }
 
             emptyCart.style.display = 'none';
             orderSummary.style.display = 'block';
+            orderForm.style.display = 'block';
+            btnConfirmOrder.style.display = 'flex';
+            orderNote.style.display = 'block';
 
             var html = '';
             var subtotal = 0;
@@ -2233,15 +970,106 @@
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
 
-        function sendToWhatsApp() {
-            if (cart.length === 0) {
-                showNotification('Keranjang masih kosong! Silakan pilih produk terlebih dahulu.', 'error');
+        // ========== ✅ NEW: KONFIRMASI PESANAN ==========
+        function showConfirmation() {
+            // Validasi form
+            var nama = document.getElementById('inputNama').value.trim();
+            var phone = document.getElementById('inputPhone').value.trim();
+            var alamat = document.getElementById('inputAlamat').value.trim();
+            var catatan = document.getElementById('inputCatatan').value.trim();
+
+            if (!nama) {
+                showNotification('Mohon isi Nama Lengkap!', 'error');
+                document.getElementById('inputNama').focus();
+                return;
+            }
+            if (!phone) {
+                showNotification('Mohon isi No. WhatsApp!', 'error');
+                document.getElementById('inputPhone').focus();
+                return;
+            }
+            if (!alamat) {
+                showNotification('Mohon isi Alamat Lengkap!', 'error');
+                document.getElementById('inputAlamat').focus();
                 return;
             }
 
+            // Isi data pemesan di modal
+            document.getElementById('confirmNama').textContent = nama;
+            document.getElementById('confirmPhone').textContent = phone;
+            document.getElementById('confirmAlamat').textContent = alamat;
+
+            if (catatan) {
+                document.getElementById('confirmCatatan').textContent = catatan;
+                document.getElementById('confirmCatatanRow').style.display = 'flex';
+            } else {
+                document.getElementById('confirmCatatanRow').style.display = 'none';
+            }
+
+            // Isi daftar pesanan di modal
+            var confirmItems = document.getElementById('confirmItems');
+            var html = '';
+            var subtotal = 0;
+
+            for (var i = 0; i < cart.length; i++) {
+                var item = cart[i];
+                var itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+
+                html += '<div class="confirm-item">' +
+                    '<div class="confirm-item-left">' +
+                        '<span class="confirm-item-name">' + item.name + '</span>' +
+                        '<span class="confirm-item-qty">' + item.qty + ' x Rp ' + formatNumber(item.price) + '</span>' +
+                    '</div>' +
+                    '<span class="confirm-item-price">Rp ' + formatNumber(itemTotal) + '</span>' +
+                '</div>';
+            }
+
+            confirmItems.innerHTML = html;
+            document.getElementById('confirmTotal').textContent = 'Rp ' + formatNumber(subtotal);
+
+            // Tampilkan modal
+            document.getElementById('modalConfirm').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalConfirm').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Tutup modal jika klik di luar box
+        document.getElementById('modalConfirm').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // ========== KIRIM KE WHATSAPP ==========
+        function sendToWhatsApp() {
+            var nama = document.getElementById('inputNama').value.trim();
+            var phone = document.getElementById('inputPhone').value.trim();
+            var alamat = document.getElementById('inputAlamat').value.trim();
+            var catatan = document.getElementById('inputCatatan').value.trim();
+
             var message = '🛒 *PESANAN BARU - ' + STORE_NAME + '*\n';
             message += '━━━━━━━━━━━━━━━━━━━━━\n\n';
-            message += 'Halo Admin ' + STORE_NAME + '! 👋\nSaya ingin memesan:\n\n';
+            message += 'Halo Admin ' + STORE_NAME + '! 👋\n';
+            message += 'Saya ingin memesan:\n\n';
+
+            // ✅ Data Pemesan
+            message += '👤 *DATA PEMESAN*\n';
+            message += 'Nama : ' + nama + '\n';
+            message += 'No. WA : ' + phone + '\n';
+            message += 'Alamat : ' + alamat + '\n';
+            if (catatan) {
+                message += 'Catatan : ' + catatan + '\n';
+            }
+            message += '\n';
+
+            // ✅ Detail Pesanan
+            message += '📦 *DETAIL PESANAN*\n';
+            message += '─────────────────\n';
 
             var subtotal = 0;
             for (var i = 0; i < cart.length; i++) {
@@ -2249,29 +1077,31 @@
                 var itemTotal = item.price * item.qty;
                 subtotal += itemTotal;
                 message += (i + 1) + '. *' + item.name + '*\n';
-                message += '   ' + item.qty + ' x Rp ' + formatNumber(item.price) + ' = Rp ' + formatNumber(itemTotal) + '\n\n';
+                message += '   ' + item.qty + ' x Rp ' + formatNumber(item.price) + ' = *Rp ' + formatNumber(itemTotal) + '*\n\n';
             }
 
+            message += '─────────────────\n';
+            message += '💰 *TOTAL: Rp ' + formatNumber(subtotal) + '*\n';
+            message += '🚚 Ongkir: Dikonfirmasi kemudian\n\n';
             message += '━━━━━━━━━━━━━━━━━━━━━\n';
-            message += '💰 *Total: Rp ' + formatNumber(subtotal) + '*\n\n';
-            message += '📋 *Detail Pengiriman:*\n';
-            message += 'Nama: \n';
-            message += 'Alamat: \n';
-            message += 'No. HP: \n\n';
             message += 'Terima kasih! 🙏';
 
             var encodedMessage = encodeURIComponent(message);
             var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodedMessage;
             window.open(waUrl, '_blank');
+
+            // Tutup modal setelah kirim
+            closeModal();
         }
 
+        // ========== NOTIFICATION ==========
         function showNotification(text, type) {
             type = type || 'success';
             var notification = document.createElement('div');
             var bgColor = type === 'success' ? 'linear-gradient(135deg, #2d8a4e, #4caf50)' : 'linear-gradient(135deg, #e53935, #ff5252)';
             var icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
             
-            notification.style.cssText = 'position:fixed;top:100px;right:30px;background:' + bgColor + ';color:white;padding:16px 28px;border-radius:12px;font-size:0.9rem;font-weight:500;z-index:10000;box-shadow:0 10px 30px rgba(0,0,0,0.2);animation:slideInRight 0.3s ease;font-family:Poppins,sans-serif;display:flex;align-items:center;gap:10px;';
+            notification.style.cssText = 'position:fixed;top:100px;right:30px;background:' + bgColor + ';color:white;padding:16px 28px;border-radius:12px;font-size:0.9rem;font-weight:500;z-index:10001;box-shadow:0 10px 30px rgba(0,0,0,0.2);animation:slideInRight 0.3s ease;font-family:Poppins,sans-serif;display:flex;align-items:center;gap:10px;';
             notification.innerHTML = '<i class="fas ' + icon + '"></i> ' + text;
             document.body.appendChild(notification);
             
@@ -2281,42 +1111,25 @@
             }, 3000);
         }
 
+        // ========== NAVBAR SCROLL ==========
         window.addEventListener('scroll', function() {
             var navbar = document.getElementById('navbar');
             var scrollTop = document.getElementById('scrollTop');
-
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            if (window.scrollY > 500) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
-            }
+            if (window.scrollY > 100) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); }
+            if (window.scrollY > 500) { scrollTop.classList.add('visible'); } else { scrollTop.classList.remove('visible'); }
         });
 
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-        }
-
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
         var navLinksAll = document.querySelectorAll('.nav-links a');
         for (var j = 0; j < navLinksAll.length; j++) {
-            navLinksAll[j].addEventListener('click', function() {
-                document.getElementById('navLinks').classList.remove('active');
-            });
+            navLinksAll[j].addEventListener('click', function() { document.getElementById('navLinks').classList.remove('active'); });
         }
 
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
         function createParticles() {
             var container = document.getElementById('particles');
             var colors = ['#4caf50', '#ff9800', '#81c784', '#ffb74d'];
-            
             for (var i = 0; i < 15; i++) {
                 var particle = document.createElement('div');
                 particle.classList.add('particle');
@@ -2336,18 +1149,20 @@
             var windowHeight = window.innerHeight;
             for (var k = 0; k < reveals.length; k++) {
                 var revealTop = reveals[k].getBoundingClientRect().top;
-                if (revealTop < windowHeight - 150) {
-                    reveals[k].classList.add('active');
-                }
+                if (revealTop < windowHeight - 150) { reveals[k].classList.add('active'); }
             }
         }
-
         window.addEventListener('scroll', revealOnScroll);
 
         window.addEventListener('load', function() {
             document.getElementById('loader').classList.add('hidden');
             createParticles();
             revealOnScroll();
+        });
+
+        // Tutup modal dengan tombol Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') { closeModal(); }
         });
     </script>
 </body>
