@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YOCHI SNACK - Cemilan Sehat Stik Bayam & Stik Wortel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Preconnect untuk kecepatan loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Font: hanya load weight yang dipakai -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:wght@800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
     <style>
         :root {
             --primary-green: #2d8a4e;
@@ -108,7 +118,7 @@
         .nav-links a {
             text-decoration: none;
             color: rgba(255,255,255,0.9);
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.95rem;
             transition: all 0.3s;
             position: relative;
@@ -281,7 +291,7 @@
         .hero-title {
             font-family: 'Playfair Display', serif;
             font-size: 4rem;
-            font-weight: 900;
+            font-weight: 800;
             color: var(--white);
             line-height: 1.1;
             margin-bottom: 20px;
@@ -836,6 +846,7 @@
             align-items: center;
             justify-content: center;
             font-size: 0.8rem;
+            flex-shrink: 0;
         }
 
         .order-card {
@@ -1093,7 +1104,6 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            object-fit: cover;
             background: var(--gradient-green);
             display: flex;
             align-items: center;
@@ -1460,7 +1470,7 @@
             }
         }
 
-        /* ========== ANIMATIONS ON SCROLL ========== */
+        /* ========== SCROLL REVEAL ========== */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -1472,7 +1482,7 @@
             transform: translateY(0);
         }
 
-        /* Loading Animation */
+        /* ========== LOADER ========== */
         .loader {
             position: fixed;
             top: 0;
@@ -1484,7 +1494,7 @@
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 0.5s, visibility 0.5s;
+            transition: opacity 0.3s, visibility 0.3s;
         }
 
         .loader.hidden {
@@ -1498,10 +1508,10 @@
 
         .loader-logo {
             font-size: 2.5rem;
-            font-weight: 900;
+            font-weight: 800;
             color: white;
             margin-bottom: 20px;
-            animation: pulse 1.5s ease-in-out infinite;
+            animation: pulse 1s ease-in-out infinite;
         }
 
         .loader-bar {
@@ -1520,7 +1530,7 @@
             height: 100%;
             background: var(--gradient-green);
             border-radius: 3px;
-            animation: loading 1.5s ease-in-out infinite;
+            animation: loading 1s ease-in-out infinite;
         }
 
         @keyframes loading {
@@ -1531,6 +1541,16 @@
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100px); opacity: 0; }
         }
     </style>
 </head>
@@ -1606,9 +1626,8 @@
             </div>
             <div class="hero-visual">
                 <div class="hero-image-container">
-                    <img src="https://images.unsplash.com/photo-1621506289937-a8e4df24b942?w=500&q=80" 
-                         alt="YOCHI Snack" class="hero-main-image"
-                         onerror="this.src='https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80'">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=75" 
+                         alt="YOCHI Snack Healthy Food" class="hero-main-image" loading="eager">
                     
                     <div class="floating-card card-1">
                         <div class="floating-card-icon green">
@@ -1717,9 +1736,8 @@
             <div class="product-card reveal">
                 <span class="product-badge badge-bestseller">🔥 Best Seller</span>
                 <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=500&q=80" 
-                         alt="Stik Bayam Original" class="product-image"
-                         onerror="this.src='https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&q=80'">
+                    <img src="https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=400&q=75" 
+                         alt="Stik Bayam Original" class="product-image" loading="lazy">
                 </div>
                 <div class="product-info">
                     <div class="product-category">
@@ -1753,9 +1771,8 @@
             <div class="product-card reveal">
                 <span class="product-badge badge-bestseller">⭐ Favorit</span>
                 <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=500&q=80" 
-                         alt="Stik Wortel Original" class="product-image"
-                         onerror="this.src='https://images.unsplash.com/photo-1447175008436-05406d8e6662?w=500&q=80'">
+                    <img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=75" 
+                         alt="Stik Wortel Original" class="product-image" loading="lazy">
                 </div>
                 <div class="product-info">
                     <div class="product-category">
@@ -1789,9 +1806,8 @@
             <div class="product-card reveal">
                 <span class="product-badge badge-new">✨ Baru</span>
                 <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80" 
-                         alt="Paket Combo" class="product-image"
-                         onerror="this.src='https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80'">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=75" 
+                         alt="Paket Combo Bayam Wortel" class="product-image" loading="lazy">
                 </div>
                 <div class="product-info">
                     <div class="product-category">
@@ -1825,9 +1841,8 @@
             <div class="product-card reveal">
                 <span class="product-badge badge-new">🌶️ Spicy</span>
                 <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1621506289937-a8e4df24b942?w=500&q=80" 
-                         alt="Stik Bayam Pedas" class="product-image"
-                         onerror="this.src='https://images.unsplash.com/photo-1599490659213-e2b9537bd087?w=500&q=80'">
+                    <img src="https://images.unsplash.com/photo-1599490659213-e2b9537bd087?w=400&q=75" 
+                         alt="Stik Bayam Pedas Manis" class="product-image" loading="lazy">
                 </div>
                 <div class="product-info">
                     <div class="product-category">
@@ -1861,9 +1876,8 @@
             <div class="product-card reveal">
                 <span class="product-badge badge-bestseller">🏆 Premium</span>
                 <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1447175008436-05406d8e6662?w=500&q=80" 
-                         alt="Stik Wortel Keju" class="product-image"
-                         onerror="this.src='https://images.unsplash.com/photo-1543339308-d595b10a5251?w=500&q=80'">
+                    <img src="https://images.unsplash.com/photo-1543339308-d595b10a5251?w=400&q=75" 
+                         alt="Stik Wortel Rasa Keju" class="product-image" loading="lazy">
                 </div>
                 <div class="product-info">
                     <div class="product-category">
@@ -1897,9 +1911,8 @@
             <div class="product-card reveal">
                 <span class="product-badge badge-new">🎁 Gift Set</span>
                 <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80" 
-                         alt="Paket Hampers" class="product-image"
-                         onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&q=80'">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=75" 
+                         alt="Paket Hampers Premium" class="product-image" loading="lazy">
                 </div>
                 <div class="product-info">
                     <div class="product-category">
@@ -2107,10 +2120,10 @@
                 <h3>🥬 YOCHI SNACK</h3>
                 <p>Cemilan Sehat Stik Bayam & Stik Wortel. Renyah Bikin Nagih Indonesia! Dibuat dari bahan alami pilihan untuk keluarga Indonesia yang peduli kesehatan.</p>
                 <div class="footer-socials">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             <div class="footer-col">
@@ -2152,12 +2165,12 @@
 
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/6281234567890?text=Halo%20YOCHI%20SNACK!%20Saya%20ingin%20bertanya%20tentang%20produk%20Anda." 
-       class="wa-float" target="_blank" title="Chat WhatsApp">
+       class="wa-float" target="_blank" title="Chat WhatsApp" rel="noopener">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Scroll to Top -->
-    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()">
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -2177,17 +2190,11 @@
                 cart.push({ name: productName, price: price, qty: 1 });
             }
             updateCart();
-            showNotification(`${productName} ditambahkan ke keranjang!`);
+            showNotification(productName + ' ditambahkan ke keranjang!');
             
-            // Scroll to order section
-            setTimeout(() => {
+            setTimeout(function() {
                 document.getElementById('order').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 500);
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
         }
 
         function updateQty(index, change) {
@@ -2199,9 +2206,9 @@
         }
 
         function updateCart() {
-            const cartItems = document.getElementById('cartItems');
-            const emptyCart = document.getElementById('emptyCart');
-            const orderSummary = document.getElementById('orderSummary');
+            var cartItems = document.getElementById('cartItems');
+            var emptyCart = document.getElementById('emptyCart');
+            var orderSummary = document.getElementById('orderSummary');
 
             if (cart.length === 0) {
                 emptyCart.style.display = 'block';
@@ -2213,46 +2220,43 @@
             emptyCart.style.display = 'none';
             orderSummary.style.display = 'block';
 
-            let html = '';
-            let subtotal = 0;
+            var html = '';
+            var subtotal = 0;
 
-            cart.forEach((item, index) => {
-                const itemTotal = item.price * item.qty;
+            for (var i = 0; i < cart.length; i++) {
+                var item = cart[i];
+                var itemTotal = item.price * item.qty;
                 subtotal += itemTotal;
                 
-                // Get appropriate image based on product name
-                let imgSrc = 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=100&q=80';
-                if (item.name.toLowerCase().includes('bayam')) {
-                    imgSrc = 'https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=100&q=80';
-                } else if (item.name.toLowerCase().includes('wortel')) {
-                    imgSrc = 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=100&q=80';
-                } else if (item.name.toLowerCase().includes('combo')) {
-                    imgSrc = 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=100&q=80';
-                } else if (item.name.toLowerCase().includes('hampers')) {
-                    imgSrc = 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=100&q=80';
+                var imgSrc = 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=100&q=60';
+                if (item.name.toLowerCase().indexOf('bayam') !== -1) {
+                    imgSrc = 'https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=100&q=60';
+                } else if (item.name.toLowerCase().indexOf('wortel') !== -1) {
+                    imgSrc = 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=100&q=60';
+                } else if (item.name.toLowerCase().indexOf('combo') !== -1) {
+                    imgSrc = 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=100&q=60';
+                } else if (item.name.toLowerCase().indexOf('hampers') !== -1) {
+                    imgSrc = 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=100&q=60';
                 }
 
-                html += `
-                    <div class="order-item">
-                        <img src="${imgSrc}" alt="${item.name}" class="order-item-image"
-                             onerror="this.src='https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=100&q=80'">
-                        <div class="order-item-info">
-                            <div class="order-item-name">${item.name}</div>
-                            <div class="order-item-variant">Berat: ±100gr</div>
-                            <div class="order-item-price">Rp ${formatNumber(item.price)}</div>
-                        </div>
-                        <div class="order-item-qty">
-                            <button class="qty-btn" onclick="updateQty(${index}, -1)">−</button>
-                            <span class="qty-value">${item.qty}</span>
-                            <button class="qty-btn" onclick="updateQty(${index}, 1)">+</button>
-                        </div>
-                    </div>
-                `;
-            });
+                html += '<div class="order-item">' +
+                    '<img src="' + imgSrc + '" alt="' + item.name + '" class="order-item-image" loading="lazy">' +
+                    '<div class="order-item-info">' +
+                        '<div class="order-item-name">' + item.name + '</div>' +
+                        '<div class="order-item-variant">Berat: ±100gr</div>' +
+                        '<div class="order-item-price">Rp ' + formatNumber(item.price) + '</div>' +
+                    '</div>' +
+                    '<div class="order-item-qty">' +
+                        '<button class="qty-btn" onclick="updateQty(' + i + ', -1)">−</button>' +
+                        '<span class="qty-value">' + item.qty + '</span>' +
+                        '<button class="qty-btn" onclick="updateQty(' + i + ', 1)">+</button>' +
+                    '</div>' +
+                '</div>';
+            }
 
             cartItems.innerHTML = html;
-            document.getElementById('subtotal').textContent = `Rp ${formatNumber(subtotal)}`;
-            document.getElementById('totalPrice').textContent = `Rp ${formatNumber(subtotal)}`;
+            document.getElementById('subtotal').textContent = 'Rp ' + formatNumber(subtotal);
+            document.getElementById('totalPrice').textContent = 'Rp ' + formatNumber(subtotal);
         }
 
         function formatNumber(num) {
@@ -2265,64 +2269,53 @@
                 return;
             }
 
-            let message = `🛒 *PESANAN BARU - ${STORE_NAME}*\n`;
-            message += `━━━━━━━━━━━━━━━━━━━━━\n\n`;
-            message += `Halo Admin ${STORE_NAME}! 👋\nSaya ingin memesan:\n\n`;
+            var message = '🛒 *PESANAN BARU - ' + STORE_NAME + '*\n';
+            message += '━━━━━━━━━━━━━━━━━━━━━\n\n';
+            message += 'Halo Admin ' + STORE_NAME + '! 👋\nSaya ingin memesan:\n\n';
 
-            let subtotal = 0;
-            cart.forEach((item, index) => {
-                const itemTotal = item.price * item.qty;
+            var subtotal = 0;
+            for (var i = 0; i < cart.length; i++) {
+                var item = cart[i];
+                var itemTotal = item.price * item.qty;
                 subtotal += itemTotal;
-                message += `${index + 1}. *${item.name}*\n`;
-                message += `   ${item.qty} x Rp ${formatNumber(item.price)} = Rp ${formatNumber(itemTotal)}\n\n`;
-            });
+                message += (i + 1) + '. *' + item.name + '*\n';
+                message += '   ' + item.qty + ' x Rp ' + formatNumber(item.price) + ' = Rp ' + formatNumber(itemTotal) + '\n\n';
+            }
 
-            message += `━━━━━━━━━━━━━━━━━━━━━\n`;
-            message += `💰 *Total: Rp ${formatNumber(subtotal)}*\n\n`;
-            message += `📋 *Detail Pengiriman:*\n`;
-            message += `Nama: \n`;
-            message += `Alamat: \n`;
-            message += `No. HP: \n\n`;
-            message += `Terima kasih! 🙏`;
+            message += '━━━━━━━━━━━━━━━━━━━━━\n';
+            message += '💰 *Total: Rp ' + formatNumber(subtotal) + '*\n\n';
+            message += '📋 *Detail Pengiriman:*\n';
+            message += 'Nama: \n';
+            message += 'Alamat: \n';
+            message += 'No. HP: \n\n';
+            message += 'Terima kasih! 🙏';
 
-            const encodedMessage = encodeURIComponent(message);
-            const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+            var encodedMessage = encodeURIComponent(message);
+            var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodedMessage;
             window.open(waUrl, '_blank');
         }
 
         // ========== NOTIFICATION ==========
-        function showNotification(text, type = 'success') {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 30px;
-                background: ${type === 'success' ? 'linear-gradient(135deg, #2d8a4e, #4caf50)' : 'linear-gradient(135deg, #e53935, #ff5252)'};
-                color: white;
-                padding: 16px 28px;
-                border-radius: 12px;
-                font-size: 0.9rem;
-                font-weight: 500;
-                z-index: 10000;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-                animation: slideInRight 0.3s ease;
-                font-family: 'Poppins', sans-serif;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            `;
-            notification.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${text}`;
+        function showNotification(text, type) {
+            type = type || 'success';
+            var notification = document.createElement('div');
+            var bgColor = type === 'success' ? 'linear-gradient(135deg, #2d8a4e, #4caf50)' : 'linear-gradient(135deg, #e53935, #ff5252)';
+            var icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+            
+            notification.style.cssText = 'position:fixed;top:100px;right:30px;background:' + bgColor + ';color:white;padding:16px 28px;border-radius:12px;font-size:0.9rem;font-weight:500;z-index:10000;box-shadow:0 10px 30px rgba(0,0,0,0.2);animation:slideInRight 0.3s ease;font-family:Poppins,sans-serif;display:flex;align-items:center;gap:10px;';
+            notification.innerHTML = '<i class="fas ' + icon + '"></i> ' + text;
             document.body.appendChild(notification);
-            setTimeout(() => {
+            
+            setTimeout(function() {
                 notification.style.animation = 'slideOutRight 0.3s ease';
-                setTimeout(() => notification.remove(), 300);
+                setTimeout(function() { notification.remove(); }, 300);
             }, 3000);
         }
 
         // ========== NAVBAR SCROLL ==========
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            const scrollTop = document.getElementById('scrollTop');
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('navbar');
+            var scrollTop = document.getElementById('scrollTop');
 
             if (window.scrollY > 100) {
                 navbar.classList.add('scrolled');
@@ -2343,74 +2336,57 @@
         }
 
         // Close menu on link click
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
+        var navLinksAll = document.querySelectorAll('.nav-links a');
+        for (var j = 0; j < navLinksAll.length; j++) {
+            navLinksAll[j].addEventListener('click', function() {
                 document.getElementById('navLinks').classList.remove('active');
             });
-        });
+        }
 
         // ========== SCROLL TO TOP ==========
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ========== PARTICLES ==========
+        // ========== PARTICLES (Optimized: 15 instead of 30) ==========
         function createParticles() {
-            const container = document.getElementById('particles');
-            const colors = ['#4caf50', '#ff9800', '#81c784', '#ffb74d'];
+            var container = document.getElementById('particles');
+            var colors = ['#4caf50', '#ff9800', '#81c784', '#ffb74d'];
             
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
+            for (var i = 0; i < 15; i++) {
+                var particle = document.createElement('div');
                 particle.classList.add('particle');
-                const size = Math.random() * 8 + 3;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
+                var size = Math.random() * 8 + 3;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
                 particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.animationDuration = `${Math.random() * 15 + 10}s`;
-                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                particle.style.animationDelay = (Math.random() * 10) + 's';
                 container.appendChild(particle);
             }
         }
 
         // ========== SCROLL REVEAL ==========
         function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const revealTop = el.getBoundingClientRect().top;
-                const revealPoint = 150;
-
-                if (revealTop < windowHeight - revealPoint) {
-                    el.classList.add('active');
+            var reveals = document.querySelectorAll('.reveal');
+            var windowHeight = window.innerHeight;
+            for (var k = 0; k < reveals.length; k++) {
+                var revealTop = reveals[k].getBoundingClientRect().top;
+                if (revealTop < windowHeight - 150) {
+                    reveals[k].classList.add('active');
                 }
-            });
+            }
         }
 
         window.addEventListener('scroll', revealOnScroll);
 
-        // ========== LOADER ==========
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 1500);
+        // ========== LOADER (Fast: no delay) ==========
+        window.addEventListener('load', function() {
+            document.getElementById('loader').classList.add('hidden');
             createParticles();
             revealOnScroll();
         });
-
-        // Add CSS animation keyframes dynamically
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideInRight {
-                from { transform: translateX(100px); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOutRight {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100px); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
