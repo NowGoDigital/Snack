@@ -5,16 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YOCHI SNACK - Cemilan Sehat Stik Bayam & Stik Wortel</title>
     
-    <!-- Preconnect untuk kecepatan loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
-    <!-- Font: hanya load weight yang dipakai -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:wght@800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <style>
@@ -194,8 +190,9 @@
             display: flex;
             align-items: center;
             overflow: hidden;
-            /* ✅ PERBAIKAN: Tambah padding-top agar tidak mepet navbar */
-            padding-top: 100px;
+            /* ✅ FIX: Kurangi padding-top, pakai padding yang lebih pas */
+            padding-top: 80px;
+            padding-bottom: 40px;
         }
 
         .hero::before {
@@ -249,6 +246,7 @@
             100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
         }
 
+        /* ✅ FIX: Komposisi kolom - teks lebih lebar (1.15fr), gambar lebih kecil (0.85fr) */
         .hero-content {
             position: relative;
             z-index: 10;
@@ -257,8 +255,8 @@
             margin: 0 auto;
             padding: 0 5%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 40px;
             align-items: center;
         }
 
@@ -290,29 +288,32 @@
             50% { transform: scale(1.2) rotate(180deg); }
         }
 
-        /* ✅ PERBAIKAN: Hero Title - 2 baris saja */
+        /* ✅ FIX: Hero Title - font lebih kecil agar muat 2 baris */
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: 3.2rem;
             font-weight: 800;
             color: var(--white);
-            line-height: 1.15;
+            line-height: 1.2;
             margin-bottom: 20px;
         }
 
         .hero-title .line1 {
             display: block;
             color: var(--white);
-            font-size: 0.65em;
+            font-size: 0.55em;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            -webkit-text-fill-color: rgba(255,255,255,0.9);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            -webkit-text-fill-color: rgba(255,255,255,0.85);
         }
 
+        /* ✅ FIX: nowrap agar tidak pecah ke baris ke-3 */
         .hero-title .line2 {
             display: block;
+            white-space: nowrap;
         }
 
         .hero-title .line2 .green-text {
@@ -337,11 +338,11 @@
         }
 
         .hero-tagline {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: rgba(255,255,255,0.8);
             line-height: 1.8;
             margin-bottom: 35px;
-            max-width: 500px;
+            max-width: 520px;
         }
 
         .hero-buttons {
@@ -418,6 +419,7 @@
             margin-top: 5px;
         }
 
+        /* ✅ FIX: Hero visual - diperkecil agar proporsional */
         .hero-visual {
             position: relative;
             display: flex;
@@ -428,8 +430,8 @@
 
         .hero-image-container {
             position: relative;
-            width: 500px;
-            height: 500px;
+            width: 420px;
+            height: 420px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(45,138,78,0.2) 0%, transparent 70%);
             display: flex;
@@ -444,8 +446,8 @@
         }
 
         .hero-main-image {
-            width: 380px;
-            height: 380px;
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid rgba(76,175,80,0.3);
@@ -457,40 +459,40 @@
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(20px);
             border-radius: 16px;
-            padding: 15px 20px;
+            padding: 12px 16px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.15);
             animation: float 4s ease-in-out infinite;
         }
 
         .floating-card.card-1 {
-            top: 10%;
-            right: -10%;
+            top: 5%;
+            right: -5%;
             animation-delay: 0s;
         }
 
         .floating-card.card-2 {
-            bottom: 15%;
+            bottom: 10%;
             left: -5%;
             animation-delay: 1.5s;
         }
 
         .floating-card.card-3 {
-            top: 60%;
-            right: -15%;
+            top: 55%;
+            right: -10%;
             animation-delay: 3s;
         }
 
         .floating-card-icon {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .floating-card-icon.green {
@@ -504,12 +506,12 @@
         }
 
         .floating-card-text {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
 
         .floating-card-text strong {
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--dark);
         }
 
@@ -818,7 +820,7 @@
             box-shadow: 0 8px 25px rgba(45,138,78,0.4);
         }
 
-        /* ========== ORDER SECTION (Marketplace Style) ========== */
+        /* ========== ORDER SECTION ========== */
         .order-section {
             padding: 120px 5%;
             background: white;
@@ -1375,10 +1377,6 @@
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
-            .hero {
-                padding-top: 120px;
-            }
-
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1402,7 +1400,7 @@
             }
 
             .hero-title {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
 
             .order-container {
@@ -1421,7 +1419,7 @@
 
         @media (max-width: 768px) {
             .hero {
-                padding-top: 100px;
+                padding-top: 90px;
                 min-height: auto;
                 padding-bottom: 60px;
             }
@@ -1459,7 +1457,7 @@
             }
 
             .hero-title .line1 {
-                font-size: 0.55em;
+                font-size: 0.5em;
             }
 
             .hero-tagline {
@@ -1628,18 +1626,15 @@
         <div class="hero-particles" id="particles"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <!-- ✅ Badge sekarang punya jarak yang pas dari navbar -->
                 <div class="hero-badge">
                     <i class="fas fa-star"></i>
                     Cemilan Sehat #1 Indonesia
                 </div>
 
-                <!-- ✅ PERBAIKAN: Judul 2 baris saja -->
+                <!-- ✅ JUDUL 2 BARIS: line1 kecil + line2 nowrap -->
                 <h1 class="hero-title">
                     <span class="line1">Cemilan Sehat</span>
-                    <span class="line2">
-                        <span class="green-text">Stik Bayam</span><span class="ampersand"> & </span><span class="orange-text">Stik Wortel</span>
-                    </span>
+                    <span class="line2"><span class="green-text">Stik Bayam</span><span class="ampersand"> & </span><span class="orange-text">Stik Wortel</span></span>
                 </h1>
 
                 <p class="hero-tagline">
@@ -1776,7 +1771,6 @@
             </p>
         </div>
         <div class="products-grid">
-            <!-- Product 1 -->
             <div class="product-card reveal">
                 <span class="product-badge badge-bestseller">🔥 Best Seller</span>
                 <div class="product-image-wrapper">
@@ -1791,11 +1785,7 @@
                     <p class="product-desc">Stik renyah dari bayam segar asli, kaya zat besi dan vitamin. Rasa gurih alami yang bikin nagih!</p>
                     <div class="product-rating">
                         <span class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </span>
                         <span class="rating-text">5.0 (328 ulasan)</span>
                     </div>
@@ -1811,7 +1801,6 @@
                 </div>
             </div>
 
-            <!-- Product 2 -->
             <div class="product-card reveal">
                 <span class="product-badge badge-bestseller">⭐ Favorit</span>
                 <div class="product-image-wrapper">
@@ -1826,11 +1815,7 @@
                     <p class="product-desc">Stik wortel renyah kaya beta karoten. Camilan sehat yang baik untuk mata dan kulit, disukai anak-anak!</p>
                     <div class="product-rating">
                         <span class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </span>
                         <span class="rating-text">4.9 (256 ulasan)</span>
                     </div>
@@ -1846,7 +1831,6 @@
                 </div>
             </div>
 
-            <!-- Product 3 -->
             <div class="product-card reveal">
                 <span class="product-badge badge-new">✨ Baru</span>
                 <div class="product-image-wrapper">
@@ -1861,11 +1845,7 @@
                     <p class="product-desc">Dapatkan kedua varian stik bayam dan wortel dalam satu paket hemat! Lebih untung dan lebih lengkap.</p>
                     <div class="product-rating">
                         <span class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                         </span>
                         <span class="rating-text">4.8 (189 ulasan)</span>
                     </div>
@@ -1881,7 +1861,6 @@
                 </div>
             </div>
 
-            <!-- Product 4 -->
             <div class="product-card reveal">
                 <span class="product-badge badge-new">🌶️ Spicy</span>
                 <div class="product-image-wrapper">
@@ -1896,11 +1875,7 @@
                     <p class="product-desc">Perpaduan rasa pedas dan manis yang sempurna! Cocok untuk pecinta camilan dengan sensasi rasa yang berani.</p>
                     <div class="product-rating">
                         <span class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </span>
                         <span class="rating-text">4.9 (142 ulasan)</span>
                     </div>
@@ -1916,7 +1891,6 @@
                 </div>
             </div>
 
-            <!-- Product 5 -->
             <div class="product-card reveal">
                 <span class="product-badge badge-bestseller">🏆 Premium</span>
                 <div class="product-image-wrapper">
@@ -1931,11 +1905,7 @@
                     <p class="product-desc">Stik wortel dengan taburan keju premium yang gurih. Favorit anak-anak dan dewasa yang menyukai rasa keju!</p>
                     <div class="product-rating">
                         <span class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                         </span>
                         <span class="rating-text">4.7 (98 ulasan)</span>
                     </div>
@@ -1951,7 +1921,6 @@
                 </div>
             </div>
 
-            <!-- Product 6 -->
             <div class="product-card reveal">
                 <span class="product-badge badge-new">🎁 Gift Set</span>
                 <div class="product-image-wrapper">
@@ -1966,11 +1935,7 @@
                     <p class="product-desc">Paket hampers eksklusif berisi 4 varian produk YOCHI SNACK. Cocok untuk hadiah dan oleh-oleh spesial!</p>
                     <div class="product-rating">
                         <span class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </span>
                         <span class="rating-text">5.0 (76 ulasan)</span>
                     </div>
@@ -2004,30 +1969,12 @@
                 <h2>Cara Pesan Mudah & Cepat</h2>
                 <p>Cukup tambahkan produk ke keranjang, atur jumlahnya, dan klik tombol pesan. Pesanan Anda akan otomatis terkirim ke WhatsApp kami untuk konfirmasi dan pembayaran.</p>
                 <ul class="order-features">
-                    <li>
-                        <i class="fas fa-check"></i>
-                        <span>Tanpa registrasi, langsung order</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check"></i>
-                        <span>Konfirmasi cepat via WhatsApp</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check"></i>
-                        <span>Free ongkir untuk pembelian minimal Rp 100.000</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check"></i>
-                        <span>Garansi produk fresh & renyah</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check"></i>
-                        <span>Bisa COD area tertentu</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check"></i>
-                        <span>Pembayaran via transfer / e-wallet</span>
-                    </li>
+                    <li><i class="fas fa-check"></i><span>Tanpa registrasi, langsung order</span></li>
+                    <li><i class="fas fa-check"></i><span>Konfirmasi cepat via WhatsApp</span></li>
+                    <li><i class="fas fa-check"></i><span>Free ongkir untuk pembelian minimal Rp 100.000</span></li>
+                    <li><i class="fas fa-check"></i><span>Garansi produk fresh & renyah</span></li>
+                    <li><i class="fas fa-check"></i><span>Bisa COD area tertentu</span></li>
+                    <li><i class="fas fa-check"></i><span>Pembayaran via transfer / e-wallet</span></li>
                 </ul>
             </div>
             <div class="order-card reveal">
@@ -2085,16 +2032,10 @@
         <div class="testimonial-grid">
             <div class="testimonial-card reveal">
                 <div class="testimonial-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
                 <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-                <p class="testimonial-text">
-                    "Anak saya yang biasanya susah makan sayur, sekarang malah ketagihan stik bayam YOCHI! Rasanya enak banget, renyah dan gurih. Recommended banget buat ibu-ibu!"
-                </p>
+                <p class="testimonial-text">"Anak saya yang biasanya susah makan sayur, sekarang malah ketagihan stik bayam YOCHI! Rasanya enak banget, renyah dan gurih. Recommended banget buat ibu-ibu!"</p>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">SR</div>
                     <div>
@@ -2105,16 +2046,10 @@
             </div>
             <div class="testimonial-card reveal">
                 <div class="testimonial-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
                 <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-                <p class="testimonial-text">
-                    "Saya jual lagi di toko saya dan laku keras! Pelanggan pada repeat order terus. Kualitas produknya konsisten dan packagingnya bagus banget."
-                </p>
+                <p class="testimonial-text">"Saya jual lagi di toko saya dan laku keras! Pelanggan pada repeat order terus. Kualitas produknya konsisten dan packagingnya bagus banget."</p>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">BH</div>
                     <div>
@@ -2125,16 +2060,10 @@
             </div>
             <div class="testimonial-card reveal">
                 <div class="testimonial-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
                 <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-                <p class="testimonial-text">
-                    "Sebagai food blogger, saya sudah coba banyak camilan sehat. YOCHI SNACK ini top! Rasanya premium, harganya terjangkau, dan yang paling penting sehat!"
-                </p>
+                <p class="testimonial-text">"Sebagai food blogger, saya sudah coba banyak camilan sehat. YOCHI SNACK ini top! Rasanya premium, harganya terjangkau, dan yang paling penting sehat!"</p>
                 <div class="testimonial-author">
                     <div class="testimonial-avatar">DA</div>
                     <div>
@@ -2219,11 +2148,9 @@
     </button>
 
     <script>
-        // ========== CONFIGURATION ==========
-        const WHATSAPP_NUMBER = "6281234567890"; // Ganti dengan nomor WA Anda
+        const WHATSAPP_NUMBER = "6281234567890";
         const STORE_NAME = "YOCHI SNACK";
 
-        // ========== CART SYSTEM ==========
         let cart = [];
 
         function addToOrder(productName, price) {
@@ -2235,7 +2162,6 @@
             }
             updateCart();
             showNotification(productName + ' ditambahkan ke keranjang!');
-            
             setTimeout(function() {
                 document.getElementById('order').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 500);
@@ -2339,7 +2265,6 @@
             window.open(waUrl, '_blank');
         }
 
-        // ========== NOTIFICATION ==========
         function showNotification(text, type) {
             type = type || 'success';
             var notification = document.createElement('div');
@@ -2356,7 +2281,6 @@
             }, 3000);
         }
 
-        // ========== NAVBAR SCROLL ==========
         window.addEventListener('scroll', function() {
             var navbar = document.getElementById('navbar');
             var scrollTop = document.getElementById('scrollTop');
@@ -2374,7 +2298,6 @@
             }
         });
 
-        // ========== MOBILE MENU ==========
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
         }
@@ -2386,12 +2309,10 @@
             });
         }
 
-        // ========== SCROLL TO TOP ==========
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ========== PARTICLES ==========
         function createParticles() {
             var container = document.getElementById('particles');
             var colors = ['#4caf50', '#ff9800', '#81c784', '#ffb74d'];
@@ -2410,7 +2331,6 @@
             }
         }
 
-        // ========== SCROLL REVEAL ==========
         function revealOnScroll() {
             var reveals = document.querySelectorAll('.reveal');
             var windowHeight = window.innerHeight;
@@ -2424,7 +2344,6 @@
 
         window.addEventListener('scroll', revealOnScroll);
 
-        // ========== LOADER ==========
         window.addEventListener('load', function() {
             document.getElementById('loader').classList.add('hidden');
             createParticles();
