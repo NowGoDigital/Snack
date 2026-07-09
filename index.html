@@ -802,20 +802,41 @@
         var WHATSAPP_NUMBER = "628175761165";
         var STORE_NAME = "YOCHI SNACK";
 
-        var productsData = [
-            { id: 'bayam-original', name: 'Stik Bayam Original', category: 'Stik Bayam', categoryIcon: 'fa-leaf', desc: 'Stik renyah dari bayam segar asli, kaya zat besi dan vitamin. Rasa gurih alami yang bikin nagih!', price: 25000, originalPrice: 35000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🔥 Best Seller', badgeClass: 'badge-bestseller', rating: '5.0', reviews: 328, stock: 24 },
-            { id: 'wortel-original', name: 'Stik Wortel Original', category: 'Stik Wortel', categoryIcon: 'fa-carrot', desc: 'Stik wortel renyah kaya beta karoten. Camilan sehat yang baik untuk mata dan kulit, disukai anak-anak!', price: 25000, originalPrice: 35000, image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=100&q=60', badge: '⭐ Favorit', badgeClass: 'badge-bestseller', rating: '4.9', reviews: 256, stock: 18 },
-            { id: 'combo', name: 'Paket Combo (Bayam + Wortel)', category: 'Paket Hemat', categoryIcon: 'fa-box-open', desc: 'Dapatkan kedua varian stik bayam dan wortel dalam satu paket hemat! Lebih untung dan lebih lengkap.', price: 40000, originalPrice: 50000, image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=100&q=60', badge: '✨ Baru', badgeClass: 'badge-new', rating: '4.8', reviews: 189, stock: 12 },
-            { id: 'bayam-pedas', name: 'Stik Bayam Pedas Manis', category: 'Stik Bayam', categoryIcon: 'fa-pepper-hot', desc: 'Perpaduan rasa pedas dan manis yang sempurna! Cocok untuk pecinta camilan dengan sensasi rasa berani.', price: 28000, originalPrice: 38000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🌶️ Spicy', badgeClass: 'badge-new', rating: '4.9', reviews: 142, stock: 7 },
-            { id: 'wortel-keju', name: 'Stik Wortel Rasa Keju', category: 'Stik Wortel', categoryIcon: 'fa-cheese', desc: 'Stik wortel dengan taburan keju premium yang gurih. Favorit anak-anak dan dewasa!', price: 28000, originalPrice: 38000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🏆 Premium', badgeClass: 'badge-bestseller', rating: '4.7', reviews: 98, stock: 15 },
-            { id: 'hampers', name: 'Paket Hampers Premium', category: 'Hampers', categoryIcon: 'fa-gift', desc: 'Paket hampers eksklusif berisi 4 varian produk YOCHI SNACK. Cocok untuk hadiah dan oleh-oleh!', price: 95000, originalPrice: 120000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🎁 Gift Set', badgeClass: 'badge-new', rating: '5.0', reviews: 76, stock: 5 }
-        ];
+        // ============ INTEGRASI DENGAN ADMIN PANEL ============
+var STORAGE_KEYS = {
+    products: 'yochi_products',
+    categories: 'yochi_categories',
+    vouchers: 'yochi_vouchers'
+};
 
-        var vouchers = {
-            'WELCOME10': { type: 'percent', value: 10, maxDiscount: 0, minOrder: 0, desc: 'Diskon 10% untuk pengguna baru' },
-            'HEMAT20': { type: 'fixed', value: 20000, minOrder: 50000, desc: 'Potongan Rp 20.000 min. belanja Rp 50.000' },
-            'YOCHI50': { type: 'percent', value: 50, maxDiscount: 25000, minOrder: 0, desc: 'Diskon 50% (max Rp 25.000)' }
-        };
+var DEFAULT_PRODUCTS = [
+    { id: 'bayam-original', name: 'Stik Bayam Original', category: 'Stik Bayam', categoryIcon: 'fa-leaf', desc: 'Stik renyah dari bayam segar asli, kaya zat besi dan vitamin. Rasa gurih alami yang bikin nagih!', price: 25000, originalPrice: 35000, image: 'https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=100&q=60', badge: '🔥 Best Seller', badgeClass: 'badge-bestseller', rating: '5.0', reviews: 328, stock: 24 },
+    { id: 'wortel-original', name: 'Stik Wortel Original', category: 'Stik Wortel', categoryIcon: 'fa-carrot', desc: 'Stik wortel renyah kaya beta karoten. Camilan sehat yang baik untuk mata dan kulit, disukai anak-anak!', price: 25000, originalPrice: 35000, image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=100&q=60', badge: '⭐ Favorit', badgeClass: 'badge-bestseller', rating: '4.9', reviews: 256, stock: 18 },
+    { id: 'combo', name: 'Paket Combo (Bayam + Wortel)', category: 'Paket Hemat', categoryIcon: 'fa-box-open', desc: 'Dapatkan kedua varian stik bayam dan wortel dalam satu paket hemat! Lebih untung dan lebih lengkap.', price: 40000, originalPrice: 50000, image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=100&q=60', badge: '✨ Baru', badgeClass: 'badge-new', rating: '4.8', reviews: 189, stock: 12 },
+    { id: 'bayam-pedas', name: 'Stik Bayam Pedas Manis', category: 'Stik Bayam', categoryIcon: 'fa-pepper-hot', desc: 'Perpaduan rasa pedas dan manis yang sempurna! Cocok untuk pecinta camilan dengan sensasi rasa berani.', price: 28000, originalPrice: 38000, image: 'https://images.unsplash.com/photo-1599490659213-e2b9537bd087?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1599490659213-e2b9537bd087?w=100&q=60', badge: '🌶️ Spicy', badgeClass: 'badge-new', rating: '4.9', reviews: 142, stock: 7 },
+    { id: 'wortel-keju', name: 'Stik Wortel Rasa Keju', category: 'Stik Wortel', categoryIcon: 'fa-cheese', desc: 'Stik wortel dengan taburan keju premium yang gurih. Favorit anak-anak dan dewasa!', price: 28000, originalPrice: 38000, image: 'https://images.unsplash.com/photo-1543339308-d595b10a5251?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1543339308-d595b10a5251?w=100&q=60', badge: '🏆 Premium', badgeClass: 'badge-bestseller', rating: '4.7', reviews: 98, stock: 15 },
+    { id: 'hampers', name: 'Paket Hampers Premium', category: 'Hampers', categoryIcon: 'fa-gift', desc: 'Paket hampers eksklusif berisi 4 varian produk YOCHI SNACK. Cocok untuk hadiah dan oleh-oleh!', price: 95000, originalPrice: 120000, image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=100&q=60', badge: '🎁 Gift Set', badgeClass: 'badge-new', rating: '5.0', reviews: 76, stock: 5 }
+];
+
+var DEFAULT_VOUCHERS = {
+    'WELCOME10': { type: 'percent', value: 10, maxDiscount: 0, minOrder: 0, desc: 'Diskon 10% untuk pengguna baru' },
+    'HEMAT20': { type: 'fixed', value: 20000, minOrder: 50000, desc: 'Potongan Rp 20.000 min. belanja Rp 50.000' },
+    'YOCHI50': { type: 'percent', value: 50, maxDiscount: 25000, minOrder: 0, desc: 'Diskon 50% (max Rp 25.000)' }
+};
+
+// Load data dari localStorage (admin) atau pakai default
+var storedProducts = localStorage.getItem(STORAGE_KEYS.products);
+var storedVouchers = localStorage.getItem(STORAGE_KEYS.vouchers);
+
+var productsData = storedProducts ? JSON.parse(storedProducts) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+var vouchers = storedVouchers ? JSON.parse(storedVouchers) : JSON.parse(JSON.stringify(DEFAULT_VOUCHERS));
+
+// Sync: saat admin update, website otomatis terupdate setelah refresh
+window.addEventListener('storage', function(e) {
+    if (e.key === STORAGE_KEYS.products || e.key === STORAGE_KEYS.vouchers) {
+        location.reload();
+    }
+});
 
         var appliedVoucher = null;
         var cart = [];
