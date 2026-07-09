@@ -40,6 +40,7 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; color: var(--dark); overflow-x: hidden; background: var(--white); }
 
+        /* ========== NAVBAR ========== */
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; transition: all 0.4s ease; background: transparent; }
         .navbar.scrolled { background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); box-shadow: 0 2px 30px rgba(0,0,0,0.1); padding: 10px 5%; }
         .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -52,10 +53,11 @@
         .nav-links a:hover { color: var(--primary-green); }
         .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--primary-green); transition: width 0.3s; }
         .nav-links a:hover::after { width: 100%; }
-        .nav-cta { background: var(--gradient-green); color: white !important; padding: 10px 25px; border-radius: 50px; font-weight: 600 !important; box-shadow: 0 4px 15px rgba(45,138,78,0.3); transition: all 0.3s !important; }
+        .nav-cta { background: var(--gradient-green) !important; color: white !important; padding: 10px 25px; border-radius: 50px; font-weight: 600 !important; box-shadow: 0 4px 15px rgba(45,138,78,0.3); transition: all 0.3s !important; }
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(45,138,78,0.4); }
         .nav-cta::after { display: none !important; }
 
+        /* ========== BOTTOM NAV ========== */
         .bottom-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid rgba(0,0,0,0.05); box-shadow: 0 -4px 30px rgba(0,0,0,0.1); padding: 10px 8px; padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
         .bottom-nav-items { display: flex; justify-content: space-around; align-items: center; list-style: none; max-width: 500px; margin: 0 auto; gap: 2px; }
         .bottom-nav-item { flex: 1; text-align: center; position: relative; }
@@ -82,6 +84,8 @@
         .cart-badge.bump { animation: badge-bump 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
         @keyframes badge-pop { 0% { transform: translateX(22px) scale(0); opacity: 0; } 50% { transform: translateX(22px) scale(1.3); } 100% { transform: translateX(22px) scale(1); opacity: 1; } }
         @keyframes badge-bump { 0%, 100% { transform: translateX(22px) scale(1); } 50% { transform: translateX(22px) scale(1.4); } }
+
+        /* ========== FLYING ANIMATION ========== */
         .flying-item { position: fixed; width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-green); z-index: 9999; pointer-events: none; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; box-shadow: 0 8px 25px rgba(45,138,78,0.5); will-change: transform, left, top; }
         .cart-shake { animation: cart-shake 0.5s ease; }
         @keyframes cart-shake { 0%, 100% { transform: rotate(0deg) scale(1); } 20% { transform: rotate(-20deg) scale(1.2); } 40% { transform: rotate(20deg) scale(1.2); } 60% { transform: rotate(-10deg) scale(1.1); } 80% { transform: rotate(10deg) scale(1.1); } }
@@ -92,6 +96,7 @@
         .btn-order.added { background: linear-gradient(135deg, #43a047, #66bb6a) !important; animation: success-pop 0.4s ease; }
         @keyframes success-pop { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
 
+        /* ========== HERO ========== */
         .hero { min-height: 100vh; background: var(--gradient-hero); position: relative; display: flex; align-items: center; overflow: hidden; padding-top: 80px; padding-bottom: 40px; }
         .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 200%; background: radial-gradient(ellipse, rgba(45,138,78,0.15) 0%, transparent 70%); animation: pulse-glow 4s ease-in-out infinite; }
         .hero::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 60%; height: 150%; background: radial-gradient(ellipse, rgba(232,114,42,0.1) 0%, transparent 70%); animation: pulse-glow 4s ease-in-out infinite 2s; }
@@ -112,10 +117,10 @@
         .hero-title .line2 .ampersand { color:rgba(255,255,255,0.5); -webkit-text-fill-color:rgba(255,255,255,0.5); font-weight:400; margin:0 5px; }
         .hero-tagline { font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 35px; max-width: 520px; }
         .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
-        .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 16px 35px; background: var(--gradient-green); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: all 0.3s; box-shadow: 0 8px 30px rgba(45,138,78,0.4); border: none; cursor: pointer; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(45,138,78,0.5); }
-        .btn-secondary { display: inline-flex; align-items: center; gap: 10px; padding: 16px 35px; background: transparent; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: all 0.3s; border: 2px solid rgba(255,255,255,0.3); cursor: pointer; }
-        .btn-secondary:hover { border-color: var(--primary-green); background: rgba(45,138,78,0.1); transform: translateY(-3px); }
+        .btn-primary-hero { display: inline-flex; align-items: center; gap: 10px; padding: 16px 35px; background: var(--gradient-green); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: all 0.3s; box-shadow: 0 8px 30px rgba(45,138,78,0.4); border: none; cursor: pointer; }
+        .btn-primary-hero:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(45,138,78,0.5); }
+        .btn-secondary-hero { display: inline-flex; align-items: center; gap: 10px; padding: 16px 35px; background: transparent; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: all 0.3s; border: 2px solid rgba(255,255,255,0.3); cursor: pointer; }
+        .btn-secondary-hero:hover { border-color: var(--primary-green); background: rgba(45,138,78,0.1); transform: translateY(-3px); }
         .hero-stats { display: flex; gap: 40px; margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
         .stat-item { text-align: center; }
         .stat-number { font-size: 2rem; font-weight: 800; color: var(--white); }
@@ -137,6 +142,7 @@
         @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
         @keyframes fadeInRight { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
 
+        /* ========== ABOUT ========== */
         .about { padding: 120px 5%; background: var(--white); }
         .section-header { text-align: center; margin-bottom: 70px; }
         .section-subtitle { display:inline-flex; align-items:center; gap:8px; color:var(--primary-green); font-weight:600; font-size:0.95rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:15px; }
@@ -152,6 +158,7 @@
         .about-card h3 { font-size:1.3rem; font-weight:700; margin-bottom:12px; color:var(--dark); }
         .about-card p { color:var(--gray-600); line-height:1.7; font-size:0.95rem; }
 
+        /* ========== PRODUCTS ========== */
         .products { padding:120px 5%; background:var(--gray-100); position:relative; }
         .products::before { content:''; position:absolute; top:0; left:0; right:0; height:200px; background:linear-gradient(to bottom,var(--white),var(--gray-100)); }
         .products-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(350px,1fr)); gap:40px; max-width:1200px; margin:0 auto; position:relative; z-index:2; }
@@ -172,8 +179,9 @@
         .product-rating .stars { color:#ffc107; font-size:0.85rem; }
         .product-rating .rating-text { font-size:0.85rem; color:var(--gray-600); }
 
+        /* Stock indicator */
         .stock-indicator { display: flex; align-items: center; gap: 8px; margin-bottom: 15px; font-size: 0.8rem; font-weight: 500; }
-        .stock-bar { flex: 1; height: 6px; background: var(--gray-200); border-radius: 3px; overflow: hidden; position: relative; }
+        .stock-bar { flex: 1; height: 6px; background: var(--gray-200); border-radius: 3px; overflow: hidden; }
         .stock-bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; background: var(--gradient-green); }
         .stock-bar-fill.warning { background: var(--gradient-orange); }
         .stock-bar-fill.danger { background: linear-gradient(135deg, #e53935, #ff5252); animation: pulse-stock 1.5s ease-in-out infinite; }
@@ -182,12 +190,11 @@
         .stock-text.warning { color: var(--warning); }
         .stock-text.danger { color: var(--danger); }
         .stock-text.out { color: var(--danger); font-weight: 700; }
-        .stock-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; background: #ffebee; color: var(--danger); animation: shake-subtle 2s ease-in-out infinite; }
+        .stock-badge-indicator { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; background: #ffebee; color: var(--danger); animation: shake-subtle 2s ease-in-out infinite; margin-bottom: 10px; }
         @keyframes shake-subtle { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-2px); } 75% { transform: translateX(2px); } }
-        .stock-badge.warning { background: #fff3e0; color: var(--warning); animation: none; }
-        .stock-badge.in-stock { background: var(--light-green); color: var(--primary-green); animation: none; }
+        .stock-badge-indicator.warning { background: #fff3e0; color: var(--warning); animation: none; }
+        .stock-badge-indicator.in-stock { background: var(--light-green); color: var(--primary-green); animation: none; }
         .btn-order:disabled { background: var(--gray-200) !important; color: var(--gray-600) !important; cursor: not-allowed; box-shadow: none !important; transform: none !important; }
-        .btn-order:disabled:hover { transform: none !important; box-shadow: none !important; }
 
         .product-footer { display:flex; justify-content:space-between; align-items:center; padding-top:20px; border-top:1px solid var(--gray-200); }
         .product-price { font-size:1.5rem; font-weight:800; color:var(--primary-green); }
@@ -195,6 +202,7 @@
         .btn-order { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; background:var(--gradient-green); color:white; text-decoration:none; border-radius:50px; font-weight:600; font-size:0.9rem; transition:all 0.3s; border:none; cursor:pointer; font-family: 'Poppins', sans-serif; }
         .btn-order:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(45,138,78,0.4); }
 
+        /* ========== ORDER SECTION ========== */
         .order-section { padding:120px 5%; background:white; }
         .order-container { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
         .order-left h2 { font-family:'Playfair Display',serif; font-size:2.5rem; margin-bottom:15px; color:var(--dark); }
@@ -215,18 +223,19 @@
         .order-item-variant { font-size:0.8rem; color:var(--gray-600); margin-bottom:8px; }
         .order-item-price { font-weight:700; color:var(--primary-green); }
         .order-item-qty { display:flex; align-items:center; gap:10px; }
-        .qty-btn { width:32px; height:32px; border:1px solid var(--gray-200); background:white; border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:0.9rem; transition:all 0.2s; color:var(--dark); }
+        .qty-btn { width:32px; height:32px; border:1px solid var(--gray-200); background:white; border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:0.9rem; transition:all 0.2s; color:var(--dark); font-family:'Poppins',sans-serif; }
         .qty-btn:hover { background:var(--light-green); border-color:var(--primary-green); color:var(--primary-green); }
         .qty-btn:disabled { opacity: 0.4; cursor: not-allowed; background: var(--gray-100); }
         .qty-value { font-weight:600; font-size:1rem; min-width:30px; text-align:center; }
 
+        /* ========== VOUCHER ========== */
         .voucher-section { margin: 20px 30px 10px; border: 1.5px dashed var(--primary-green); border-radius: 16px; overflow: hidden; background: linear-gradient(135deg, rgba(232, 245, 233, 0.3), rgba(255, 255, 255, 0.8)); }
         .voucher-toggle { width: 100%; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; background: transparent; border: none; cursor: pointer; font-family: 'Poppins', sans-serif; transition: all 0.3s; }
         .voucher-toggle:hover { background: rgba(45, 138, 78, 0.05); }
         .voucher-toggle-left { display: flex; align-items: center; gap: 10px; }
         .voucher-toggle-left i { color: var(--primary-green); font-size: 1.1rem; }
         .voucher-toggle-left span { font-weight: 600; font-size: 0.9rem; color: var(--dark); }
-        .voucher-toggle-left .voucher-active-badge { background: var(--gradient-green); color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; animation: pulse-badge 2s ease-in-out infinite; }
+        .voucher-active-badge-inline { background: var(--gradient-green); color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; display: none; align-items: center; gap: 4px; animation: pulse-badge 2s ease-in-out infinite; }
         @keyframes pulse-badge { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
         .voucher-toggle-arrow { color: var(--gray-600); transition: transform 0.3s; font-size: 0.9rem; }
         .voucher-section.open .voucher-toggle-arrow { transform: rotate(180deg); }
@@ -239,13 +248,11 @@
         .voucher-input::placeholder { color: #bbb; font-weight: 400; text-transform: none; letter-spacing: 0; }
         .btn-apply-voucher { padding: 12px 20px; background: var(--gradient-green); color: white; border: none; border-radius: 12px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; white-space: nowrap; display: flex; align-items: center; gap: 6px; }
         .btn-apply-voucher:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(45, 138, 78, 0.3); }
-        .btn-apply-voucher:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         .voucher-message { padding: 10px 14px; border-radius: 10px; font-size: 0.85rem; display: none; align-items: center; gap: 8px; margin-bottom: 12px; animation: slideDown 0.3s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .voucher-message.show { display: flex; }
         .voucher-message.success { background: var(--light-green); color: var(--dark-green); }
         .voucher-message.error { background: #ffebee; color: var(--danger); }
-        .voucher-message i { font-size: 1rem; }
         .voucher-applied { display: none; align-items: center; justify-content: space-between; background: white; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--light-green); margin-bottom: 12px; animation: slideDown 0.3s ease; }
         .voucher-applied.show { display: flex; }
         .voucher-applied-left { display: flex; align-items: center; gap: 10px; }
@@ -258,22 +265,17 @@
         .voucher-hints-title { font-size: 0.75rem; font-weight: 600; color: var(--gray-600); margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
         .voucher-hint-item { display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; background: white; border-radius: 8px; margin-bottom: 5px; font-size: 0.78rem; cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
         .voucher-hint-item:hover { border-color: var(--primary-green); transform: translateX(3px); }
-        .voucher-hint-item:last-child { margin-bottom: 0; }
         .voucher-hint-code { font-weight: 700; color: var(--primary-green); font-family: 'Courier New', monospace; letter-spacing: 0.5px; }
         .voucher-hint-desc { color: var(--gray-600); font-size: 0.72rem; }
 
+        /* ========== ORDER SUMMARY ========== */
         .order-summary { padding:25px 30px; background:var(--gray-100); border-radius:16px; margin:10px 30px 20px; }
         .summary-row { display:flex; justify-content:space-between; margin-bottom:12px; font-size:0.9rem; color:var(--gray-600); }
         .summary-row.discount { color: var(--danger); font-weight: 600; }
-        .summary-row.discount span:last-child::before { content: '- '; }
         .summary-row.total { font-size:1.2rem; font-weight:700; color:var(--dark); padding-top:12px; border-top:2px dashed var(--gray-200); margin-top:12px; margin-bottom:0; }
         .summary-row.total span:last-child { color:var(--primary-green); }
-        .order-card-footer { padding:20px 30px 30px; }
-        .order-note { text-align:center; margin-top:15px; font-size:0.8rem; color:var(--gray-600); }
-        .order-note i { color:var(--primary-orange); }
-        .empty-cart-icon { position: relative; display: inline-block; animation: empty-cart-wobble 3s ease-in-out infinite; }
-        @keyframes empty-cart-wobble { 0%, 100% { transform: rotate(-3deg) scale(1); } 50% { transform: rotate(3deg) scale(1.05); } }
 
+        /* ========== ORDER FORM ========== */
         .order-form { padding: 0 30px 20px; }
         .order-form-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; padding-top: 20px; border-top: 1px solid var(--gray-200); }
         .order-form-title i { color: var(--primary-green); }
@@ -287,23 +289,27 @@
         .form-group .input-icon-wrapper { position: relative; }
         .form-group .input-icon-wrapper i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray-600); font-size: 0.85rem; }
         .form-group .input-icon-wrapper input { padding-left: 40px; }
-
         .btn-confirm-order { width: 100%; padding: 18px; background: var(--gradient-green); color: white; border: none; border-radius: 16px; font-size: 1.05rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s; font-family: 'Poppins', sans-serif; }
         .btn-confirm-order:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(45,138,78,0.4); }
-        .btn-confirm-order:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+        .order-card-footer { padding:20px 30px 30px; }
+        .order-note { text-align:center; margin-top:15px; font-size:0.8rem; color:var(--gray-600); }
+        .order-note i { color:var(--primary-orange); }
+        .empty-cart-icon { position: relative; display: inline-block; animation: empty-cart-wobble 3s ease-in-out infinite; }
+        @keyframes empty-cart-wobble { 0%, 100% { transform: rotate(-3deg) scale(1); } 50% { transform: rotate(3deg) scale(1.05); } }
 
+        /* ========== MODAL ========== */
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 20px; animation: fadeIn 0.3s ease; }
         .modal-overlay.active { display: flex; }
         @keyframes fadeIn { from{opacity:0} to{opacity:1} }
         .modal-box { background: white; border-radius: 24px; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; animation: slideUp 0.4s ease; box-shadow: 0 25px 80px rgba(0,0,0,0.3); }
         @keyframes slideUp { from{opacity:0;transform:translateY(50px)} to{opacity:1;transform:translateY(0)} }
-        .modal-header { background: var(--gradient-green); padding: 25px 30px; border-radius: 24px 24px 0 0; display: flex; align-items: center; justify-content: space-between; color: white; }
+        .modal-header-confirm { background: var(--gradient-green); padding: 25px 30px; border-radius: 24px 24px 0 0; display: flex; align-items: center; justify-content: space-between; color: white; }
         .modal-header-left { display: flex; align-items: center; gap: 12px; }
         .modal-header-left i { font-size: 1.3rem; }
         .modal-header-left h3 { font-size: 1.1rem; font-weight: 600; }
         .modal-close { width: 36px; height: 36px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); background: transparent; color: white; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
         .modal-close:hover { background: rgba(255,255,255,0.2); border-color: white; }
-        .modal-body { padding: 30px; }
+        .modal-body-confirm { padding: 30px; }
         .confirm-section { margin-bottom: 25px; }
         .confirm-section-title { font-size: 0.8rem; font-weight: 600; color: var(--primary-green); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
         .confirm-section-title i { font-size: 0.75rem; }
@@ -322,18 +328,17 @@
         .confirm-summary { background: var(--gray-100); border-radius: 14px; padding: 15px 18px; margin-top: 15px; }
         .confirm-summary-row { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--gray-600); padding: 4px 0; }
         .confirm-summary-row.discount { color: var(--danger); font-weight: 600; }
-        .confirm-summary-row.discount span:last-child::before { content: '- '; }
         .confirm-total { display: flex; justify-content: space-between; align-items: center; padding: 18px; background: var(--light-green); border-radius: 14px; margin-top: 15px; }
         .confirm-total .label { font-size: 1rem; font-weight: 600; color: var(--dark); }
         .confirm-total .value { font-size: 1.3rem; font-weight: 800; color: var(--primary-green); }
-        .modal-footer { padding: 0 30px 30px; }
+        .modal-footer-confirm { padding: 0 30px 30px; }
         .btn-whatsapp { width: 100%; padding: 18px; background: linear-gradient(135deg, #25d366, #128c7e); color: white; border: none; border-radius: 16px; font-size: 1.05rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s; font-family: 'Poppins', sans-serif; }
         .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
         .btn-whatsapp i { font-size: 1.3rem; }
         .modal-edit-note { text-align: center; margin-top: 12px; font-size: 0.8rem; color: var(--gray-600); }
         .modal-edit-note a { color: var(--primary-green); font-weight: 600; text-decoration: none; cursor: pointer; }
-        .modal-edit-note a:hover { text-decoration: underline; }
 
+        /* ========== TESTIMONIALS ========== */
         .testimonials { padding:120px 5%; background:var(--gradient-hero); position:relative; overflow:hidden; }
         .testimonials::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
         .testimonials .section-title { color:white; }
@@ -350,6 +355,7 @@
         .testimonial-role { font-size:0.8rem; color:rgba(255,255,255,0.5); }
         .testimonial-stars { color:#ffc107; font-size:0.8rem; margin-bottom:15px; }
 
+        /* ========== CTA ========== */
         .cta-section { padding:100px 5%; background:white; text-align:center; }
         .cta-container { max-width:800px; margin:0 auto; background:var(--gradient-green); border-radius:30px; padding:70px 50px; position:relative; overflow:hidden; }
         .cta-container::before { content:''; position:absolute; top:-50%; right:-20%; width:60%; height:200%; background:radial-gradient(ellipse,rgba(255,255,255,0.1) 0%,transparent 70%); }
@@ -358,6 +364,7 @@
         .btn-cta-white { display:inline-flex; align-items:center; gap:10px; padding:18px 40px; background:white; color:var(--primary-green); text-decoration:none; border-radius:50px; font-weight:700; font-size:1.05rem; transition:all 0.3s; position:relative; z-index:2; box-shadow:0 10px 30px rgba(0,0,0,0.2); }
         .btn-cta-white:hover { transform:translateY(-3px); box-shadow:0 15px 40px rgba(0,0,0,0.3); }
 
+        /* ========== FOOTER ========== */
         .footer { background:var(--darker); padding:80px 5% 30px; color:rgba(255,255,255,0.7); }
         .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:50px; max-width:1200px; margin:0 auto; padding-bottom:50px; border-bottom:1px solid rgba(255,255,255,0.1); }
         .footer-brand h3 { font-size:1.5rem; font-weight:800; color:white; margin-bottom:15px; }
@@ -372,6 +379,7 @@
         .footer-col ul li a:hover { color:var(--primary-green); padding-left:5px; }
         .footer-bottom { max-width:1200px; margin:0 auto; padding-top:30px; display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; }
 
+        /* ========== FLOATING BUTTONS ========== */
         .scroll-top { position:fixed; bottom:30px; right:30px; width:50px; height:50px; background:var(--gradient-green); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:1.2rem; cursor:pointer; z-index:999; opacity:0; visibility:hidden; transition:all 0.3s; box-shadow:0 5px 20px rgba(45,138,78,0.4); border:none; }
         .scroll-top.visible { opacity:1; visibility:visible; }
         .scroll-top:hover { transform:translateY(-3px); }
@@ -379,6 +387,23 @@
         .wa-float:hover { transform:scale(1.1); }
         @keyframes bounce-wa { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
 
+        /* ========== LOADER ========== */
+        .loader { position:fixed; top:0; left:0; right:0; bottom:0; background:var(--darker); display:flex; align-items:center; justify-content:center; z-index:99999; transition:opacity 0.3s,visibility 0.3s; }
+        .loader.hidden { opacity:0; visibility:hidden; }
+        .loader-content { text-align:center; }
+        .loader-logo { font-size:2.5rem; font-weight:800; color:white; margin-bottom:20px; animation:pulse 1s ease-in-out infinite; }
+        .loader-bar { width:200px; height:3px; background:rgba(255,255,255,0.1); border-radius:3px; overflow:hidden; margin:0 auto; }
+        .loader-bar::after { content:''; display:block; width:50%; height:100%; background:var(--gradient-green); border-radius:3px; animation:loading 1s ease-in-out infinite; }
+        @keyframes loading { 0%{transform:translateX(-100%)} 100%{transform:translateX(300%)} }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+        .reveal { opacity:0; transform:translateY(30px); transition:all 0.8s ease; }
+        .reveal.active { opacity:1; transform:translateY(0); }
+
+        /* ========== NOTIFICATION ========== */
+        @keyframes slideInRight { from{transform:translateX(100px);opacity:0} to{transform:translateX(0);opacity:1} }
+        @keyframes slideOutRight { from{transform:translateX(0);opacity:1} to{transform:translateX(100px);opacity:0} }
+
+        /* ========== RESPONSIVE ========== */
         @media (max-width:1024px) {
             .hero-content { grid-template-columns:1fr; text-align:center; }
             .hero-visual { display:none; }
@@ -402,7 +427,7 @@
             .hero-title .line2 { white-space: normal; font-size: 0.9em; }
             .hero-tagline { font-size: 0.95rem; }
             .hero-buttons { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; }
-            .btn-primary, .btn-secondary { justify-content: center; width: 100%; }
+            .btn-primary-hero, .btn-secondary-hero { justify-content: center; width: 100%; }
             .hero-stats { gap: 15px; flex-wrap: wrap; justify-content: center; }
             .stat-item { min-width: 80px; }
             .stat-number { font-size: 1.4rem; }
@@ -444,31 +469,15 @@
             .wa-float { bottom: calc(100px + env(safe-area-inset-bottom)); width: 50px; height: 50px; font-size: 1.5rem; left: 15px; }
             .scroll-top { bottom: calc(100px + env(safe-area-inset-bottom)); right: 15px; width: 45px; height: 45px; }
             .modal-box { border-radius: 20px; max-height: 85vh; }
-            .modal-header { border-radius: 20px 20px 0 0; padding: 20px; }
-            .modal-body { padding: 20px; }
-            .modal-footer { padding: 0 20px 20px; }
+            .modal-header-confirm { border-radius: 20px 20px 0 0; padding: 20px; }
+            .modal-body-confirm { padding: 20px; }
+            .modal-footer-confirm { padding: 0 20px 20px; }
         }
-
-        @supports (padding: max(0px)) {
-            .bottom-nav { padding-bottom: max(10px, env(safe-area-inset-bottom)); }
-        }
-
-        .reveal { opacity:0; transform:translateY(30px); transition:all 0.8s ease; }
-        .reveal.active { opacity:1; transform:translateY(0); }
-
-        .loader { position:fixed; top:0; left:0; right:0; bottom:0; background:var(--darker); display:flex; align-items:center; justify-content:center; z-index:9999; transition:opacity 0.3s,visibility 0.3s; }
-        .loader.hidden { opacity:0; visibility:hidden; }
-        .loader-content { text-align:center; }
-        .loader-logo { font-size:2.5rem; font-weight:800; color:white; margin-bottom:20px; animation:pulse 1s ease-in-out infinite; }
-        .loader-bar { width:200px; height:3px; background:rgba(255,255,255,0.1); border-radius:3px; overflow:hidden; margin:0 auto; }
-        .loader-bar::after { content:''; display:block; width:50%; height:100%; background:var(--gradient-green); border-radius:3px; animation:loading 1s ease-in-out infinite; }
-        @keyframes loading { 0%{transform:translateX(-100%)} 100%{transform:translateX(300%)} }
-        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
-        @keyframes slideInRight { from{transform:translateX(100px);opacity:0} to{transform:translateX(0);opacity:1} }
-        @keyframes slideOutRight { from{transform:translateX(0);opacity:1} to{transform:translateX(100px);opacity:0} }
     </style>
 </head>
 <body>
+
+    <!-- LOADER -->
     <div class="loader" id="loader">
         <div class="loader-content">
             <div class="loader-logo">🥬 YOCHI SNACK</div>
@@ -476,6 +485,7 @@
         </div>
     </div>
 
+    <!-- NAVBAR (Desktop) -->
     <nav class="navbar" id="navbar">
         <a href="#" class="nav-logo">
             <div class="nav-logo-icon">Y</div>
@@ -491,6 +501,7 @@
         </ul>
     </nav>
 
+    <!-- BOTTOM NAV (Mobile) -->
     <nav class="bottom-nav" id="bottomNav">
         <ul class="bottom-nav-items">
             <li class="bottom-nav-item"><a href="#home" class="bottom-nav-link active" data-section="home"><i class="fas fa-home"></i><span>Beranda</span></a></li>
@@ -507,6 +518,7 @@
         </ul>
     </nav>
 
+    <!-- HERO -->
     <section class="hero" id="home">
         <div class="hero-particles" id="particles"></div>
         <div class="hero-content">
@@ -518,8 +530,8 @@
                 </h1>
                 <p class="hero-tagline">Renyah bikin nagih! Dibuat dari bahan alami pilihan tanpa pengawet dan pewarna buatan. Nikmati sensasi camilan sehat yang kaya nutrisi untuk seluruh keluarga.</p>
                 <div class="hero-buttons">
-                    <a href="#order" class="btn-primary"><i class="fas fa-shopping-bag"></i> Pesan Sekarang</a>
-                    <a href="#products" class="btn-secondary"><i class="fas fa-play-circle"></i> Lihat Produk</a>
+                    <a href="#order" class="btn-primary-hero"><i class="fas fa-shopping-bag"></i> Pesan Sekarang</a>
+                    <a href="#products" class="btn-secondary-hero"><i class="fas fa-play-circle"></i> Lihat Produk</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item"><div class="stat-number">10K+</div><div class="stat-label">Pelanggan Puas</div></div>
@@ -538,22 +550,24 @@
         </div>
     </section>
 
+    <!-- ABOUT -->
     <section class="about" id="about">
         <div class="section-header reveal">
             <div class="section-subtitle"><i class="fas fa-seedling"></i> Tentang Kami</div>
             <h2 class="section-title">Mengapa Memilih YOCHI SNACK?</h2>
-            <p class="section-desc">Kami berkomitmen menghadirkan camilan sehat berkualitas tinggi yang terbuat dari bahan alami terbaik Indonesia, diolah dengan teknologi modern dan standar higienis.</p>
+            <p class="section-desc">Kami berkomitmen menghadirkan camilan sehat berkualitas tinggi yang terbuat dari bahan alami terbaik Indonesia.</p>
         </div>
         <div class="about-grid">
             <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-leaf"></i></div><h3>Bahan Alami Premium</h3><p>Menggunakan bayam dan wortel segar pilihan dari petani lokal Indonesia tanpa pestisida berbahaya.</p></div>
             <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-flask"></i></div><h3>Proses Higienis</h3><p>Diolah dengan teknologi modern dan standar kebersihan tinggi untuk menjamin kualitas produk terbaik.</p></div>
             <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-heart"></i></div><h3>Sehat & Bernutrisi</h3><p>Kaya vitamin dan mineral dari sayuran asli, cocok untuk camilan keluarga dan anak-anak setiap hari.</p></div>
             <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-certificate"></i></div><h3>Bersertifikat Halal</h3><p>Produk telah terdaftar dan bersertifikat halal, aman dikonsumsi seluruh anggota keluarga.</p></div>
-            <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-truck-fast"></i></div><h3>Pengiriman Cepat</h3><p>Pengiriman ke seluruh Indonesia dengan packaging khusus agar produk tetap renyah dan terjaga kualitasnya.</p></div>
+            <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-truck-fast"></i></div><h3>Pengiriman Cepat</h3><p>Pengiriman ke seluruh Indonesia dengan packaging khusus agar produk tetap renyah dan terjaga.</p></div>
             <div class="about-card reveal"><div class="about-card-icon"><i class="fas fa-hand-holding-heart"></i></div><h3>Support UMKM Lokal</h3><p>Dengan membeli YOCHI SNACK, Anda turut mendukung petani lokal dan pemberdayaan UMKM Indonesia.</p></div>
         </div>
     </section>
 
+    <!-- PRODUCTS -->
     <section class="products" id="products">
         <div class="section-header reveal">
             <div class="section-subtitle"><i class="fas fa-store"></i> Produk Kami</div>
@@ -563,6 +577,7 @@
         <div class="products-grid" id="productsGrid"></div>
     </section>
 
+    <!-- ORDER SECTION -->
     <section class="order-section" id="order">
         <div class="section-header reveal">
             <div class="section-subtitle"><i class="fas fa-shopping-cart"></i> Pemesanan</div>
@@ -582,7 +597,6 @@
                     <li><i class="fas fa-check"></i><span>Garansi produk fresh & renyah</span></li>
                 </ul>
             </div>
-            <!-- ✅ PERUBAHAN: Tambah id="orderCard" di sini -->
             <div class="order-card reveal" id="orderCard">
                 <div class="order-card-header">
                     <i class="fas fa-shopping-bag"></i>
@@ -606,7 +620,7 @@
                         <div class="voucher-toggle-left">
                             <i class="fas fa-ticket-alt"></i>
                             <span>Punya Kode Voucher?</span>
-                            <span class="voucher-active-badge" id="voucherActiveBadge" style="display:none;">
+                            <span class="voucher-active-badge-inline" id="voucherActiveBadge">
                                 <i class="fas fa-check-circle"></i> Aktif
                             </span>
                         </div>
@@ -636,9 +650,7 @@
                                 </div>
                             </div>
                             <div class="voucher-hints">
-                                <div class="voucher-hints-title">
-                                    <i class="fas fa-lightbulb"></i> Coba kode ini:
-                                </div>
+                                <div class="voucher-hints-title"><i class="fas fa-lightbulb"></i> Coba kode ini:</div>
                                 <div class="voucher-hint-item" onclick="useHint('WELCOME10')">
                                     <span class="voucher-hint-code">WELCOME10</span>
                                     <span class="voucher-hint-desc">Diskon 10% pengguna baru</span>
@@ -680,7 +692,7 @@
                     </div>
                     <div class="form-group">
                         <label>Alamat Lengkap <span class="required">*</span></label>
-                        <textarea id="inputAlamat" placeholder="Contoh: Jl. Merdeka No. 10, RT 02/RW 05, Kel. Sukamaju, Kec. Cilandak, Jakarta Selatan 12345" rows="3"></textarea>
+                        <textarea id="inputAlamat" placeholder="Contoh: Jl. Merdeka No. 10, Jakarta Selatan" rows="3"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Catatan <span style="color:var(--gray-600);font-weight:400;">(opsional)</span></label>
@@ -699,13 +711,14 @@
         </div>
     </section>
 
+    <!-- MODAL KONFIRMASI -->
     <div class="modal-overlay" id="modalConfirm">
         <div class="modal-box">
-            <div class="modal-header">
+            <div class="modal-header-confirm">
                 <div class="modal-header-left"><i class="fas fa-clipboard-check"></i><h3>Konfirmasi Pesanan</h3></div>
                 <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body-confirm">
                 <div class="confirm-section">
                     <div class="confirm-section-title"><i class="fas fa-user"></i> Data Pemesan</div>
                     <div class="confirm-buyer-info">
@@ -728,7 +741,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer-confirm">
                 <button class="btn-whatsapp" onclick="sendToWhatsApp()">
                     <i class="fab fa-whatsapp"></i> Kirim Pesanan via WhatsApp
                 </button>
@@ -737,6 +750,7 @@
         </div>
     </div>
 
+    <!-- TESTIMONIALS -->
     <section class="testimonials" id="testimonials">
         <div class="section-header reveal">
             <div class="section-subtitle"><i class="fas fa-comments"></i> Testimoni</div>
@@ -765,6 +779,7 @@
         </div>
     </section>
 
+    <!-- CTA -->
     <section class="cta-section">
         <div class="cta-container reveal">
             <h2>Siap Menikmati Cemilan Sehat?</h2>
@@ -773,6 +788,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
@@ -790,11 +806,12 @@
             <div class="footer-col"><h4>Kontak</h4><ul><li><a href="#"><i class="fas fa-map-marker-alt"></i> Indonesia</a></li><li><a href="#"><i class="fas fa-phone"></i> +62 812-3456-7890</a></li><li><a href="#"><i class="fas fa-envelope"></i> info@yochisnack.com</a></li><li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Kami</a></li></ul></div>
         </div>
         <div class="footer-bottom">
-            <span>© 2026 YOCHI SNACK. All rights reserved.</span>
+            <span>&copy; 2026 YOCHI SNACK. All rights reserved.</span>
             <span>Made with 💚 for Healthy Indonesia</span>
         </div>
     </footer>
 
+    <!-- FLOATING BUTTONS -->
     <a href="https://wa.me/628175761165" class="wa-float" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
     <button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
 
@@ -802,59 +819,62 @@
         var WHATSAPP_NUMBER = "628175761165";
         var STORE_NAME = "YOCHI SNACK";
 
-        // ============ INTEGRASI DENGAN ADMIN PANEL ============
-var STORAGE_KEYS = {
-    products: 'yochi_products',
-    categories: 'yochi_categories',
-    vouchers: 'yochi_vouchers'
-};
+        // ============ STORAGE KEYS (SAMA DENGAN ADMIN) ============
+        var STORAGE_KEYS = {
+            products: 'yochi_products',
+            categories: 'yochi_categories',
+            vouchers: 'yochi_vouchers',
+            orders: 'yochi_orders'
+        };
 
-var DEFAULT_PRODUCTS = [
-    { id: 'bayam-original', name: 'Stik Bayam Original', category: 'Stik Bayam', categoryIcon: 'fa-leaf', desc: 'Stik renyah dari bayam segar asli, kaya zat besi dan vitamin. Rasa gurih alami yang bikin nagih!', price: 25000, originalPrice: 35000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🔥 Best Seller', badgeClass: 'badge-bestseller', rating: '5.0', reviews: 328, stock: 24 },
-    { id: 'wortel-original', name: 'Stik Wortel Original', category: 'Stik Wortel', categoryIcon: 'fa-carrot', desc: 'Stik wortel renyah kaya beta karoten. Camilan sehat yang baik untuk mata dan kulit, disukai anak-anak!', price: 25000, originalPrice: 35000, image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=100&q=60', badge: '⭐ Favorit', badgeClass: 'badge-bestseller', rating: '4.9', reviews: 256, stock: 18 },
-    { id: 'combo', name: 'Paket Combo (Bayam + Wortel)', category: 'Paket Hemat', categoryIcon: 'fa-box-open', desc: 'Dapatkan kedua varian stik bayam dan wortel dalam satu paket hemat! Lebih untung dan lebih lengkap.', price: 40000, originalPrice: 50000, image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=100&q=60', badge: '✨ Baru', badgeClass: 'badge-new', rating: '4.8', reviews: 189, stock: 12 },
-    { id: 'bayam-pedas', name: 'Stik Bayam Pedas Manis', category: 'Stik Bayam', categoryIcon: 'fa-pepper-hot', desc: 'Perpaduan rasa pedas dan manis yang sempurna! Cocok untuk pecinta camilan dengan sensasi rasa berani.', price: 28000, originalPrice: 38000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🌶️ Spicy', badgeClass: 'badge-new', rating: '4.9', reviews: 142, stock: 7 },
-    { id: 'wortel-keju', name: 'Stik Wortel Rasa Keju', category: 'Stik Wortel', categoryIcon: 'fa-cheese', desc: 'Stik wortel dengan taburan keju premium yang gurih. Favorit anak-anak dan dewasa!', price: 28000, originalPrice: 38000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🏆 Premium', badgeClass: 'badge-bestseller', rating: '4.7', reviews: 98, stock: 15 },
-    { id: 'hampers', name: 'Paket Hampers Premium', category: 'Hampers', categoryIcon: 'fa-gift', desc: 'Paket hampers eksklusif berisi 4 varian produk YOCHI SNACK. Cocok untuk hadiah dan oleh-oleh!', price: 95000, originalPrice: 120000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🎁 Gift Set', badgeClass: 'badge-new', rating: '5.0', reviews: 76, stock: 5 }
-];
+        // ============ DATA DEFAULT ============
+        var DEFAULT_PRODUCTS = [
+            { id: 'bayam-original', name: 'Stik Bayam Original', category: 'Stik Bayam', categoryIcon: 'fa-leaf', desc: 'Stik renyah dari bayam segar asli, kaya zat besi dan vitamin. Rasa gurih alami yang bikin nagih!', price: 25000, originalPrice: 35000, image: 'https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=100&q=60', badge: '\u{1F525} Best Seller', badgeClass: 'badge-bestseller', rating: '5.0', reviews: 328, stock: 24 },
+            { id: 'wortel-original', name: 'Stik Wortel Original', category: 'Stik Wortel', categoryIcon: 'fa-carrot', desc: 'Stik wortel renyah kaya beta karoten. Camilan sehat yang baik untuk mata dan kulit, disukai anak-anak!', price: 25000, originalPrice: 35000, image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=100&q=60', badge: '\u2B50 Favorit', badgeClass: 'badge-bestseller', rating: '4.9', reviews: 256, stock: 18 },
+            { id: 'combo', name: 'Paket Combo (Bayam + Wortel)', category: 'Paket Hemat', categoryIcon: 'fa-box-open', desc: 'Dapatkan kedua varian stik bayam dan wortel dalam satu paket hemat! Lebih untung dan lebih lengkap.', price: 40000, originalPrice: 50000, image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=100&q=60', badge: '\u2728 Baru', badgeClass: 'badge-new', rating: '4.8', reviews: 189, stock: 12 },
+            { id: 'bayam-pedas', name: 'Stik Bayam Pedas Manis', category: 'Stik Bayam', categoryIcon: 'fa-pepper-hot', desc: 'Perpaduan rasa pedas dan manis yang sempurna! Cocok untuk pecinta camilan dengan sensasi rasa berani.', price: 28000, originalPrice: 38000, image: 'https://images.unsplash.com/photo-1599490659213-e2b9537bd087?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1599490659213-e2b9537bd087?w=100&q=60', badge: '\u{1F336}\uFE0F Spicy', badgeClass: 'badge-new', rating: '4.9', reviews: 142, stock: 7 },
+            { id: 'wortel-keju', name: 'Stik Wortel Rasa Keju', category: 'Stik Wortel', categoryIcon: 'fa-cheese', desc: 'Stik wortel dengan taburan keju premium yang gurih. Favorit anak-anak dan dewasa!', price: 28000, originalPrice: 38000, image: 'https://images.unsplash.com/photo-1543339308-d595b10a5251?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1543339308-d595b10a5251?w=100&q=60', badge: '\u{1F3C6} Premium', badgeClass: 'badge-bestseller', rating: '4.7', reviews: 98, stock: 15 },
+            { id: 'hampers', name: 'Paket Hampers Premium', category: 'Hampers', categoryIcon: 'fa-gift', desc: 'Paket hampers eksklusif berisi 4 varian produk YOCHI SNACK. Cocok untuk hadiah dan oleh-oleh!', price: 95000, originalPrice: 120000, image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=100&q=60', badge: '\u{1F381} Gift Set', badgeClass: 'badge-new', rating: '5.0', reviews: 76, stock: 5 }
+        ];
 
-var DEFAULT_VOUCHERS = {
-    'WELCOME10': { type: 'percent', value: 10, maxDiscount: 0, minOrder: 0, desc: 'Diskon 10% untuk pengguna baru' },
-    'HEMAT20': { type: 'fixed', value: 20000, minOrder: 50000, desc: 'Potongan Rp 20.000 min. belanja Rp 50.000' },
-    'YOCHI50': { type: 'percent', value: 50, maxDiscount: 25000, minOrder: 0, desc: 'Diskon 50% (max Rp 25.000)' }
-};
+        var DEFAULT_VOUCHERS = {
+            'WELCOME10': { type: 'percent', value: 10, maxDiscount: 0, minOrder: 0, desc: 'Diskon 10% untuk pengguna baru' },
+            'HEMAT20': { type: 'fixed', value: 20000, minOrder: 50000, desc: 'Potongan Rp 20.000 min. belanja Rp 50.000' },
+            'YOCHI50': { type: 'percent', value: 50, maxDiscount: 25000, minOrder: 0, desc: 'Diskon 50% (max Rp 25.000)' }
+        };
 
-// Load data dari localStorage (admin) atau pakai default
-var storedProducts = localStorage.getItem(STORAGE_KEYS.products);
-var storedVouchers = localStorage.getItem(STORAGE_KEYS.vouchers);
+        // ============ LOAD DATA DARI LOCALSTORAGE (SYNC DENGAN ADMIN) ============
+        var storedProducts = localStorage.getItem(STORAGE_KEYS.products);
+        var storedVouchers = localStorage.getItem(STORAGE_KEYS.vouchers);
 
-var productsData = storedProducts ? JSON.parse(storedProducts) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
-var vouchers = storedVouchers ? JSON.parse(storedVouchers) : JSON.parse(JSON.stringify(DEFAULT_VOUCHERS));
+        var productsData = storedProducts ? JSON.parse(storedProducts) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+        var vouchersData = storedVouchers ? JSON.parse(storedVouchers) : JSON.parse(JSON.stringify(DEFAULT_VOUCHERS));
 
-// Sync: saat admin update, website otomatis terupdate setelah refresh
-window.addEventListener('storage', function(e) {
-    if (e.key === STORAGE_KEYS.products || e.key === STORAGE_KEYS.vouchers) {
-        location.reload();
-    }
-});
+        // ✅ SYNC: Jika admin update data, website otomatis reload
+        window.addEventListener('storage', function(e) {
+            if (e.key === STORAGE_KEYS.products || e.key === STORAGE_KEYS.vouchers) {
+                location.reload();
+            }
+        });
 
         var appliedVoucher = null;
         var cart = [];
 
+        // ============ RENDER PRODUCTS ============
         function renderProducts() {
             var grid = document.getElementById('productsGrid');
             var html = '';
             for (var i = 0; i < productsData.length; i++) {
                 var p = productsData[i];
                 var isDisabled = p.stock <= 0;
-                html += '<div class="product-card reveal" data-product-id="' + p.id + '">' +
-                    '<span class="product-badge ' + p.badgeClass + '">' + p.badge + '</span>' +
-                    '<div class="product-image-wrapper"><img src="' + p.image + '" alt="' + p.name + '" class="product-image" loading="lazy"></div>' +
+                html += '<div class="product-card reveal active" data-product-id="' + p.id + '">' +
+                    (p.badge ? '<span class="product-badge ' + (p.badgeClass || '') + '">' + p.badge + '</span>' : '') +
+                    '<div class="product-image-wrapper"><img src="' + p.image + '" alt="' + escapeHtml(p.name) + '" class="product-image" loading="lazy" onerror="this.style.display=\'none\'"></div>' +
                     '<div class="product-info">' +
-                        '<div class="product-category"><i class="fas ' + p.categoryIcon + '"></i> ' + p.category + '</div>' +
-                        '<h3 class="product-name">' + p.name + '</h3>' +
-                        '<p class="product-desc">' + p.desc + '</p>' +
-                        '<div class="product-rating"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span><span class="rating-text">' + p.rating + ' (' + p.reviews + ' ulasan)</span></div>' +
+                        '<div class="product-category"><i class="fas ' + (p.categoryIcon || 'fa-tag') + '"></i> ' + escapeHtml(p.category || 'Umum') + '</div>' +
+                        '<h3 class="product-name">' + escapeHtml(p.name) + '</h3>' +
+                        '<p class="product-desc">' + escapeHtml(p.desc) + '</p>' +
+                        '<div class="product-rating"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span><span class="rating-text">' + (p.rating || '5.0') + ' (' + (p.reviews || 0) + ' ulasan)</span></div>' +
                         renderStockIndicator(p) +
                         '<div class="product-footer">' +
                             '<div class="product-price"><small>Rp ' + formatNumber(p.originalPrice) + '</small>Rp ' + formatNumber(p.price) + '</div>' +
@@ -866,54 +886,90 @@ window.addEventListener('storage', function(e) {
                 '</div>';
             }
             grid.innerHTML = html;
-            revealOnScroll();
-        }
-
-        function getStockStatus(stock) {
-            if (stock <= 0) return 'out';
-            if (stock <= 5) return 'critical';
-            if (stock <= 10) return 'warning';
-            return 'normal';
         }
 
         function renderStockIndicator(p) {
-            var status = getStockStatus(p.stock);
+            var stock = p.stock || 0;
             var maxStock = 30;
-            var percent = Math.min((p.stock / maxStock) * 100, 100);
+            var percent = Math.min((stock / maxStock) * 100, 100);
             var stockText = '', barClass = '', badgeHtml = '';
-            if (status === 'out') { stockText = '<span class="stock-text out"><i class="fas fa-times-circle"></i> Stok Habis</span>'; barClass = 'danger'; percent = 0; }
-            else if (status === 'critical') { stockText = '<span class="stock-text danger"><i class="fas fa-exclamation-triangle"></i> Sisa ' + p.stock + '!</span>'; barClass = 'danger'; badgeHtml = '<span class="stock-badge"><i class="fas fa-fire"></i> Segera Habis</span>'; }
-            else if (status === 'warning') { stockText = '<span class="stock-text warning"><i class="fas fa-box"></i> Sisa ' + p.stock + '</span>'; barClass = 'warning'; badgeHtml = '<span class="stock-badge warning"><i class="fas fa-box-open"></i> Terbatas</span>'; }
-            else { stockText = '<span class="stock-text"><i class="fas fa-box"></i> Stok: ' + p.stock + '</span>'; }
-            return '<div class="stock-indicator"><div class="stock-bar"><div class="stock-bar-fill ' + barClass + '" style="width:' + percent + '%"></div></div>' + stockText + '</div>' + (badgeHtml ? '<div style="margin-bottom:10px;">' + badgeHtml + '</div>' : '');
-        }
-
-        function renderSingleProduct(p) {
-            var isDisabled = p.stock <= 0;
-            return '<div class="product-card reveal active" data-product-id="' + p.id + '"><span class="product-badge ' + p.badgeClass + '">' + p.badge + '</span><div class="product-image-wrapper"><img src="' + p.image + '" alt="' + p.name + '" class="product-image" loading="lazy"></div><div class="product-info"><div class="product-category"><i class="fas ' + p.categoryIcon + '"></i> ' + p.category + '</div><h3 class="product-name">' + p.name + '</h3><p class="product-desc">' + p.desc + '</p><div class="product-rating"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span><span class="rating-text">' + p.rating + ' (' + p.reviews + ' ulasan)</span></div>' + renderStockIndicator(p) + '<div class="product-footer"><div class="product-price"><small>Rp ' + formatNumber(p.originalPrice) + '</small>Rp ' + formatNumber(p.price) + '</div>' + (isDisabled ? '<button class="btn-order" disabled><i class="fas fa-times-circle"></i> Habis</button>' : '<button class="btn-order" onclick="addToOrder(\'' + p.id + '\', this)"><i class="fas fa-cart-plus"></i> + Keranjang</button>') + '</div></div></div>';
+            
+            if (stock <= 0) {
+                stockText = '<span class="stock-text out"><i class="fas fa-times-circle"></i> Stok Habis</span>';
+                barClass = 'danger'; percent = 0;
+            } else if (stock <= 5) {
+                stockText = '<span class="stock-text danger"><i class="fas fa-exclamation-triangle"></i> Sisa ' + stock + '!</span>';
+                barClass = 'danger';
+                badgeHtml = '<div class="stock-badge-indicator"><i class="fas fa-fire"></i> Segera Habis</div>';
+            } else if (stock <= 10) {
+                stockText = '<span class="stock-text warning"><i class="fas fa-box"></i> Sisa ' + stock + '</span>';
+                barClass = 'warning';
+                badgeHtml = '<div class="stock-badge-indicator warning"><i class="fas fa-box-open"></i> Terbatas</div>';
+            } else {
+                stockText = '<span class="stock-text"><i class="fas fa-box"></i> Stok: ' + stock + '</span>';
+            }
+            
+            return '<div class="stock-indicator"><div class="stock-bar"><div class="stock-bar-fill ' + barClass + '" style="width:' + percent + '%"></div></div>' + stockText + '</div>' + badgeHtml;
         }
 
         function findProduct(id) {
-            for (var i = 0; i < productsData.length; i++) { if (productsData[i].id === id) return productsData[i]; }
+            for (var i = 0; i < productsData.length; i++) {
+                if (productsData[i].id === id) return productsData[i];
+            }
             return null;
         }
 
+        // ============ ADD TO ORDER ============
         function addToOrder(productId, btnElement) {
             var product = findProduct(productId);
-            if (!product || product.stock <= 0) { showNotification('Stok produk habis! 😢', 'error'); return; }
-            var existingItem = cart.find(function(item) { return item.id === productId; });
+            if (!product || product.stock <= 0) {
+                showNotification('Stok produk habis! \u{1F622}', 'error');
+                return;
+            }
+            
+            var existingItem = null;
+            for (var i = 0; i < cart.length; i++) {
+                if (cart[i].id === productId) { existingItem = cart[i]; break; }
+            }
+            
             var currentQtyInCart = existingItem ? existingItem.qty : 0;
-            if (currentQtyInCart >= product.stock) { showNotification('Stok tidak mencukupi! (maks: ' + product.stock + ')', 'error'); return; }
-            if (btnElement) { createFlyingItem(btnElement); buttonFeedback(btnElement); }
-            if (existingItem) { existingItem.qty += 1; }
-            else { cart.push({ id: productId, name: product.name, price: product.price, image: product.imageThumb, qty: 1, maxStock: product.stock }); }
-            setTimeout(function() { updateCart(); showNotification(product.name + ' ditambahkan! 🎉'); }, 400);
-            setTimeout(function() { document.getElementById('orderCard').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 800);
+            if (currentQtyInCart >= product.stock) {
+                showNotification('Stok tidak mencukupi! (maks: ' + product.stock + ')', 'error');
+                return;
+            }
+            
+            if (btnElement) {
+                createFlyingItem(btnElement);
+                buttonFeedback(btnElement);
+            }
+            
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: product.name,
+                    price: product.price,
+                    image: product.imageThumb || product.image,
+                    qty: 1,
+                    maxStock: product.stock
+                });
+            }
+            
+            setTimeout(function() {
+                updateCart();
+                showNotification(product.name + ' ditambahkan! \u{1F389}');
+            }, 400);
+            
+            setTimeout(function() {
+                document.getElementById('orderCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 800);
         }
 
         function createFlyingItem(btnElement) {
             var btnRect = btnElement.getBoundingClientRect();
             var cartIcon = document.getElementById('cartIcon');
+            if (!cartIcon) return;
             var cartRect = cartIcon.getBoundingClientRect();
             var flyer = document.createElement('div');
             flyer.className = 'flying-item';
@@ -921,15 +977,19 @@ window.addEventListener('storage', function(e) {
             flyer.style.left = (btnRect.left + btnRect.width / 2 - 20) + 'px';
             flyer.style.top = (btnRect.top + btnRect.height / 2 - 20) + 'px';
             document.body.appendChild(flyer);
-            var startX = btnRect.left + btnRect.width / 2, startY = btnRect.top + btnRect.height / 2;
-            var endX = cartRect.left + cartRect.width / 2, endY = cartRect.top + cartRect.height / 2;
+            var startX = btnRect.left + btnRect.width / 2;
+            var startY = btnRect.top + btnRect.height / 2;
+            var endX = cartRect.left + cartRect.width / 2;
+            var endY = cartRect.top + cartRect.height / 2;
             var duration = 800, startTime = Date.now();
             function animate() {
                 var elapsed = Date.now() - startTime;
                 var progress = Math.min(elapsed / duration, 1);
                 var eased = 1 - Math.pow(1 - progress, 3);
-                var controlX1 = startX + (endX - startX) * 0.3, controlY1 = startY - 150;
-                var controlX2 = endX - (endX - startX) * 0.3, controlY2 = endY - 80;
+                var controlX1 = startX + (endX - startX) * 0.3;
+                var controlY1 = startY - 150;
+                var controlX2 = endX - (endX - startX) * 0.3;
+                var controlY2 = endY - 80;
                 var t = eased;
                 var x = Math.pow(1-t, 3) * startX + 3 * Math.pow(1-t, 2) * t * controlX1 + 3 * (1-t) * Math.pow(t, 2) * controlX2 + Math.pow(t, 3) * endX;
                 var y = Math.pow(1-t, 3) * startY + 3 * Math.pow(1-t, 2) * t * controlY1 + 3 * (1-t) * Math.pow(t, 2) * controlY2 + Math.pow(t, 3) * endY;
@@ -938,7 +998,11 @@ window.addEventListener('storage', function(e) {
                 flyer.style.transform = 'scale(' + (1 - progress * 0.7) + ') rotate(' + (progress * 360) + 'deg)';
                 flyer.style.opacity = progress < 0.9 ? 1 : 1 - (progress - 0.9) * 10;
                 if (progress < 1) { requestAnimationFrame(animate); }
-                else { flyer.remove(); var cartIcon = document.getElementById('cartIcon'); cartIcon.classList.add('cart-shake'); setTimeout(function() { cartIcon.classList.remove('cart-shake'); }, 500); }
+                else {
+                    flyer.remove();
+                    cartIcon.classList.add('cart-shake');
+                    setTimeout(function() { cartIcon.classList.remove('cart-shake'); }, 500);
+                }
             }
             requestAnimationFrame(animate);
         }
@@ -946,15 +1010,29 @@ window.addEventListener('storage', function(e) {
         function buttonFeedback(btn) {
             var originalHTML = btn.innerHTML;
             btn.classList.add('adding');
-            setTimeout(function() { btn.innerHTML = '<i class="fas fa-check"></i> Ditambahkan!'; btn.classList.remove('adding'); btn.classList.add('added'); setTimeout(function() { btn.innerHTML = originalHTML; btn.classList.remove('added'); }, 1200); }, 300);
+            setTimeout(function() {
+                btn.innerHTML = '<i class="fas fa-check"></i> Ditambahkan!';
+                btn.classList.remove('adding');
+                btn.classList.add('added');
+                setTimeout(function() { btn.innerHTML = originalHTML; btn.classList.remove('added'); }, 1200);
+            }, 300);
         }
 
+        // ============ CART ============
         function updateQty(index, change) {
             var item = cart[index];
             var product = findProduct(item.id);
             var newQty = item.qty + change;
-            if (change > 0 && newQty > product.stock) { showNotification('Stok tidak cukup! (maks: ' + product.stock + ')', 'error'); return; }
-            if (newQty <= 0) { cart.splice(index, 1); } else { item.qty = newQty; }
+            
+            if (change > 0 && product && newQty > product.stock) {
+                showNotification('Stok tidak cukup! (maks: ' + product.stock + ')', 'error');
+                return;
+            }
+            if (newQty <= 0) {
+                cart.splice(index, 1);
+            } else {
+                item.qty = newQty;
+            }
             updateCart();
         }
 
@@ -968,16 +1046,44 @@ window.addEventListener('storage', function(e) {
             var cartBadge = document.getElementById('cartBadge');
             var cartNavBtn = document.getElementById('cartNavBtn');
             var voucherSection = document.getElementById('voucherSection');
-            var totalItems = cart.reduce(function(sum, item) { return sum + item.qty; }, 0);
-            if (totalItems > 0) { cartBadge.textContent = totalItems > 99 ? '99+' : totalItems; cartBadge.classList.add('show'); cartBadge.classList.remove('bump'); void cartBadge.offsetWidth; cartBadge.classList.add('bump'); cartNavBtn.classList.add('has-items'); }
-            else { cartBadge.classList.remove('show'); cartNavBtn.classList.remove('has-items'); }
-            if (cart.length === 0) { emptyCart.style.display = 'block'; cartItems.innerHTML = ''; orderSummary.style.display = 'none'; orderForm.style.display = 'none'; btnConfirmOrder.style.display = 'none'; orderNote.style.display = 'none'; voucherSection.style.display = 'none'; return; }
+            
+            var totalItems = 0;
+            for (var i = 0; i < cart.length; i++) totalItems += cart[i].qty;
+            
+            // Badge update
+            if (totalItems > 0) {
+                cartBadge.textContent = totalItems > 99 ? '99+' : totalItems;
+                cartBadge.classList.add('show');
+                cartBadge.classList.remove('bump');
+                void cartBadge.offsetWidth;
+                cartBadge.classList.add('bump');
+                cartNavBtn.classList.add('has-items');
+            } else {
+                cartBadge.classList.remove('show');
+                cartNavBtn.classList.remove('has-items');
+            }
+            
+            // Empty state
+            if (cart.length === 0) {
+                emptyCart.style.display = 'block';
+                cartItems.innerHTML = '';
+                orderSummary.style.display = 'none';
+                orderForm.style.display = 'none';
+                btnConfirmOrder.style.display = 'none';
+                orderNote.style.display = 'none';
+                voucherSection.style.display = 'none';
+                appliedVoucher = null;
+                resetVoucherUI();
+                return;
+            }
+            
             emptyCart.style.display = 'none';
             orderSummary.style.display = 'block';
             orderForm.style.display = 'block';
             btnConfirmOrder.style.display = 'flex';
             orderNote.style.display = 'block';
             voucherSection.style.display = 'block';
+            
             var html = '', subtotal = 0;
             for (var i = 0; i < cart.length; i++) {
                 var item = cart[i];
@@ -986,45 +1092,115 @@ window.addEventListener('storage', function(e) {
                 subtotal += itemTotal;
                 var canIncrease = product && item.qty < product.stock;
                 var canDecrease = item.qty > 1;
-                html += '<div class="order-item"><img src="' + item.image + '" alt="' + item.name + '" class="order-item-image" loading="lazy"><div class="order-item-info"><div class="order-item-name">' + item.name + '</div><div class="order-item-variant">Berat: ±100gr • Stok: ' + (product ? product.stock : '?') + '</div><div class="order-item-price">Rp ' + formatNumber(item.price) + '</div></div><div class="order-item-qty"><button class="qty-btn" onclick="updateQty(' + i + ', -1)" ' + (!canDecrease ? 'disabled' : '') + '>−</button><span class="qty-value">' + item.qty + '</span><button class="qty-btn" onclick="updateQty(' + i + ', 1)" ' + (!canIncrease ? 'disabled' : '') + '>+</button></div></div>';
+                
+                html += '<div class="order-item">' +
+                    '<img src="' + (item.image || '') + '" alt="' + escapeHtml(item.name) + '" class="order-item-image" loading="lazy" onerror="this.style.display=\'none\'">' +
+                    '<div class="order-item-info">' +
+                        '<div class="order-item-name">' + escapeHtml(item.name) + '</div>' +
+                        '<div class="order-item-variant">Stok: ' + (product ? product.stock : '?') + '</div>' +
+                        '<div class="order-item-price">Rp ' + formatNumber(item.price) + '</div>' +
+                    '</div>' +
+                    '<div class="order-item-qty">' +
+                        '<button class="qty-btn" onclick="updateQty(' + i + ', -1)"' + (!canDecrease ? ' disabled' : '') + '>\u2212</button>' +
+                        '<span class="qty-value">' + item.qty + '</span>' +
+                        '<button class="qty-btn" onclick="updateQty(' + i + ', 1)"' + (!canIncrease ? ' disabled' : '') + '>+</button>' +
+                    '</div>' +
+                '</div>';
             }
             cartItems.innerHTML = html;
             updateSummary(subtotal);
         }
 
-        function toggleVoucher() { document.getElementById('voucherSection').classList.toggle('open'); }
-        function useHint(code) { document.getElementById('voucherInput').value = code; document.getElementById('voucherInput').focus(); applyVoucher(); }
+        function updateSummary(subtotal) {
+            var discountAmount = 0;
+            var discountRow = document.getElementById('discountRow');
+            var discountAmountEl = document.getElementById('discountAmount');
+            
+            if (appliedVoucher) {
+                discountAmount = appliedVoucher.discount;
+                // ✅ FIX: Diskon tidak boleh melebihi subtotal
+                if (discountAmount > subtotal) discountAmount = subtotal;
+                discountRow.style.display = 'flex';
+                discountAmountEl.textContent = 'Rp ' + formatNumber(discountAmount);
+            } else {
+                discountRow.style.display = 'none';
+            }
+            
+            document.getElementById('subtotal').textContent = 'Rp ' + formatNumber(subtotal);
+            
+            var total = subtotal - discountAmount;
+            // ✅ FIX: Total tidak boleh negatif
+            if (total < 0) total = 0;
+            document.getElementById('totalPrice').textContent = 'Rp ' + formatNumber(total);
+        }
+
+        // ============ VOUCHER ============
+        function toggleVoucher() {
+            document.getElementById('voucherSection').classList.toggle('open');
+        }
+
+        function useHint(code) {
+            document.getElementById('voucherInput').value = code;
+            document.getElementById('voucherInput').focus();
+            applyVoucher();
+        }
 
         function applyVoucher() {
             var input = document.getElementById('voucherInput');
             var code = input.value.trim().toUpperCase();
             if (!code) { showVoucherMessage('Masukkan kode voucher terlebih dahulu', 'error'); return; }
-            var voucher = vouchers[code];
-            if (!voucher) { showVoucherMessage('❌ Kode voucher tidak valid', 'error'); return; }
-            var subtotal = cart.reduce(function(sum, item) { return sum + (item.price * item.qty); }, 0);
-            if (voucher.minOrder > 0 && subtotal < voucher.minOrder) { showVoucherMessage('❌ Minimum belanja Rp ' + formatNumber(voucher.minOrder) + ' (saat ini Rp ' + formatNumber(subtotal) + ')', 'error'); return; }
+            
+            var voucher = vouchersData[code];
+            if (!voucher) { showVoucherMessage('\u274C Kode voucher tidak valid', 'error'); return; }
+            
+            var subtotal = 0;
+            for (var i = 0; i < cart.length; i++) subtotal += cart[i].price * cart[i].qty;
+            
+            if (voucher.minOrder > 0 && subtotal < voucher.minOrder) {
+                showVoucherMessage('\u274C Minimum belanja Rp ' + formatNumber(voucher.minOrder) + ' (saat ini Rp ' + formatNumber(subtotal) + ')', 'error');
+                return;
+            }
+            
             var discount = 0;
-            if (voucher.type === 'percent') { discount = Math.round(subtotal * voucher.value / 100); if (voucher.maxDiscount > 0 && discount > voucher.maxDiscount) discount = voucher.maxDiscount; }
-            else if (voucher.type === 'fixed') { discount = voucher.value; }
-            appliedVoucher = { code: code, desc: voucher.desc, discount: discount };
+            if (voucher.type === 'percent') {
+                discount = Math.round(subtotal * voucher.value / 100);
+                if (voucher.maxDiscount > 0 && discount > voucher.maxDiscount) discount = voucher.maxDiscount;
+            } else if (voucher.type === 'fixed') {
+                discount = voucher.value;
+            }
+            
+            // ✅ FIX: Diskon tidak boleh melebihi subtotal
+            if (discount > subtotal) discount = subtotal;
+            
+            appliedVoucher = { code: code, desc: voucher.desc || '', discount: discount };
             input.value = '';
-            showVoucherMessage('✅ Voucher berhasil diterapkan! Hemat Rp ' + formatNumber(discount), 'success');
+            
+            showVoucherMessage('\u2705 Voucher berhasil diterapkan! Hemat Rp ' + formatNumber(discount), 'success');
             document.getElementById('appliedCode').textContent = code;
-            document.getElementById('appliedDesc').textContent = voucher.desc;
+            document.getElementById('appliedDesc').textContent = voucher.desc || 'Hemat Rp ' + formatNumber(discount);
             document.getElementById('voucherApplied').classList.add('show');
             document.getElementById('voucherActiveBadge').style.display = 'inline-flex';
+            
             updateSummary(subtotal);
             setTimeout(function() { hideVoucherMessage(); }, 3000);
         }
 
         function removeVoucher() {
             appliedVoucher = null;
-            document.getElementById('voucherApplied').classList.remove('show');
-            document.getElementById('voucherActiveBadge').style.display = 'none';
+            resetVoucherUI();
             showVoucherMessage('Voucher dihapus', 'success');
             setTimeout(function() { hideVoucherMessage(); }, 2000);
-            var subtotal = cart.reduce(function(sum, item) { return sum + (item.price * item.qty); }, 0);
+            var subtotal = 0;
+            for (var i = 0; i < cart.length; i++) subtotal += cart[i].price * cart[i].qty;
             updateSummary(subtotal);
+        }
+
+        function resetVoucherUI() {
+            document.getElementById('voucherApplied').classList.remove('show');
+            document.getElementById('voucherActiveBadge').style.display = 'none';
+            document.getElementById('voucherInput').value = '';
+            hideVoucherMessage();
+            document.getElementById('voucherSection').classList.remove('open');
         }
 
         function showVoucherMessage(text, type) {
@@ -1033,176 +1209,204 @@ window.addEventListener('storage', function(e) {
             msgEl.className = 'voucher-message show ' + type;
             msgEl.innerHTML = '<i class="fas ' + icon + '"></i> ' + text;
         }
-        function hideVoucherMessage() { document.getElementById('voucherMessage').classList.remove('show'); }
 
-        function updateSummary(subtotal) {
-            var discountAmount = 0;
-            var discountRow = document.getElementById('discountRow');
-            var discountAmountEl = document.getElementById('discountAmount');
-            if (appliedVoucher) {
-                discountAmount = appliedVoucher.discount;
-                if (discountAmount > subtotal) discountAmount = subtotal;
-                discountRow.style.display = 'flex';
-                discountAmountEl.textContent = 'Rp ' + formatNumber(discountAmount);
-            } else { discountRow.style.display = 'none'; }
-            document.getElementById('subtotal').textContent = 'Rp ' + formatNumber(subtotal);
-            var total = subtotal - discountAmount;
-            document.getElementById('totalPrice').textContent = 'Rp ' + formatNumber(total);
+        function hideVoucherMessage() {
+            document.getElementById('voucherMessage').classList.remove('show');
         }
 
-        function formatNumber(num) { return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+        // Enter key untuk voucher
+        document.addEventListener('DOMContentLoaded', function() {
+            var vInput = document.getElementById('voucherInput');
+            if (vInput) {
+                vInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') applyVoucher();
+                });
+            }
+        });
 
+        // ============ KONFIRMASI PESANAN ============
         function showConfirmation() {
             var nama = document.getElementById('inputNama').value.trim();
             var phone = document.getElementById('inputPhone').value.trim();
             var alamat = document.getElementById('inputAlamat').value.trim();
             var catatan = document.getElementById('inputCatatan').value.trim();
+            
             if (!nama) { showNotification('Mohon isi Nama Lengkap!', 'error'); document.getElementById('inputNama').focus(); return; }
             if (!phone) { showNotification('Mohon isi No. WhatsApp!', 'error'); document.getElementById('inputPhone').focus(); return; }
             if (!alamat) { showNotification('Mohon isi Alamat Lengkap!', 'error'); document.getElementById('inputAlamat').focus(); return; }
+            
             document.getElementById('confirmNama').textContent = nama;
             document.getElementById('confirmPhone').textContent = phone;
             document.getElementById('confirmAlamat').textContent = alamat;
-            if (catatan) { document.getElementById('confirmCatatan').textContent = catatan; document.getElementById('confirmCatatanRow').style.display = 'flex'; }
-            else { document.getElementById('confirmCatatanRow').style.display = 'none'; }
+            
+            if (catatan) {
+                document.getElementById('confirmCatatan').textContent = catatan;
+                document.getElementById('confirmCatatanRow').style.display = 'flex';
+            } else {
+                document.getElementById('confirmCatatanRow').style.display = 'none';
+            }
+            
             var confirmItems = document.getElementById('confirmItems');
             var html = '', subtotal = 0;
             for (var i = 0; i < cart.length; i++) {
                 var item = cart[i];
                 var itemTotal = item.price * item.qty;
                 subtotal += itemTotal;
-                html += '<div class="confirm-item"><div class="confirm-item-left"><span class="confirm-item-name">' + item.name + '</span><span class="confirm-item-qty">' + item.qty + ' x Rp ' + formatNumber(item.price) + '</span></div><span class="confirm-item-price">Rp ' + formatNumber(itemTotal) + '</span></div>';
+                html += '<div class="confirm-item">' +
+                    '<div class="confirm-item-left">' +
+                        '<span class="confirm-item-name">' + escapeHtml(item.name) + '</span>' +
+                        '<span class="confirm-item-qty">' + item.qty + ' x Rp ' + formatNumber(item.price) + '</span>' +
+                    '</div>' +
+                    '<span class="confirm-item-price">Rp ' + formatNumber(itemTotal) + '</span>' +
+                '</div>';
             }
             confirmItems.innerHTML = html;
+            
+            var discountAmount = appliedVoucher ? appliedVoucher.discount : 0;
+            // ✅ FIX: Diskon tidak melebihi subtotal
+            if (discountAmount > subtotal) discountAmount = subtotal;
+            
             var confirmSummary = document.getElementById('confirmSummary');
             var confirmDiscountRow = document.getElementById('confirmDiscountRow');
-            if (appliedVoucher) { confirmSummary.style.display = 'block'; document.getElementById('confirmSubtotal').textContent = 'Rp ' + formatNumber(subtotal); confirmDiscountRow.style.display = 'flex'; document.getElementById('confirmDiscount').textContent = 'Rp ' + formatNumber(appliedVoucher.discount); }
-            else { confirmSummary.style.display = 'none'; }
-            var total = subtotal - (appliedVoucher ? appliedVoucher.discount : 0);
+            
+            if (appliedVoucher && discountAmount > 0) {
+                confirmSummary.style.display = 'block';
+                document.getElementById('confirmSubtotal').textContent = 'Rp ' + formatNumber(subtotal);
+                confirmDiscountRow.style.display = 'flex';
+                document.getElementById('confirmDiscount').textContent = '- Rp ' + formatNumber(discountAmount);
+            } else {
+                confirmSummary.style.display = 'none';
+            }
+            
+            var total = subtotal - discountAmount;
+            // ✅ FIX: Total tidak boleh negatif
+            if (total < 0) total = 0;
             document.getElementById('confirmTotal').textContent = 'Rp ' + formatNumber(total);
+            
             document.getElementById('modalConfirm').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() { document.getElementById('modalConfirm').classList.remove('active'); document.body.style.overflow = ''; }
-        document.getElementById('modalConfirm').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+        function closeModal() {
+            document.getElementById('modalConfirm').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        document.getElementById('modalConfirm').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
 
+        // ============ SEND TO WHATSAPP (✅ FIXED) ============
         function sendToWhatsApp() {
-    var nama = document.getElementById('inputNama').value.trim();
-    var phone = document.getElementById('inputPhone').value.trim();
-    var alamat = document.getElementById('inputAlamat').value.trim();
-    var catatan = document.getElementById('inputCatatan').value.trim();
-
-    // Hitung total
-    var subtotal = 0;
-    for (var i = 0; i < cart.length; i++) {
-        subtotal += cart[i].price * cart[i].qty;
-    }
-    var discountAmount = appliedVoucher ? appliedVoucher.discount : 0;
-    if (discountAmount > subtotal) discountAmount = subtotal;
-    var total = subtotal - discountAmount;
-
-    // ====== GENERATE ORDER ID ======
-    var now = new Date();
-    var dateStr = now.getFullYear() + 
-                  ('0' + (now.getMonth() + 1)).slice(-2) + 
-                  ('0' + now.getDate()).slice(-2);
-    var randomStr = Math.random().toString(36).substring(2, 7).toUpperCase();
-    var orderId = 'YOCHI-' + dateStr + '-' + randomStr;
-
-    // ====== SIMPAN KE LOCALSTORAGE (RIWAYAT ORDER) ======
-    var STORAGE_KEY = 'yochi_orders';
-    var storedOrders = localStorage.getItem(STORAGE_KEY);
-    var ordersList = storedOrders ? JSON.parse(storedOrders) : [];
-    
-    var orderData = {
-        id: orderId,
-        timestamp: now.getTime(),
-        buyer: {
-            nama: nama,
-            phone: phone,
-            alamat: alamat,
-            catatan: catatan
-        },
-        items: cart.map(function(item) {
-            return {
-                id: item.id,
-                name: item.name,
-                price: item.price,
-                qty: item.qty,
-                image: item.image
+            var nama = document.getElementById('inputNama').value.trim();
+            var phone = document.getElementById('inputPhone').value.trim();
+            var alamat = document.getElementById('inputAlamat').value.trim();
+            var catatan = document.getElementById('inputCatatan').value.trim();
+            
+            // Hitung subtotal
+            var subtotal = 0;
+            for (var i = 0; i < cart.length; i++) {
+                subtotal += cart[i].price * cart[i].qty;
+            }
+            
+            var discountAmount = appliedVoucher ? appliedVoucher.discount : 0;
+            // ✅ FIX: Diskon tidak melebihi subtotal
+            if (discountAmount > subtotal) discountAmount = subtotal;
+            var total = subtotal - discountAmount;
+            // ✅ FIX: Total tidak negatif
+            if (total < 0) total = 0;
+            
+            // ====== ✅ GENERATE ORDER ID ======
+            var now = new Date();
+            var dateStr = now.getFullYear() + 
+                          ('0' + (now.getMonth() + 1)).slice(-2) + 
+                          ('0' + now.getDate()).slice(-2);
+            var randomStr = Math.random().toString(36).substring(2, 7).toUpperCase();
+            var orderId = 'YOCHI-' + dateStr + '-' + randomStr;
+            
+            // ====== ✅ SIMPAN ORDER KE LOCALSTORAGE ======
+            var storedOrders = localStorage.getItem(STORAGE_KEYS.orders);
+            var ordersList = storedOrders ? JSON.parse(storedOrders) : [];
+            
+            var orderData = {
+                id: orderId,
+                timestamp: now.getTime(),
+                buyer: { nama: nama, phone: phone, alamat: alamat, catatan: catatan },
+                items: cart.map(function(item) {
+                    return { id: item.id, name: item.name, price: item.price, qty: item.qty, image: item.image };
+                }),
+                subtotal: subtotal,
+                voucher: appliedVoucher ? appliedVoucher.code : null,
+                discount: discountAmount,
+                total: total,
+                status: 'pending'
             };
-        }),
-        subtotal: subtotal,
-        voucher: appliedVoucher ? appliedVoucher.code : null,
-        discount: discountAmount,
-        total: total,
-        status: 'pending'
-    };
-    
-    ordersList.unshift(orderData);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(ordersList));
+            
+            ordersList.unshift(orderData);
+            localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(ordersList));
+            
+            // ====== KIRIM KE WHATSAPP ======
+            var message = '\u{1F6D2} *PESANAN BARU - ' + STORE_NAME + '*\n';
+            message += '\u2501'.repeat(20) + '\n\n';
+            message += '\u{1F4CB} *ID Order: ' + orderId + '*\n';
+            message += '\u{1F550} Waktu: ' + now.toLocaleString('id-ID') + '\n\n';
+            message += 'Halo Admin ' + STORE_NAME + '! \u{1F44B}\nSaya ingin memesan:\n\n';
+            message += '\u{1F464} *DATA PEMESAN*\n';
+            message += 'Nama : ' + nama + '\n';
+            message += 'No. WA : ' + phone + '\n';
+            message += 'Alamat : ' + alamat + '\n';
+            if (catatan) message += 'Catatan : ' + catatan + '\n';
+            message += '\n\u{1F4E6} *DETAIL PESANAN*\n' + '\u2500'.repeat(17) + '\n';
+            
+            for (var j = 0; j < cart.length; j++) {
+                var item = cart[j];
+                var itemTotal = item.price * item.qty;
+                message += (j + 1) + '. *' + item.name + '*\n';
+                message += '   ' + item.qty + ' x Rp ' + formatNumber(item.price) + ' = *Rp ' + formatNumber(itemTotal) + '*\n\n';
+            }
+            
+            message += '\u2500'.repeat(17) + '\n';
+            message += '\u{1F4B5} Subtotal: Rp ' + formatNumber(subtotal) + '\n';
+            if (appliedVoucher) {
+                message += '\u{1F3AB} *Voucher: ' + appliedVoucher.code + '*\n';
+                message += '\u{1F4B8} Diskon: - Rp ' + formatNumber(discountAmount) + '\n';
+            }
+            message += '\u{1F4B0} *TOTAL: Rp ' + formatNumber(total) + '*\n';
+            message += '\u{1F69A} Ongkir: Dikonfirmasi kemudian\n\n';
+            message += '\u2501'.repeat(20) + '\n';
+            message += 'Terima kasih! \u{1F64F}';
+            
+            window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message), '_blank');
+            
+            // ====== ✅ KURANGI STOK + SIMPAN KE LOCALSTORAGE ======
+            for (var k = 0; k < cart.length; k++) {
+                var product = findProduct(cart[k].id);
+                if (product) {
+                    product.stock = Math.max(0, product.stock - cart[k].qty);
+                }
+            }
+            // ✅ FIX KRITIS: Simpan stok yang sudah dikurangi ke localStorage
+            localStorage.setItem(STORAGE_KEYS.products, JSON.stringify(productsData));
+            
+            // ====== RESET STATE ======
+            cart = [];
+            appliedVoucher = null;
+            updateCart();
+            renderProducts();
+            closeModal();
+            resetVoucherUI();
+            
+            document.getElementById('inputNama').value = '';
+            document.getElementById('inputPhone').value = '';
+            document.getElementById('inputAlamat').value = '';
+            document.getElementById('inputCatatan').value = '';
+            
+            setTimeout(function() {
+                showNotification('Pesanan #' + orderId + ' berhasil dikirim! \u{1F389}', 'success');
+            }, 500);
+        }
 
-    // ====== KIRIM KE WHATSAPP ======
-    var message = '🛒 *PESANAN BARU - ' + STORE_NAME + '*\n';
-    message += '━━━━━━━━━━━━━━━━━━━━━\n\n';
-    message += '📋 *ID Order: ' + orderId + '*\n';
-    message += '🕐 Waktu: ' + now.toLocaleString('id-ID') + '\n\n';
-    message += 'Halo Admin ' + STORE_NAME + '! 👋\nSaya ingin memesan:\n\n';
-    message += '👤 *DATA PEMESAN*\n';
-    message += 'Nama : ' + nama + '\n';
-    message += 'No. WA : ' + phone + '\n';
-    message += 'Alamat : ' + alamat + '\n';
-    if (catatan) message += 'Catatan : ' + catatan + '\n';
-    message += '\n📦 *DETAIL PESANAN*\n─────────────────\n';
-    
-    for (var j = 0; j < cart.length; j++) {
-        var item = cart[j];
-        var itemTotal = item.price * item.qty;
-        message += (j + 1) + '. *' + item.name + '*\n';
-        message += '   ' + item.qty + ' x Rp ' + formatNumber(item.price) + ' = *Rp ' + formatNumber(itemTotal) + '*\n\n';
-    }
-    
-    message += '─────────────────\n';
-    message += '💵 Subtotal: Rp ' + formatNumber(subtotal) + '\n';
-    if (appliedVoucher) {
-        message += '🎫 *Voucher: ' + appliedVoucher.code + '*\n';
-        message += '💸 Diskon: - Rp ' + formatNumber(discountAmount) + '\n';
-    }
-    message += '💰 *TOTAL: Rp ' + formatNumber(total) + '*\n';
-    message += '🚚 Ongkir: Dikonfirmasi kemudian\n\n';
-    message += '━━━━━━━━━━━━━━━━━━━━━\n';
-    message += 'Terima kasih! 🙏';
-
-    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message), '_blank');
-
-    // ====== KURANGI STOK ======
-    for (var k = 0; k < cart.length; k++) {
-        var product = findProduct(cart[k].id);
-        if (product) product.stock = Math.max(0, product.stock - cart[k].qty);
-    }
-
-    // ====== RESET STATE ======
-    cart = [];
-    appliedVoucher = null;
-    updateCart();
-    renderProducts();
-    closeModal();
-    
-    document.getElementById('voucherApplied').classList.remove('show');
-    document.getElementById('voucherActiveBadge').style.display = 'none';
-    document.getElementById('voucherSection').classList.remove('open');
-    
-    document.getElementById('inputNama').value = '';
-    document.getElementById('inputPhone').value = '';
-    document.getElementById('inputAlamat').value = '';
-    document.getElementById('inputCatatan').value = '';
-
-    setTimeout(function() {
-        showNotification('Pesanan #' + orderId + ' berhasil dikirim! 🎉', 'success');
-    }, 500);
-}
-
+        // ============ NOTIFICATION ============
         function showNotification(text, type) {
             type = type || 'success';
             var notification = document.createElement('div');
@@ -1211,15 +1415,29 @@ window.addEventListener('storage', function(e) {
             notification.style.cssText = 'position:fixed;top:100px;right:30px;background:' + bgColor + ';color:white;padding:16px 28px;border-radius:12px;font-size:0.9rem;font-weight:500;z-index:10001;box-shadow:0 10px 30px rgba(0,0,0,0.2);animation:slideInRight 0.3s ease;font-family:Poppins,sans-serif;display:flex;align-items:center;gap:10px;';
             notification.innerHTML = '<i class="fas ' + icon + '"></i> ' + text;
             document.body.appendChild(notification);
-            setTimeout(function() { notification.style.animation = 'slideOutRight 0.3s ease'; setTimeout(function() { notification.remove(); }, 300); }, 3000);
+            setTimeout(function() {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(function() { notification.remove(); }, 300);
+            }, 3000);
         }
 
+        // ============ UTILITIES ============
+        function formatNumber(num) { return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+        function escapeHtml(text) { if (!text) return ''; var div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        // ============ SCROLL EVENTS ============
         window.addEventListener('scroll', function() {
             var navbar = document.getElementById('navbar');
             var scrollTop = document.getElementById('scrollTop');
-            if (navbar) { if (window.scrollY > 100) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); }
-            if (window.scrollY > 500) scrollTop.classList.add('visible'); else scrollTop.classList.remove('visible');
+            if (navbar) {
+                if (window.scrollY > 100) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+            }
+            if (window.scrollY > 500) scrollTop.classList.add('visible');
+            else scrollTop.classList.remove('visible');
             updateActiveBottomNav();
+            revealOnScroll();
         });
 
         function updateActiveBottomNav() {
@@ -1236,47 +1454,45 @@ window.addEventListener('storage', function(e) {
             });
         }
 
-        // ✅ PERUBAHAN UTAMA: Scroll ke #orderCard untuk CTA button
-        document.querySelectorAll('.bottom-nav-link').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                var ripple = document.createElement('span');
-                ripple.className = 'ripple';
-                var rect = this.getBoundingClientRect();
-                var size = Math.max(rect.width, rect.height);
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-                this.appendChild(ripple);
-                setTimeout(function() { ripple.remove(); }, 600);
+        // Bottom nav click handler
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.bottom-nav-link').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    var ripple = document.createElement('span');
+                    ripple.className = 'ripple';
+                    var rect = this.getBoundingClientRect();
+                    var size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                    this.appendChild(ripple);
+                    setTimeout(function() { ripple.remove(); }, 600);
 
-                var targetId = this.getAttribute('href').substring(1);
-                var target = document.getElementById(targetId);
-                
-                // ✅ LOGIC BARU: Offset scroll sesuai device
-                if (target) {
-                    var isMobile = window.innerWidth <= 768;
-                    var bottomNavHeight = isMobile ? 85 : 0;
-                    var extraOffset = 15; // jarak dari atas viewport
+                    var targetId = this.getAttribute('href').substring(1);
+                    var target = document.getElementById(targetId);
                     
-                    var targetTop = target.getBoundingClientRect().top + window.pageYOffset;
-                    var scrollPosition = targetTop - bottomNavHeight - extraOffset;
+                    if (target) {
+                        var isMobile = window.innerWidth <= 768;
+                        var bottomNavHeight = isMobile ? 85 : 0;
+                        var extraOffset = 15;
+                        var targetTop = target.getBoundingClientRect().top + window.pageYOffset;
+                        var scrollPosition = targetTop - bottomNavHeight - extraOffset;
+                        if (scrollPosition < 0) scrollPosition = 0;
+                        window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+                    }
                     
-                    // Pastikan tidak scroll ke posisi negatif
-                    if (scrollPosition < 0) scrollPosition = 0;
-                    
-                    window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
-                }
-                
-                document.querySelectorAll('.bottom-nav-link').forEach(function(l) { l.classList.remove('active'); });
-                this.classList.add('active');
+                    document.querySelectorAll('.bottom-nav-link').forEach(function(l) { l.classList.remove('active'); });
+                    this.classList.add('active');
+                });
             });
         });
 
-        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
+        // ============ PARTICLES ============
         function createParticles() {
             var container = document.getElementById('particles');
+            if (!container) return;
             var colors = ['#4caf50', '#ff9800', '#81c784', '#ffb74d'];
             for (var i = 0; i < 15; i++) {
                 var particle = document.createElement('div');
@@ -1300,8 +1516,8 @@ window.addEventListener('storage', function(e) {
                 if (revealTop < windowHeight - 150) reveals[k].classList.add('active');
             }
         }
-        window.addEventListener('scroll', revealOnScroll);
 
+        // ============ INIT ============
         window.addEventListener('load', function() {
             document.getElementById('loader').classList.add('hidden');
             createParticles();
@@ -1310,7 +1526,9 @@ window.addEventListener('storage', function(e) {
             updateActiveBottomNav();
         });
 
-        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
     </script>
 </body>
 </html>
