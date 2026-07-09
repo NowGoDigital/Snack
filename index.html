@@ -802,20 +802,41 @@
         var WHATSAPP_NUMBER = "628175761165";
         var STORE_NAME = "YOCHI SNACK";
 
-        var productsData = [
-            { id: 'bayam-original', name: 'Stik Bayam Original', category: 'Stik Bayam', categoryIcon: 'fa-leaf', desc: 'Stik renyah dari bayam segar asli, kaya zat besi dan vitamin. Rasa gurih alami yang bikin nagih!', price: 25000, originalPrice: 35000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🔥 Best Seller', badgeClass: 'badge-bestseller', rating: '5.0', reviews: 328, stock: 24 },
-            { id: 'wortel-original', name: 'Stik Wortel Original', category: 'Stik Wortel', categoryIcon: 'fa-carrot', desc: 'Stik wortel renyah kaya beta karoten. Camilan sehat yang baik untuk mata dan kulit, disukai anak-anak!', price: 25000, originalPrice: 35000, image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=100&q=60', badge: '⭐ Favorit', badgeClass: 'badge-bestseller', rating: '4.9', reviews: 256, stock: 18 },
-            { id: 'combo', name: 'Paket Combo (Bayam + Wortel)', category: 'Paket Hemat', categoryIcon: 'fa-box-open', desc: 'Dapatkan kedua varian stik bayam dan wortel dalam satu paket hemat! Lebih untung dan lebih lengkap.', price: 40000, originalPrice: 50000, image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=100&q=60', badge: '✨ Baru', badgeClass: 'badge-new', rating: '4.8', reviews: 189, stock: 12 },
-            { id: 'bayam-pedas', name: 'Stik Bayam Pedas Manis', category: 'Stik Bayam', categoryIcon: 'fa-pepper-hot', desc: 'Perpaduan rasa pedas dan manis yang sempurna! Cocok untuk pecinta camilan dengan sensasi rasa berani.', price: 28000, originalPrice: 38000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🌶️ Spicy', badgeClass: 'badge-new', rating: '4.9', reviews: 142, stock: 7 },
-            { id: 'wortel-keju', name: 'Stik Wortel Rasa Keju', category: 'Stik Wortel', categoryIcon: 'fa-cheese', desc: 'Stik wortel dengan taburan keju premium yang gurih. Favorit anak-anak dan dewasa!', price: 28000, originalPrice: 38000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🏆 Premium', badgeClass: 'badge-bestseller', rating: '4.7', reviews: 98, stock: 15 },
-            { id: 'hampers', name: 'Paket Hampers Premium', category: 'Hampers', categoryIcon: 'fa-gift', desc: 'Paket hampers eksklusif berisi 4 varian produk YOCHI SNACK. Cocok untuk hadiah dan oleh-oleh!', price: 95000, originalPrice: 120000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🎁 Gift Set', badgeClass: 'badge-new', rating: '5.0', reviews: 76, stock: 5 }
-        ];
+        // ============ INTEGRASI DENGAN ADMIN PANEL ============
+var STORAGE_KEYS = {
+    products: 'yochi_products',
+    categories: 'yochi_categories',
+    vouchers: 'yochi_vouchers'
+};
 
-        var vouchers = {
-            'WELCOME10': { type: 'percent', value: 10, maxDiscount: 0, minOrder: 0, desc: 'Diskon 10% untuk pengguna baru' },
-            'HEMAT20': { type: 'fixed', value: 20000, minOrder: 50000, desc: 'Potongan Rp 20.000 min. belanja Rp 50.000' },
-            'YOCHI50': { type: 'percent', value: 50, maxDiscount: 25000, minOrder: 0, desc: 'Diskon 50% (max Rp 25.000)' }
-        };
+var DEFAULT_PRODUCTS = [
+    { id: 'bayam-original', name: 'Stik Bayam Original', category: 'Stik Bayam', categoryIcon: 'fa-leaf', desc: 'Stik renyah dari bayam segar asli, kaya zat besi dan vitamin. Rasa gurih alami yang bikin nagih!', price: 25000, originalPrice: 35000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🔥 Best Seller', badgeClass: 'badge-bestseller', rating: '5.0', reviews: 328, stock: 24 },
+    { id: 'wortel-original', name: 'Stik Wortel Original', category: 'Stik Wortel', categoryIcon: 'fa-carrot', desc: 'Stik wortel renyah kaya beta karoten. Camilan sehat yang baik untuk mata dan kulit, disukai anak-anak!', price: 25000, originalPrice: 35000, image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=100&q=60', badge: '⭐ Favorit', badgeClass: 'badge-bestseller', rating: '4.9', reviews: 256, stock: 18 },
+    { id: 'combo', name: 'Paket Combo (Bayam + Wortel)', category: 'Paket Hemat', categoryIcon: 'fa-box-open', desc: 'Dapatkan kedua varian stik bayam dan wortel dalam satu paket hemat! Lebih untung dan lebih lengkap.', price: 40000, originalPrice: 50000, image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=100&q=60', badge: '✨ Baru', badgeClass: 'badge-new', rating: '4.8', reviews: 189, stock: 12 },
+    { id: 'bayam-pedas', name: 'Stik Bayam Pedas Manis', category: 'Stik Bayam', categoryIcon: 'fa-pepper-hot', desc: 'Perpaduan rasa pedas dan manis yang sempurna! Cocok untuk pecinta camilan dengan sensasi rasa berani.', price: 28000, originalPrice: 38000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🌶️ Spicy', badgeClass: 'badge-new', rating: '4.9', reviews: 142, stock: 7 },
+    { id: 'wortel-keju', name: 'Stik Wortel Rasa Keju', category: 'Stik Wortel', categoryIcon: 'fa-cheese', desc: 'Stik wortel dengan taburan keju premium yang gurih. Favorit anak-anak dan dewasa!', price: 28000, originalPrice: 38000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🏆 Premium', badgeClass: 'badge-bestseller', rating: '4.7', reviews: 98, stock: 15 },
+    { id: 'hampers', name: 'Paket Hampers Premium', category: 'Hampers', categoryIcon: 'fa-gift', desc: 'Paket hampers eksklusif berisi 4 varian produk YOCHI SNACK. Cocok untuk hadiah dan oleh-oleh!', price: 95000, originalPrice: 120000, image: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', imageThumb: 'https://clouddiskominfo.tangerangselatankota.go.id/kurasi/produk/1748404957_68368add7cf9a.jpg', badge: '🎁 Gift Set', badgeClass: 'badge-new', rating: '5.0', reviews: 76, stock: 5 }
+];
+
+var DEFAULT_VOUCHERS = {
+    'WELCOME10': { type: 'percent', value: 10, maxDiscount: 0, minOrder: 0, desc: 'Diskon 10% untuk pengguna baru' },
+    'HEMAT20': { type: 'fixed', value: 20000, minOrder: 50000, desc: 'Potongan Rp 20.000 min. belanja Rp 50.000' },
+    'YOCHI50': { type: 'percent', value: 50, maxDiscount: 25000, minOrder: 0, desc: 'Diskon 50% (max Rp 25.000)' }
+};
+
+// Load data dari localStorage (admin) atau pakai default
+var storedProducts = localStorage.getItem(STORAGE_KEYS.products);
+var storedVouchers = localStorage.getItem(STORAGE_KEYS.vouchers);
+
+var productsData = storedProducts ? JSON.parse(storedProducts) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+var vouchers = storedVouchers ? JSON.parse(storedVouchers) : JSON.parse(JSON.stringify(DEFAULT_VOUCHERS));
+
+// Sync: saat admin update, website otomatis terupdate setelah refresh
+window.addEventListener('storage', function(e) {
+    if (e.key === STORAGE_KEYS.products || e.key === STORAGE_KEYS.vouchers) {
+        location.reload();
+    }
+});
 
         var appliedVoucher = null;
         var cart = [];
@@ -1067,31 +1088,120 @@
         document.getElementById('modalConfirm').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
         function sendToWhatsApp() {
-            var nama = document.getElementById('inputNama').value.trim();
-            var phone = document.getElementById('inputPhone').value.trim();
-            var alamat = document.getElementById('inputAlamat').value.trim();
-            var catatan = document.getElementById('inputCatatan').value.trim();
-            var message = '🛒 *PESANAN BARU - ' + STORE_NAME + '*\n━━━━━━━━━━━━━━━━━━━━━\n\nHalo Admin ' + STORE_NAME + '! 👋\nSaya ingin memesan:\n\n👤 *DATA PEMESAN*\nNama : ' + nama + '\nNo. WA : ' + phone + '\nAlamat : ' + alamat + '\n';
-            if (catatan) message += 'Catatan : ' + catatan + '\n';
-            message += '\n📦 *DETAIL PESANAN*\n─────────────────\n';
-            var subtotal = 0;
-            for (var i = 0; i < cart.length; i++) {
-                var item = cart[i];
-                var itemTotal = item.price * item.qty;
-                subtotal += itemTotal;
-                message += (i + 1) + '. *' + item.name + '*\n   ' + item.qty + ' x Rp ' + formatNumber(item.price) + ' = *Rp ' + formatNumber(itemTotal) + '*\n\n';
-            }
-            message += '─────────────────\n💵 Subtotal: Rp ' + formatNumber(subtotal) + '\n';
-            if (appliedVoucher) { message += '🎫 *Voucher: ' + appliedVoucher.code + '*\n💸 Diskon: - Rp ' + formatNumber(appliedVoucher.discount) + '\n'; }
-            var total = subtotal - (appliedVoucher ? appliedVoucher.discount : 0);
-            message += '💰 *TOTAL: Rp ' + formatNumber(total) + '*\n🚚 Ongkir: Dikonfirmasi kemudian\n\n━━━━━━━━━━━━━━━━━━━━━\nTerima kasih! 🙏';
-            window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message), '_blank');
-            for (var j = 0; j < cart.length; j++) { var product = findProduct(cart[j].id); if (product) product.stock = Math.max(0, product.stock - cart[j].qty); }
-            cart = []; appliedVoucher = null; updateCart(); renderProducts(); closeModal();
-            document.getElementById('voucherApplied').classList.remove('show');
-            document.getElementById('voucherActiveBadge').style.display = 'none';
-            document.getElementById('voucherSection').classList.remove('open');
-        }
+    var nama = document.getElementById('inputNama').value.trim();
+    var phone = document.getElementById('inputPhone').value.trim();
+    var alamat = document.getElementById('inputAlamat').value.trim();
+    var catatan = document.getElementById('inputCatatan').value.trim();
+
+    // Hitung total
+    var subtotal = 0;
+    for (var i = 0; i < cart.length; i++) {
+        subtotal += cart[i].price * cart[i].qty;
+    }
+    var discountAmount = appliedVoucher ? appliedVoucher.discount : 0;
+    if (discountAmount > subtotal) discountAmount = subtotal;
+    var total = subtotal - discountAmount;
+
+    // ====== GENERATE ORDER ID ======
+    var now = new Date();
+    var dateStr = now.getFullYear() + 
+                  ('0' + (now.getMonth() + 1)).slice(-2) + 
+                  ('0' + now.getDate()).slice(-2);
+    var randomStr = Math.random().toString(36).substring(2, 7).toUpperCase();
+    var orderId = 'YOCHI-' + dateStr + '-' + randomStr;
+
+    // ====== SIMPAN KE LOCALSTORAGE (RIWAYAT ORDER) ======
+    var STORAGE_KEY = 'yochi_orders';
+    var storedOrders = localStorage.getItem(STORAGE_KEY);
+    var ordersList = storedOrders ? JSON.parse(storedOrders) : [];
+    
+    var orderData = {
+        id: orderId,
+        timestamp: now.getTime(),
+        buyer: {
+            nama: nama,
+            phone: phone,
+            alamat: alamat,
+            catatan: catatan
+        },
+        items: cart.map(function(item) {
+            return {
+                id: item.id,
+                name: item.name,
+                price: item.price,
+                qty: item.qty,
+                image: item.image
+            };
+        }),
+        subtotal: subtotal,
+        voucher: appliedVoucher ? appliedVoucher.code : null,
+        discount: discountAmount,
+        total: total,
+        status: 'pending'
+    };
+    
+    ordersList.unshift(orderData);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(ordersList));
+
+    // ====== KIRIM KE WHATSAPP ======
+    var message = '🛒 *PESANAN BARU - ' + STORE_NAME + '*\n';
+    message += '━━━━━━━━━━━━━━━━━━━━━\n\n';
+    message += '📋 *ID Order: ' + orderId + '*\n';
+    message += '🕐 Waktu: ' + now.toLocaleString('id-ID') + '\n\n';
+    message += 'Halo Admin ' + STORE_NAME + '! 👋\nSaya ingin memesan:\n\n';
+    message += '👤 *DATA PEMESAN*\n';
+    message += 'Nama : ' + nama + '\n';
+    message += 'No. WA : ' + phone + '\n';
+    message += 'Alamat : ' + alamat + '\n';
+    if (catatan) message += 'Catatan : ' + catatan + '\n';
+    message += '\n📦 *DETAIL PESANAN*\n─────────────────\n';
+    
+    for (var j = 0; j < cart.length; j++) {
+        var item = cart[j];
+        var itemTotal = item.price * item.qty;
+        message += (j + 1) + '. *' + item.name + '*\n';
+        message += '   ' + item.qty + ' x Rp ' + formatNumber(item.price) + ' = *Rp ' + formatNumber(itemTotal) + '*\n\n';
+    }
+    
+    message += '─────────────────\n';
+    message += '💵 Subtotal: Rp ' + formatNumber(subtotal) + '\n';
+    if (appliedVoucher) {
+        message += '🎫 *Voucher: ' + appliedVoucher.code + '*\n';
+        message += '💸 Diskon: - Rp ' + formatNumber(discountAmount) + '\n';
+    }
+    message += '💰 *TOTAL: Rp ' + formatNumber(total) + '*\n';
+    message += '🚚 Ongkir: Dikonfirmasi kemudian\n\n';
+    message += '━━━━━━━━━━━━━━━━━━━━━\n';
+    message += 'Terima kasih! 🙏';
+
+    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message), '_blank');
+
+    // ====== KURANGI STOK ======
+    for (var k = 0; k < cart.length; k++) {
+        var product = findProduct(cart[k].id);
+        if (product) product.stock = Math.max(0, product.stock - cart[k].qty);
+    }
+
+    // ====== RESET STATE ======
+    cart = [];
+    appliedVoucher = null;
+    updateCart();
+    renderProducts();
+    closeModal();
+    
+    document.getElementById('voucherApplied').classList.remove('show');
+    document.getElementById('voucherActiveBadge').style.display = 'none';
+    document.getElementById('voucherSection').classList.remove('open');
+    
+    document.getElementById('inputNama').value = '';
+    document.getElementById('inputPhone').value = '';
+    document.getElementById('inputAlamat').value = '';
+    document.getElementById('inputCatatan').value = '';
+
+    setTimeout(function() {
+        showNotification('Pesanan #' + orderId + ' berhasil dikirim! 🎉', 'success');
+    }, 500);
+}
 
         function showNotification(text, type) {
             type = type || 'success';
