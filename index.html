@@ -1088,31 +1088,120 @@ window.addEventListener('storage', function(e) {
         document.getElementById('modalConfirm').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
         function sendToWhatsApp() {
-            var nama = document.getElementById('inputNama').value.trim();
-            var phone = document.getElementById('inputPhone').value.trim();
-            var alamat = document.getElementById('inputAlamat').value.trim();
-            var catatan = document.getElementById('inputCatatan').value.trim();
-            var message = '🛒 *PESANAN BARU - ' + STORE_NAME + '*\n━━━━━━━━━━━━━━━━━━━━━\n\nHalo Admin ' + STORE_NAME + '! 👋\nSaya ingin memesan:\n\n👤 *DATA PEMESAN*\nNama : ' + nama + '\nNo. WA : ' + phone + '\nAlamat : ' + alamat + '\n';
-            if (catatan) message += 'Catatan : ' + catatan + '\n';
-            message += '\n📦 *DETAIL PESANAN*\n─────────────────\n';
-            var subtotal = 0;
-            for (var i = 0; i < cart.length; i++) {
-                var item = cart[i];
-                var itemTotal = item.price * item.qty;
-                subtotal += itemTotal;
-                message += (i + 1) + '. *' + item.name + '*\n   ' + item.qty + ' x Rp ' + formatNumber(item.price) + ' = *Rp ' + formatNumber(itemTotal) + '*\n\n';
-            }
-            message += '─────────────────\n💵 Subtotal: Rp ' + formatNumber(subtotal) + '\n';
-            if (appliedVoucher) { message += '🎫 *Voucher: ' + appliedVoucher.code + '*\n💸 Diskon: - Rp ' + formatNumber(appliedVoucher.discount) + '\n'; }
-            var total = subtotal - (appliedVoucher ? appliedVoucher.discount : 0);
-            message += '💰 *TOTAL: Rp ' + formatNumber(total) + '*\n🚚 Ongkir: Dikonfirmasi kemudian\n\n━━━━━━━━━━━━━━━━━━━━━\nTerima kasih! 🙏';
-            window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message), '_blank');
-            for (var j = 0; j < cart.length; j++) { var product = findProduct(cart[j].id); if (product) product.stock = Math.max(0, product.stock - cart[j].qty); }
-            cart = []; appliedVoucher = null; updateCart(); renderProducts(); closeModal();
-            document.getElementById('voucherApplied').classList.remove('show');
-            document.getElementById('voucherActiveBadge').style.display = 'none';
-            document.getElementById('voucherSection').classList.remove('open');
-        }
+    var nama = document.getElementById('inputNama').value.trim();
+    var phone = document.getElementById('inputPhone').value.trim();
+    var alamat = document.getElementById('inputAlamat').value.trim();
+    var catatan = document.getElementById('inputCatatan').value.trim();
+
+    // Hitung total
+    var subtotal = 0;
+    for (var i = 0; i < cart.length; i++) {
+        subtotal += cart[i].price * cart[i].qty;
+    }
+    var discountAmount = appliedVoucher ? appliedVoucher.discount : 0;
+    if (discountAmount > subtotal) discountAmount = subtotal;
+    var total = subtotal - discountAmount;
+
+    // ====== GENERATE ORDER ID ======
+    var now = new Date();
+    var dateStr = now.getFullYear() + 
+                  ('0' + (now.getMonth() + 1)).slice(-2) + 
+                  ('0' + now.getDate()).slice(-2);
+    var randomStr = Math.random().toString(36).substring(2, 7).toUpperCase();
+    var orderId = 'YOCHI-' + dateStr + '-' + randomStr;
+
+    // ====== SIMPAN KE LOCALSTORAGE (RIWAYAT ORDER) ======
+    var STORAGE_KEY = 'yochi_orders';
+    var storedOrders = localStorage.getItem(STORAGE_KEY);
+    var ordersList = storedOrders ? JSON.parse(storedOrders) : [];
+    
+    var orderData = {
+        id: orderId,
+        timestamp: now.getTime(),
+        buyer: {
+            nama: nama,
+            phone: phone,
+            alamat: alamat,
+            catatan: catatan
+        },
+        items: cart.map(function(item) {
+            return {
+                id: item.id,
+                name: item.name,
+                price: item.price,
+                qty: item.qty,
+                image: item.image
+            };
+        }),
+        subtotal: subtotal,
+        voucher: appliedVoucher ? appliedVoucher.code : null,
+        discount: discountAmount,
+        total: total,
+        status: 'pending'
+    };
+    
+    ordersList.unshift(orderData);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(ordersList));
+
+    // ====== KIRIM KE WHATSAPP ======
+    var message = '🛒 *PESANAN BARU - ' + STORE_NAME + '*\n';
+    message += '━━━━━━━━━━━━━━━━━━━━━\n\n';
+    message += '📋 *ID Order: ' + orderId + '*\n';
+    message += '🕐 Waktu: ' + now.toLocaleString('id-ID') + '\n\n';
+    message += 'Halo Admin ' + STORE_NAME + '! 👋\nSaya ingin memesan:\n\n';
+    message += '👤 *DATA PEMESAN*\n';
+    message += 'Nama : ' + nama + '\n';
+    message += 'No. WA : ' + phone + '\n';
+    message += 'Alamat : ' + alamat + '\n';
+    if (catatan) message += 'Catatan : ' + catatan + '\n';
+    message += '\n📦 *DETAIL PESANAN*\n─────────────────\n';
+    
+    for (var j = 0; j < cart.length; j++) {
+        var item = cart[j];
+        var itemTotal = item.price * item.qty;
+        message += (j + 1) + '. *' + item.name + '*\n';
+        message += '   ' + item.qty + ' x Rp ' + formatNumber(item.price) + ' = *Rp ' + formatNumber(itemTotal) + '*\n\n';
+    }
+    
+    message += '─────────────────\n';
+    message += '💵 Subtotal: Rp ' + formatNumber(subtotal) + '\n';
+    if (appliedVoucher) {
+        message += '🎫 *Voucher: ' + appliedVoucher.code + '*\n';
+        message += '💸 Diskon: - Rp ' + formatNumber(discountAmount) + '\n';
+    }
+    message += '💰 *TOTAL: Rp ' + formatNumber(total) + '*\n';
+    message += '🚚 Ongkir: Dikonfirmasi kemudian\n\n';
+    message += '━━━━━━━━━━━━━━━━━━━━━\n';
+    message += 'Terima kasih! 🙏';
+
+    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message), '_blank');
+
+    // ====== KURANGI STOK ======
+    for (var k = 0; k < cart.length; k++) {
+        var product = findProduct(cart[k].id);
+        if (product) product.stock = Math.max(0, product.stock - cart[k].qty);
+    }
+
+    // ====== RESET STATE ======
+    cart = [];
+    appliedVoucher = null;
+    updateCart();
+    renderProducts();
+    closeModal();
+    
+    document.getElementById('voucherApplied').classList.remove('show');
+    document.getElementById('voucherActiveBadge').style.display = 'none';
+    document.getElementById('voucherSection').classList.remove('open');
+    
+    document.getElementById('inputNama').value = '';
+    document.getElementById('inputPhone').value = '';
+    document.getElementById('inputAlamat').value = '';
+    document.getElementById('inputCatatan').value = '';
+
+    setTimeout(function() {
+        showNotification('Pesanan #' + orderId + ' berhasil dikirim! 🎉', 'success');
+    }, 500);
+}
 
         function showNotification(text, type) {
             type = type || 'success';
