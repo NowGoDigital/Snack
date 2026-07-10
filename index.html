@@ -161,6 +161,62 @@
         /* ========== PRODUCTS ========== */
         .products { padding:120px 5%; background:var(--gray-100); position:relative; }
         .products::before { content:''; position:absolute; top:0; left:0; right:0; height:200px; background:linear-gradient(to bottom,var(--white),var(--gray-100)); }
+
+        /* ✅ NEW: CATEGORY TABS */
+        .category-tabs-wrapper {
+            max-width: 1200px;
+            margin: 0 auto 35px;
+            position: relative;
+            z-index: 2;
+        }
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .category-tabs::-webkit-scrollbar { display: none; }
+        .cat-tab {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 22px;
+            background: white;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 30px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .cat-tab:hover { border-color: var(--primary-green); color: var(--primary-green); }
+        .cat-tab.active {
+            background: var(--gradient-green);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(45,138,78,0.3);
+        }
+        .cat-tab i { font-size: 0.9rem; }
+        .cat-tab .tab-count {
+            background: rgba(255,255,255,0.25);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .cat-tab.active .tab-count {
+            background: rgba(255,255,255,0.3);
+        }
+        .cat-tab:not(.active) .tab-count {
+            background: var(--gray-100);
+            color: var(--gray-600);
+        }
+
         .products-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(350px,1fr)); gap:40px; max-width:1200px; margin:0 auto; position:relative; z-index:2; }
         .product-card { background:white; border-radius:24px; overflow:hidden; transition:all 0.4s ease; box-shadow:0 5px 20px rgba(0,0,0,0.05); position:relative; }
         .product-card:hover { transform:translateY(-10px); box-shadow:0 20px 60px rgba(0,0,0,0.12); }
@@ -240,7 +296,7 @@
         .voucher-toggle-arrow { color: var(--gray-600); transition: transform 0.3s; font-size: 0.9rem; }
         .voucher-section.open .voucher-toggle-arrow { transform: rotate(180deg); }
         .voucher-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-        .voucher-section.open .voucher-content { max-height: 400px; }
+        .voucher-section.open .voucher-content { max-height: 500px; }
         .voucher-content-inner { padding: 0 20px 20px; }
         .voucher-input-wrapper { display: flex; gap: 8px; margin-bottom: 12px; }
         .voucher-input { flex: 1; padding: 12px 16px; border: 1.5px solid var(--gray-200); border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; outline: none; background: white; transition: all 0.3s; }
@@ -448,6 +504,7 @@
             .product-price { font-size: 1.3rem; }
             .product-footer { flex-wrap: wrap; gap: 10px; }
             .btn-order { flex: 1; justify-content: center; min-width: 140px; }
+            .category-tabs-wrapper { padding: 0; }
             .voucher-section { margin: 15px 20px 10px; }
             .voucher-toggle { padding: 14px 16px; }
             .voucher-content-inner { padding: 0 16px 16px; }
@@ -574,6 +631,10 @@
             <h2 class="section-title">Varian Produk YOCHI SNACK</h2>
             <p class="section-desc">Tersedia dalam berbagai varian rasa dan ukuran. Semua dibuat fresh setiap hari dengan bahan pilihan terbaik.</p>
         </div>
+        <!-- ✅ NEW: Category Tabs -->
+        <div class="category-tabs-wrapper">
+            <div class="category-tabs" id="categoryTabs"></div>
+        </div>
         <div class="products-grid" id="productsGrid"></div>
     </section>
 
@@ -649,21 +710,8 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="voucher-hints">
-                                <div class="voucher-hints-title"><i class="fas fa-lightbulb"></i> Coba kode ini:</div>
-                                <div class="voucher-hint-item" onclick="useHint('WELCOME10')">
-                                    <span class="voucher-hint-code">WELCOME10</span>
-                                    <span class="voucher-hint-desc">Diskon 10% pengguna baru</span>
-                                </div>
-                                <div class="voucher-hint-item" onclick="useHint('HEMAT20')">
-                                    <span class="voucher-hint-code">HEMAT20</span>
-                                    <span class="voucher-hint-desc">Potongan Rp 20.000</span>
-                                </div>
-                                <div class="voucher-hint-item" onclick="useHint('YOCHI50')">
-                                    <span class="voucher-hint-code">YOCHI50</span>
-                                    <span class="voucher-hint-desc">Diskon 50% max 25rb</span>
-                                </div>
-                            </div>
+                            <!-- ✅ Hints sekarang di-render dinamis via JS -->
+                            <div class="voucher-hints" id="voucherHints"></div>
                         </div>
                     </div>
                 </div>
@@ -827,14 +875,21 @@
             orders: 'yochi_orders'
         };
 
-        // ============ DATA DEFAULT ============
+        // ============ ✅ DATA DEFAULT (SINKRON DENGAN ADMIN) ============
+        var DEFAULT_CATEGORIES = [
+            { id: 'stik-bayam', name: 'Stik Bayam', icon: 'fa-leaf' },
+            { id: 'stik-wortel', name: 'Stik Wortel', icon: 'fa-carrot' },
+            { id: 'paket-hemat', name: 'Paket Hemat', icon: 'fa-box-open' },
+            { id: 'hampers', name: 'Hampers', icon: 'fa-gift' }
+        ];
+
         var DEFAULT_PRODUCTS = [
-            { id: 'bayam-original', name: 'Stik Bayam Original', category: 'Stik Bayam', categoryIcon: 'fa-leaf', desc: 'Stik renyah dari bayam segar asli, kaya zat besi dan vitamin. Rasa gurih alami yang bikin nagih!', price: 25000, originalPrice: 35000, image: 'https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=100&q=60', badge: '\u{1F525} Best Seller', badgeClass: 'badge-bestseller', rating: '5.0', reviews: 328, stock: 24 },
-            { id: 'wortel-original', name: 'Stik Wortel Original', category: 'Stik Wortel', categoryIcon: 'fa-carrot', desc: 'Stik wortel renyah kaya beta karoten. Camilan sehat yang baik untuk mata dan kulit, disukai anak-anak!', price: 25000, originalPrice: 35000, image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=100&q=60', badge: '\u2B50 Favorit', badgeClass: 'badge-bestseller', rating: '4.9', reviews: 256, stock: 18 },
-            { id: 'combo', name: 'Paket Combo (Bayam + Wortel)', category: 'Paket Hemat', categoryIcon: 'fa-box-open', desc: 'Dapatkan kedua varian stik bayam dan wortel dalam satu paket hemat! Lebih untung dan lebih lengkap.', price: 40000, originalPrice: 50000, image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=100&q=60', badge: '\u2728 Baru', badgeClass: 'badge-new', rating: '4.8', reviews: 189, stock: 12 },
-            { id: 'bayam-pedas', name: 'Stik Bayam Pedas Manis', category: 'Stik Bayam', categoryIcon: 'fa-pepper-hot', desc: 'Perpaduan rasa pedas dan manis yang sempurna! Cocok untuk pecinta camilan dengan sensasi rasa berani.', price: 28000, originalPrice: 38000, image: 'https://images.unsplash.com/photo-1599490659213-e2b9537bd087?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1599490659213-e2b9537bd087?w=100&q=60', badge: '\u{1F336}\uFE0F Spicy', badgeClass: 'badge-new', rating: '4.9', reviews: 142, stock: 7 },
-            { id: 'wortel-keju', name: 'Stik Wortel Rasa Keju', category: 'Stik Wortel', categoryIcon: 'fa-cheese', desc: 'Stik wortel dengan taburan keju premium yang gurih. Favorit anak-anak dan dewasa!', price: 28000, originalPrice: 38000, image: 'https://images.unsplash.com/photo-1543339308-d595b10a5251?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1543339308-d595b10a5251?w=100&q=60', badge: '\u{1F3C6} Premium', badgeClass: 'badge-bestseller', rating: '4.7', reviews: 98, stock: 15 },
-            { id: 'hampers', name: 'Paket Hampers Premium', category: 'Hampers', categoryIcon: 'fa-gift', desc: 'Paket hampers eksklusif berisi 4 varian produk YOCHI SNACK. Cocok untuk hadiah dan oleh-oleh!', price: 95000, originalPrice: 120000, image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=100&q=60', badge: '\u{1F381} Gift Set', badgeClass: 'badge-new', rating: '5.0', reviews: 76, stock: 5 }
+            { id: 'bayam-original', name: 'Stik Bayam Original', categoryId: 'stik-bayam', category: 'Stik Bayam', categoryIcon: 'fa-leaf', desc: 'Stik renyah dari bayam segar asli, kaya zat besi dan vitamin. Rasa gurih alami yang bikin nagih!', price: 25000, originalPrice: 35000, image: 'https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1576045057995-568f5923f3fb?w=100&q=60', badge: '🔥 Best Seller', badgeClass: 'badge-bestseller', rating: '5.0', reviews: 328, stock: 24 },
+            { id: 'wortel-original', name: 'Stik Wortel Original', categoryId: 'stik-wortel', category: 'Stik Wortel', categoryIcon: 'fa-carrot', desc: 'Stik wortel renyah kaya beta karoten. Camilan sehat yang baik untuk mata dan kulit, disukai anak-anak!', price: 25000, originalPrice: 35000, image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=100&q=60', badge: '⭐ Favorit', badgeClass: 'badge-bestseller', rating: '4.9', reviews: 256, stock: 18 },
+            { id: 'combo', name: 'Paket Combo (Bayam + Wortel)', categoryId: 'paket-hemat', category: 'Paket Hemat', categoryIcon: 'fa-box-open', desc: 'Dapatkan kedua varian stik bayam dan wortel dalam satu paket hemat! Lebih untung dan lebih lengkap.', price: 40000, originalPrice: 50000, image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=100&q=60', badge: '✨ Baru', badgeClass: 'badge-new', rating: '4.8', reviews: 189, stock: 12 },
+            { id: 'bayam-pedas', name: 'Stik Bayam Pedas Manis', categoryId: 'stik-bayam', category: 'Stik Bayam', categoryIcon: 'fa-leaf', desc: 'Perpaduan rasa pedas dan manis yang sempurna! Cocok untuk pecinta camilan dengan sensasi rasa berani.', price: 28000, originalPrice: 38000, image: 'https://images.unsplash.com/photo-1599490659213-e2b9537bd087?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1599490659213-e2b9537bd087?w=100&q=60', badge: '🌶️ Spicy', badgeClass: 'badge-new', rating: '4.9', reviews: 142, stock: 7 },
+            { id: 'wortel-keju', name: 'Stik Wortel Rasa Keju', categoryId: 'stik-wortel', category: 'Stik Wortel', categoryIcon: 'fa-carrot', desc: 'Stik wortel dengan taburan keju premium yang gurih. Favorit anak-anak dan dewasa!', price: 28000, originalPrice: 38000, image: 'https://images.unsplash.com/photo-1543339308-d595b10a5251?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1543339308-d595b10a5251?w=100&q=60', badge: '🏆 Premium', badgeClass: 'badge-bestseller', rating: '4.7', reviews: 98, stock: 15 },
+            { id: 'hampers', name: 'Paket Hampers Premium', categoryId: 'hampers', category: 'Hampers', categoryIcon: 'fa-gift', desc: 'Paket hampers eksklusif berisi 4 varian produk YOCHI SNACK. Cocok untuk hadiah dan oleh-oleh!', price: 95000, originalPrice: 120000, image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=75', imageThumb: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=100&q=60', badge: '🎁 Gift Set', badgeClass: 'badge-new', rating: '5.0', reviews: 76, stock: 5 }
         ];
 
         var DEFAULT_VOUCHERS = {
@@ -845,27 +900,82 @@
 
         // ============ LOAD DATA DARI LOCALSTORAGE (SYNC DENGAN ADMIN) ============
         var storedProducts = localStorage.getItem(STORAGE_KEYS.products);
+        var storedCategories = localStorage.getItem(STORAGE_KEYS.categories);
         var storedVouchers = localStorage.getItem(STORAGE_KEYS.vouchers);
 
         var productsData = storedProducts ? JSON.parse(storedProducts) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+        var categoriesData = storedCategories ? JSON.parse(storedCategories) : JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
         var vouchersData = storedVouchers ? JSON.parse(storedVouchers) : JSON.parse(JSON.stringify(DEFAULT_VOUCHERS));
 
         // ✅ SYNC: Jika admin update data, website otomatis reload
         window.addEventListener('storage', function(e) {
-            if (e.key === STORAGE_KEYS.products || e.key === STORAGE_KEYS.vouchers) {
+            if (e.key === STORAGE_KEYS.products || e.key === STORAGE_KEYS.vouchers || e.key === STORAGE_KEYS.categories) {
                 location.reload();
             }
         });
 
         var appliedVoucher = null;
         var cart = [];
+        var activeCategory = 'all';
+
+        // ============ ✅ RENDER CATEGORY TABS ============
+        function renderCategoryTabs() {
+            var container = document.getElementById('categoryTabs');
+            var html = '<button class="cat-tab' + (activeCategory === 'all' ? ' active' : '') + '" onclick="filterCategory(\'all\', this)"><i class="fas fa-th-large"></i> Semua <span class="tab-count">' + productsData.length + '</span></button>';
+            
+            for (var i = 0; i < categoriesData.length; i++) {
+                var cat = categoriesData[i];
+                var count = 0;
+                for (var j = 0; j < productsData.length; j++) {
+                    if (productsData[j].categoryId === cat.id) count++;
+                }
+                html += '<button class="cat-tab' + (activeCategory === cat.id ? ' active' : '') + '" onclick="filterCategory(\'' + cat.id + '\', this)"><i class="fas ' + cat.icon + '"></i> ' + cat.name + ' <span class="tab-count">' + count + '</span></button>';
+            }
+            container.innerHTML = html;
+        }
+
+        function filterCategory(catId, btn) {
+            activeCategory = catId;
+            document.querySelectorAll('.cat-tab').forEach(function(t) { t.classList.remove('active'); });
+            if (btn) btn.classList.add('active');
+            renderProducts();
+        }
+
+        // ============ ✅ RENDER VOUCHER HINTS (DINAMIS) ============
+        function renderVoucherHints() {
+            var container = document.getElementById('voucherHints');
+            if (!container) return;
+            var html = '<div class="voucher-hints-title"><i class="fas fa-lightbulb"></i> Kode tersedia:</div>';
+            var keys = Object.keys(vouchersData);
+            if (keys.length === 0) {
+                html += '<div style="font-size:0.78rem; color:var(--gray-600); padding:6px 10px;">Belum ada voucher tersedia</div>';
+            } else {
+                for (var i = 0; i < keys.length; i++) {
+                    var code = keys[i];
+                    var v = vouchersData[code];
+                    var desc = v.desc || (v.type === 'percent' ? 'Diskon ' + v.value + '%' : 'Potongan Rp ' + formatNumber(v.value));
+                    html += '<div class="voucher-hint-item" onclick="useHint(\'' + code + '\')">' +
+                        '<span class="voucher-hint-code">' + code + '</span>' +
+                        '<span class="voucher-hint-desc">' + desc + '</span>' +
+                    '</div>';
+                }
+            }
+            container.innerHTML = html;
+        }
 
         // ============ RENDER PRODUCTS ============
         function renderProducts() {
             var grid = document.getElementById('productsGrid');
+            var filtered = activeCategory === 'all' ? productsData : productsData.filter(function(p) { return p.categoryId === activeCategory; });
+            
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--gray-600);"><i class="fas fa-box-open" style="font-size:3rem; color:var(--gray-200); margin-bottom:15px; display:block;"></i><h3 style="color:var(--dark); margin-bottom:8px;">Tidak ada produk</h3><p style="font-size:0.9rem;">Produk untuk kategori ini belum tersedia</p></div>';
+                return;
+            }
+
             var html = '';
-            for (var i = 0; i < productsData.length; i++) {
-                var p = productsData[i];
+            for (var i = 0; i < filtered.length; i++) {
+                var p = filtered[i];
                 var isDisabled = p.stock <= 0;
                 html += '<div class="product-card reveal active" data-product-id="' + p.id + '">' +
                     (p.badge ? '<span class="product-badge ' + (p.badgeClass || '') + '">' + p.badge + '</span>' : '') +
@@ -923,7 +1033,7 @@
         function addToOrder(productId, btnElement) {
             var product = findProduct(productId);
             if (!product || product.stock <= 0) {
-                showNotification('Stok produk habis! \u{1F622}', 'error');
+                showNotification('Stok produk habis! 😢', 'error');
                 return;
             }
             
@@ -958,7 +1068,7 @@
             
             setTimeout(function() {
                 updateCart();
-                showNotification(product.name + ' ditambahkan! \u{1F389}');
+                showNotification(product.name + ' ditambahkan! 🎉');
             }, 400);
             
             setTimeout(function() {
@@ -1050,7 +1160,6 @@
             var totalItems = 0;
             for (var i = 0; i < cart.length; i++) totalItems += cart[i].qty;
             
-            // Badge update
             if (totalItems > 0) {
                 cartBadge.textContent = totalItems > 99 ? '99+' : totalItems;
                 cartBadge.classList.add('show');
@@ -1063,7 +1172,6 @@
                 cartNavBtn.classList.remove('has-items');
             }
             
-            // Empty state
             if (cart.length === 0) {
                 emptyCart.style.display = 'block';
                 cartItems.innerHTML = '';
@@ -1118,7 +1226,6 @@
             
             if (appliedVoucher) {
                 discountAmount = appliedVoucher.discount;
-                // ✅ FIX: Diskon tidak boleh melebihi subtotal
                 if (discountAmount > subtotal) discountAmount = subtotal;
                 discountRow.style.display = 'flex';
                 discountAmountEl.textContent = 'Rp ' + formatNumber(discountAmount);
@@ -1127,9 +1234,7 @@
             }
             
             document.getElementById('subtotal').textContent = 'Rp ' + formatNumber(subtotal);
-            
             var total = subtotal - discountAmount;
-            // ✅ FIX: Total tidak boleh negatif
             if (total < 0) total = 0;
             document.getElementById('totalPrice').textContent = 'Rp ' + formatNumber(total);
         }
@@ -1151,13 +1256,13 @@
             if (!code) { showVoucherMessage('Masukkan kode voucher terlebih dahulu', 'error'); return; }
             
             var voucher = vouchersData[code];
-            if (!voucher) { showVoucherMessage('\u274C Kode voucher tidak valid', 'error'); return; }
+            if (!voucher) { showVoucherMessage('❌ Kode voucher tidak valid', 'error'); return; }
             
             var subtotal = 0;
             for (var i = 0; i < cart.length; i++) subtotal += cart[i].price * cart[i].qty;
             
             if (voucher.minOrder > 0 && subtotal < voucher.minOrder) {
-                showVoucherMessage('\u274C Minimum belanja Rp ' + formatNumber(voucher.minOrder) + ' (saat ini Rp ' + formatNumber(subtotal) + ')', 'error');
+                showVoucherMessage('❌ Minimum belanja Rp ' + formatNumber(voucher.minOrder) + ' (saat ini Rp ' + formatNumber(subtotal) + ')', 'error');
                 return;
             }
             
@@ -1168,14 +1273,12 @@
             } else if (voucher.type === 'fixed') {
                 discount = voucher.value;
             }
-            
-            // ✅ FIX: Diskon tidak boleh melebihi subtotal
             if (discount > subtotal) discount = subtotal;
             
             appliedVoucher = { code: code, desc: voucher.desc || '', discount: discount };
             input.value = '';
             
-            showVoucherMessage('\u2705 Voucher berhasil diterapkan! Hemat Rp ' + formatNumber(discount), 'success');
+            showVoucherMessage('✅ Voucher berhasil diterapkan! Hemat Rp ' + formatNumber(discount), 'success');
             document.getElementById('appliedCode').textContent = code;
             document.getElementById('appliedDesc').textContent = voucher.desc || 'Hemat Rp ' + formatNumber(discount);
             document.getElementById('voucherApplied').classList.add('show');
@@ -1214,7 +1317,6 @@
             document.getElementById('voucherMessage').classList.remove('show');
         }
 
-        // Enter key untuk voucher
         document.addEventListener('DOMContentLoaded', function() {
             var vInput = document.getElementById('voucherInput');
             if (vInput) {
@@ -1263,7 +1365,6 @@
             confirmItems.innerHTML = html;
             
             var discountAmount = appliedVoucher ? appliedVoucher.discount : 0;
-            // ✅ FIX: Diskon tidak melebihi subtotal
             if (discountAmount > subtotal) discountAmount = subtotal;
             
             var confirmSummary = document.getElementById('confirmSummary');
@@ -1279,7 +1380,6 @@
             }
             
             var total = subtotal - discountAmount;
-            // ✅ FIX: Total tidak boleh negatif
             if (total < 0) total = 0;
             document.getElementById('confirmTotal').textContent = 'Rp ' + formatNumber(total);
             
@@ -1296,35 +1396,26 @@
             if (e.target === this) closeModal();
         });
 
-        // ============ SEND TO WHATSAPP (✅ FIXED) ============
+        // ============ SEND TO WHATSAPP ============
         function sendToWhatsApp() {
             var nama = document.getElementById('inputNama').value.trim();
             var phone = document.getElementById('inputPhone').value.trim();
             var alamat = document.getElementById('inputAlamat').value.trim();
             var catatan = document.getElementById('inputCatatan').value.trim();
             
-            // Hitung subtotal
             var subtotal = 0;
-            for (var i = 0; i < cart.length; i++) {
-                subtotal += cart[i].price * cart[i].qty;
-            }
+            for (var i = 0; i < cart.length; i++) subtotal += cart[i].price * cart[i].qty;
             
             var discountAmount = appliedVoucher ? appliedVoucher.discount : 0;
-            // ✅ FIX: Diskon tidak melebihi subtotal
             if (discountAmount > subtotal) discountAmount = subtotal;
             var total = subtotal - discountAmount;
-            // ✅ FIX: Total tidak negatif
             if (total < 0) total = 0;
             
-            // ====== ✅ GENERATE ORDER ID ======
             var now = new Date();
-            var dateStr = now.getFullYear() + 
-                          ('0' + (now.getMonth() + 1)).slice(-2) + 
-                          ('0' + now.getDate()).slice(-2);
+            var dateStr = now.getFullYear() + ('0' + (now.getMonth() + 1)).slice(-2) + ('0' + now.getDate()).slice(-2);
             var randomStr = Math.random().toString(36).substring(2, 7).toUpperCase();
             var orderId = 'YOCHI-' + dateStr + '-' + randomStr;
             
-            // ====== ✅ SIMPAN ORDER KE LOCALSTORAGE ======
             var storedOrders = localStorage.getItem(STORAGE_KEYS.orders);
             var ordersList = storedOrders ? JSON.parse(storedOrders) : [];
             
@@ -1345,18 +1436,17 @@
             ordersList.unshift(orderData);
             localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(ordersList));
             
-            // ====== KIRIM KE WHATSAPP ======
-            var message = '\u{1F6D2} *PESANAN BARU - ' + STORE_NAME + '*\n';
-            message += '\u2501'.repeat(20) + '\n\n';
-            message += '\u{1F4CB} *ID Order: ' + orderId + '*\n';
-            message += '\u{1F550} Waktu: ' + now.toLocaleString('id-ID') + '\n\n';
-            message += 'Halo Admin ' + STORE_NAME + '! \u{1F44B}\nSaya ingin memesan:\n\n';
-            message += '\u{1F464} *DATA PEMESAN*\n';
+            var message = '🛒 *PESANAN BARU - ' + STORE_NAME + '*\n';
+            message += '━━━━━━━━━━━━━━━━━━━━━\n\n';
+            message += '📋 *ID Order: ' + orderId + '*\n';
+            message += '🕐 Waktu: ' + now.toLocaleString('id-ID') + '\n\n';
+            message += 'Halo Admin ' + STORE_NAME + '! 👋\nSaya ingin memesan:\n\n';
+            message += '👤 *DATA PEMESAN*\n';
             message += 'Nama : ' + nama + '\n';
             message += 'No. WA : ' + phone + '\n';
             message += 'Alamat : ' + alamat + '\n';
             if (catatan) message += 'Catatan : ' + catatan + '\n';
-            message += '\n\u{1F4E6} *DETAIL PESANAN*\n' + '\u2500'.repeat(17) + '\n';
+            message += '\n📦 *DETAIL PESANAN*\n─────────────────\n';
             
             for (var j = 0; j < cart.length; j++) {
                 var item = cart[j];
@@ -1365,34 +1455,30 @@
                 message += '   ' + item.qty + ' x Rp ' + formatNumber(item.price) + ' = *Rp ' + formatNumber(itemTotal) + '*\n\n';
             }
             
-            message += '\u2500'.repeat(17) + '\n';
-            message += '\u{1F4B5} Subtotal: Rp ' + formatNumber(subtotal) + '\n';
+            message += '─────────────────\n';
+            message += '💵 Subtotal: Rp ' + formatNumber(subtotal) + '\n';
             if (appliedVoucher) {
-                message += '\u{1F3AB} *Voucher: ' + appliedVoucher.code + '*\n';
-                message += '\u{1F4B8} Diskon: - Rp ' + formatNumber(discountAmount) + '\n';
+                message += '🎫 *Voucher: ' + appliedVoucher.code + '*\n';
+                message += '💸 Diskon: - Rp ' + formatNumber(discountAmount) + '\n';
             }
-            message += '\u{1F4B0} *TOTAL: Rp ' + formatNumber(total) + '*\n';
-            message += '\u{1F69A} Ongkir: Dikonfirmasi kemudian\n\n';
-            message += '\u2501'.repeat(20) + '\n';
-            message += 'Terima kasih! \u{1F64F}';
+            message += '💰 *TOTAL: Rp ' + formatNumber(total) + '*\n';
+            message += '🚚 Ongkir: Dikonfirmasi kemudian\n\n';
+            message += '━━━━━━━━━━━━━━━━━━━━━\n';
+            message += 'Terima kasih! 🙏';
             
             window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message), '_blank');
             
-            // ====== ✅ KURANGI STOK + SIMPAN KE LOCALSTORAGE ======
             for (var k = 0; k < cart.length; k++) {
                 var product = findProduct(cart[k].id);
-                if (product) {
-                    product.stock = Math.max(0, product.stock - cart[k].qty);
-                }
+                if (product) product.stock = Math.max(0, product.stock - cart[k].qty);
             }
-            // ✅ FIX KRITIS: Simpan stok yang sudah dikurangi ke localStorage
             localStorage.setItem(STORAGE_KEYS.products, JSON.stringify(productsData));
             
-            // ====== RESET STATE ======
             cart = [];
             appliedVoucher = null;
             updateCart();
             renderProducts();
+            renderCategoryTabs();
             closeModal();
             resetVoucherUI();
             
@@ -1402,7 +1488,7 @@
             document.getElementById('inputCatatan').value = '';
             
             setTimeout(function() {
-                showNotification('Pesanan #' + orderId + ' berhasil dikirim! \u{1F389}', 'success');
+                showNotification('Pesanan #' + orderId + ' berhasil dikirim! 🎉', 'success');
             }, 500);
         }
 
@@ -1454,12 +1540,10 @@
             });
         }
 
-        // Bottom nav click handler
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.bottom-nav-link').forEach(function(link) {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
                     var ripple = document.createElement('span');
                     ripple.className = 'ripple';
                     var rect = this.getBoundingClientRect();
@@ -1472,7 +1556,6 @@
 
                     var targetId = this.getAttribute('href').substring(1);
                     var target = document.getElementById(targetId);
-                    
                     if (target) {
                         var isMobile = window.innerWidth <= 768;
                         var bottomNavHeight = isMobile ? 85 : 0;
@@ -1482,14 +1565,12 @@
                         if (scrollPosition < 0) scrollPosition = 0;
                         window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
                     }
-                    
                     document.querySelectorAll('.bottom-nav-link').forEach(function(l) { l.classList.remove('active'); });
                     this.classList.add('active');
                 });
             });
         });
 
-        // ============ PARTICLES ============
         function createParticles() {
             var container = document.getElementById('particles');
             if (!container) return;
@@ -1521,7 +1602,9 @@
         window.addEventListener('load', function() {
             document.getElementById('loader').classList.add('hidden');
             createParticles();
+            renderCategoryTabs();
             renderProducts();
+            renderVoucherHints();
             revealOnScroll();
             updateActiveBottomNav();
         });
