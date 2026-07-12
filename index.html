@@ -26,6 +26,8 @@
             --white: #ffffff;
             --gray-100: #f8f9fa;
             --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-500: #adb5bd;
             --gray-600: #6c757d;
             --shadow: 0 10px 40px rgba(0,0,0,0.1);
             --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
@@ -158,14 +160,16 @@
         .about-card h3 { font-size:1.3rem; font-weight:700; margin-bottom:12px; color:var(--dark); }
         .about-card p { color:var(--gray-600); line-height:1.7; font-size:0.95rem; }
 
-        /* ========== PRODUCTS ========== */
+        /* ============================================ */
+        /* ========== ✅ PRODUCTS SECTION (BARU) ======= */
+        /* ============================================ */
         .products { padding:120px 5%; background:var(--gray-100); position:relative; }
         .products::before { content:''; position:absolute; top:0; left:0; right:0; height:200px; background:linear-gradient(to bottom,var(--white),var(--gray-100)); }
 
-        /* ✅ NEW: CATEGORY TABS */
+        /* CATEGORY TABS */
         .category-tabs-wrapper {
-            max-width: 1200px;
-            margin: 0 auto 35px;
+            max-width: 1400px;
+            margin: 0 auto 30px;
             position: relative;
             z-index: 2;
         }
@@ -173,20 +177,21 @@
             display: flex;
             gap: 10px;
             overflow-x: auto;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             scrollbar-width: none;
             -ms-overflow-style: none;
+            justify-content: center;
         }
         .category-tabs::-webkit-scrollbar { display: none; }
         .cat-tab {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 11px 22px;
+            padding: 10px 20px;
             background: white;
             border: 1.5px solid var(--gray-200);
             border-radius: 30px;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--gray-600);
             cursor: pointer;
@@ -201,62 +206,254 @@
             border-color: transparent;
             box-shadow: 0 4px 15px rgba(45,138,78,0.3);
         }
-        .cat-tab i { font-size: 0.9rem; }
+        .cat-tab i { font-size: 0.85rem; }
         .cat-tab .tab-count {
             background: rgba(255,255,255,0.25);
             padding: 2px 8px;
             border-radius: 12px;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             font-weight: 700;
         }
-        .cat-tab.active .tab-count {
-            background: rgba(255,255,255,0.3);
+        .cat-tab.active .tab-count { background: rgba(255,255,255,0.3); }
+        .cat-tab:not(.active) .tab-count { background: var(--gray-100); color: var(--gray-600); }
+
+        /* ✅ GRID: 5 KOLOM DI DESKTOP */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
-        .cat-tab:not(.active) .tab-count {
-            background: var(--gray-100);
+
+        /* ✅ PRODUCT CARD — KONSISTEN & PROPORSIONAL */
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        /* Badge */
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 5;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1.4;
+        }
+        .badge-bestseller { background: linear-gradient(135deg, #e53935, #ff5252); }
+        .badge-new { background: linear-gradient(135deg, #2d8a4e, #4caf50); }
+
+        /* Image Wrapper */
+        .product-image-wrapper {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            /* ✅ Aspect ratio konsisten */
+            aspect-ratio: 1 / 0.85;
+        }
+        .product-image-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.06), transparent);
+            pointer-events: none;
+        }
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .product-card:hover .product-image { transform: scale(1.08); }
+
+        /* Info */
+        .product-info {
+            padding: 14px 14px 16px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .product-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.65rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+        }
+        .product-category i { font-size: 0.6rem; }
+        .product-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 5px;
+            line-height: 1.3;
+            /* ✅ Konsisten: max 2 baris */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 2.3em;
+        }
+        .product-desc {
             color: var(--gray-600);
+            font-size: 0.72rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            /* ✅ Konsisten: max 2 baris */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 2.1em;
         }
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+        .product-rating .stars { color: #ffc107; font-size: 0.65rem; }
+        .product-rating .rating-text { font-size: 0.68rem; color: var(--gray-600); }
 
-        .products-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(350px,1fr)); gap:40px; max-width:1200px; margin:0 auto; position:relative; z-index:2; }
-        .product-card { background:white; border-radius:24px; overflow:hidden; transition:all 0.4s ease; box-shadow:0 5px 20px rgba(0,0,0,0.05); position:relative; }
-        .product-card:hover { transform:translateY(-10px); box-shadow:0 20px 60px rgba(0,0,0,0.12); }
-        .product-badge { position:absolute; top:20px; left:20px; z-index:5; padding:6px 14px; border-radius:50px; font-size:0.75rem; font-weight:600; color:white; }
-        .badge-bestseller { background:linear-gradient(135deg,#e53935,#ff5252); }
-        .badge-new { background:linear-gradient(135deg,#2d8a4e,#4caf50); }
-        .product-image { width:100%; height:280px; object-fit:cover; transition:transform 0.5s; }
-        .product-card:hover .product-image { transform:scale(1.05); }
-        .product-image-wrapper { overflow:hidden; position:relative; }
-        .product-image-wrapper::after { content:''; position:absolute; bottom:0; left:0; right:0; height:50%; background:linear-gradient(to top,rgba(0,0,0,0.05),transparent); }
-        .product-info { padding:30px; }
-        .product-category { display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; color:var(--primary-green); font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
-        .product-name { font-size:1.4rem; font-weight:700; color:var(--dark); margin-bottom:8px; }
-        .product-desc { color:var(--gray-600); font-size:0.9rem; line-height:1.6; margin-bottom:20px; }
-        .product-rating { display:flex; align-items:center; gap:5px; margin-bottom:15px; }
-        .product-rating .stars { color:#ffc107; font-size:0.85rem; }
-        .product-rating .rating-text { font-size:0.85rem; color:var(--gray-600); }
-
-        /* Stock indicator */
-        .stock-indicator { display: flex; align-items: center; gap: 8px; margin-bottom: 15px; font-size: 0.8rem; font-weight: 500; }
-        .stock-bar { flex: 1; height: 6px; background: var(--gray-200); border-radius: 3px; overflow: hidden; }
-        .stock-bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; background: var(--gradient-green); }
+        /* Stock Indicator */
+        .stock-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        .stock-bar {
+            flex: 1;
+            height: 4px;
+            background: var(--gray-200);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .stock-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.6s ease;
+            background: var(--gradient-green);
+        }
         .stock-bar-fill.warning { background: var(--gradient-orange); }
         .stock-bar-fill.danger { background: linear-gradient(135deg, #e53935, #ff5252); animation: pulse-stock 1.5s ease-in-out infinite; }
         @keyframes pulse-stock { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
-        .stock-text { font-size: 0.75rem; font-weight: 600; white-space: nowrap; color: var(--gray-600); display: flex; align-items: center; gap: 4px; }
+        .stock-text {
+            font-size: 0.62rem;
+            font-weight: 600;
+            white-space: nowrap;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
         .stock-text.warning { color: var(--warning); }
         .stock-text.danger { color: var(--danger); }
         .stock-text.out { color: var(--danger); font-weight: 700; }
-        .stock-badge-indicator { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; background: #ffebee; color: var(--danger); animation: shake-subtle 2s ease-in-out infinite; margin-bottom: 10px; }
+        .stock-badge-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            padding: 2px 8px;
+            border-radius: 15px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            background: #ffebee;
+            color: var(--danger);
+            animation: shake-subtle 2s ease-in-out infinite;
+            margin-bottom: 6px;
+        }
         @keyframes shake-subtle { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-2px); } 75% { transform: translateX(2px); } }
         .stock-badge-indicator.warning { background: #fff3e0; color: var(--warning); animation: none; }
-        .stock-badge-indicator.in-stock { background: var(--light-green); color: var(--primary-green); animation: none; }
-        .btn-order:disabled { background: var(--gray-200) !important; color: var(--gray-600) !important; cursor: not-allowed; box-shadow: none !important; transform: none !important; }
 
-        .product-footer { display:flex; justify-content:space-between; align-items:center; padding-top:20px; border-top:1px solid var(--gray-200); }
-        .product-price { font-size:1.5rem; font-weight:800; color:var(--primary-green); }
-        .product-price small { font-size:0.8rem; color:var(--gray-600); font-weight:400; text-decoration:line-through; display:block; }
-        .btn-order { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; background:var(--gradient-green); color:white; text-decoration:none; border-radius:50px; font-weight:600; font-size:0.9rem; transition:all 0.3s; border:none; cursor:pointer; font-family: 'Poppins', sans-serif; }
-        .btn-order:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(45,138,78,0.4); }
+        /* Footer */
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid var(--gray-200);
+            margin-top: auto;
+        }
+        .product-price {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            line-height: 1.2;
+        }
+        .product-price small {
+            font-size: 0.65rem;
+            color: var(--gray-500);
+            font-weight: 400;
+            text-decoration: line-through;
+            display: block;
+        }
+        .btn-order {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 14px;
+            background: var(--gradient-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.72rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            white-space: nowrap;
+        }
+        .btn-order:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45,138,78,0.4);
+        }
+        .btn-order i { font-size: 0.7rem; }
+        .btn-order:disabled {
+            background: var(--gray-200) !important;
+            color: var(--gray-600) !important;
+            cursor: not-allowed;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        /* Empty State */
+        .products-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-600);
+        }
+        .products-empty i { font-size: 3rem; color: var(--gray-200); margin-bottom: 15px; display: block; }
+        .products-empty h3 { color: var(--dark); margin-bottom: 8px; font-size: 1.1rem; }
+        .products-empty p { font-size: 0.9rem; }
 
         /* ========== ORDER SECTION ========== */
         .order-section { padding:120px 5%; background:white; }
@@ -459,8 +656,17 @@
         @keyframes slideInRight { from{transform:translateX(100px);opacity:0} to{transform:translateX(0);opacity:1} }
         @keyframes slideOutRight { from{transform:translateX(0);opacity:1} to{transform:translateX(100px);opacity:0} }
 
-        /* ========== RESPONSIVE ========== */
-        @media (max-width:1024px) {
+        /* ============================================ */
+        /* ========== ✅ RESPONSIVE BREAKPOINTS ======== */
+        /* ============================================ */
+
+        /* TABLET LANDSCAPE: 4 kolom */
+        @media (max-width: 1280px) {
+            .products-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        }
+
+        /* TABLET PORTRAIT: 3 kolom */
+        @media (max-width: 1024px) {
             .hero-content { grid-template-columns:1fr; text-align:center; }
             .hero-visual { display:none; }
             .hero-tagline { max-width:100%; margin:0 auto 35px; }
@@ -470,9 +676,11 @@
             .order-container { grid-template-columns:1fr; }
             .testimonial-grid { grid-template-columns:1fr; max-width:500px; }
             .footer-grid { grid-template-columns:1fr 1fr; }
+            .products-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
         }
 
-        @media (max-width:768px) {
+        /* ✅ MOBILE: 2 KOLOM */
+        @media (max-width: 768px) {
             .navbar { display: none; }
             .bottom-nav { display: block; }
             body { padding-bottom: calc(85px + env(safe-area-inset-bottom)); }
@@ -488,23 +696,46 @@
             .stat-item { min-width: 80px; }
             .stat-number { font-size: 1.4rem; }
             .stat-label { font-size: 0.75rem; }
-            .about, .products, .order-section, .testimonials { padding: 70px 5%; }
-            .section-header { margin-bottom: 40px; }
-            .section-title { font-size: 1.7rem; }
+            .about, .products, .order-section, .testimonials { padding: 70px 4%; }
+            .section-header { margin-bottom: 35px; }
+            .section-title { font-size: 1.6rem; }
             .section-desc { font-size: 0.9rem; }
             .about-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; gap: 15px; }
             .about-card { padding: 25px 20px; }
             .about-card-icon { width: 60px; height: 60px; font-size: 1.5rem; margin-bottom: 15px; }
             .about-card h3 { font-size: 1.1rem; }
             .about-card p { font-size: 0.85rem; }
-            .products-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; gap: 20px; }
-            .product-image { height: 220px; }
-            .product-info { padding: 20px; }
-            .product-name { font-size: 1.2rem; }
-            .product-price { font-size: 1.3rem; }
-            .product-footer { flex-wrap: wrap; gap: 10px; }
-            .btn-order { flex: 1; justify-content: center; min-width: 140px; }
-            .category-tabs-wrapper { padding: 0; }
+
+            /* ✅ PRODUK: 2 KOLOM DI MOBILE */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .product-card { border-radius: 14px; }
+            .product-image-wrapper { aspect-ratio: 1 / 0.9; }
+            .product-info { padding: 10px 10px 12px; }
+            .product-category { font-size: 0.58rem; margin-bottom: 4px; letter-spacing: 0.5px; }
+            .product-name { font-size: 0.78rem; min-height: 2.1em; margin-bottom: 4px; }
+            .product-desc { font-size: 0.65rem; margin-bottom: 8px; -webkit-line-clamp: 2; min-height: 1.9em; }
+            .product-rating { margin-bottom: 6px; }
+            .product-rating .stars { font-size: 0.58rem; }
+            .product-rating .rating-text { font-size: 0.6rem; }
+            .stock-indicator { margin-bottom: 6px; gap: 4px; }
+            .stock-bar { height: 3px; }
+            .stock-text { font-size: 0.56rem; }
+            .stock-badge-indicator { font-size: 0.55rem; padding: 2px 6px; margin-bottom: 4px; }
+            .product-footer { padding-top: 8px; gap: 6px; }
+            .product-price { font-size: 0.85rem; }
+            .product-price small { font-size: 0.58rem; }
+            .btn-order { padding: 6px 10px; font-size: 0.65rem; border-radius: 20px; gap: 3px; }
+            .btn-order i { font-size: 0.6rem; }
+            .product-badge { top: 8px; left: 8px; padding: 3px 8px; font-size: 0.58rem; }
+
+            .category-tabs { justify-content: flex-start; }
+            .cat-tab { padding: 8px 14px; font-size: 0.78rem; }
+            .cat-tab i { font-size: 0.78rem; }
+            .cat-tab .tab-count { font-size: 0.62rem; padding: 1px 6px; }
+
             .voucher-section { margin: 15px 20px 10px; }
             .voucher-toggle { padding: 14px 16px; }
             .voucher-content-inner { padding: 0 16px 16px; }
@@ -529,6 +760,18 @@
             .modal-header-confirm { border-radius: 20px 20px 0 0; padding: 20px; }
             .modal-body-confirm { padding: 20px; }
             .modal-footer-confirm { padding: 0 20px 20px; }
+        }
+
+        /* ✅ MOBILE KECIL (< 400px): tetap 2 kolom tapi lebih compact */
+        @media (max-width: 400px) {
+            .products-grid { gap: 8px; }
+            .product-info { padding: 8px 8px 10px; }
+            .product-name { font-size: 0.72rem; }
+            .product-desc { display: none; }
+            .product-price { font-size: 0.78rem; }
+            .btn-order { padding: 5px 8px; font-size: 0.6rem; }
+            .btn-order span { display: none; }
+            .btn-order i { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -631,7 +874,6 @@
             <h2 class="section-title">Varian Produk YOCHI SNACK</h2>
             <p class="section-desc">Tersedia dalam berbagai varian rasa dan ukuran. Semua dibuat fresh setiap hari dengan bahan pilihan terbaik.</p>
         </div>
-        <!-- ✅ NEW: Category Tabs -->
         <div class="category-tabs-wrapper">
             <div class="category-tabs" id="categoryTabs"></div>
         </div>
@@ -710,7 +952,6 @@
                                     </button>
                                 </div>
                             </div>
-                            <!-- ✅ Hints sekarang di-render dinamis via JS -->
                             <div class="voucher-hints" id="voucherHints"></div>
                         </div>
                     </div>
@@ -867,7 +1108,6 @@
         var WHATSAPP_NUMBER = "628175761165";
         var STORE_NAME = "YOCHI SNACK";
 
-        // ============ STORAGE KEYS (SAMA DENGAN ADMIN) ============
         var STORAGE_KEYS = {
             products: 'yochi_products',
             categories: 'yochi_categories',
@@ -875,7 +1115,6 @@
             orders: 'yochi_orders'
         };
 
-        // ============ ✅ DATA DEFAULT (SINKRON DENGAN ADMIN) ============
         var DEFAULT_CATEGORIES = [
             { id: 'stik-bayam', name: 'Stik Bayam', icon: 'fa-leaf' },
             { id: 'stik-wortel', name: 'Stik Wortel', icon: 'fa-carrot' },
@@ -898,7 +1137,6 @@
             'YOCHI50': { type: 'percent', value: 50, maxDiscount: 25000, minOrder: 0, desc: 'Diskon 50% (max Rp 25.000)' }
         };
 
-        // ============ LOAD DATA DARI LOCALSTORAGE (SYNC DENGAN ADMIN) ============
         var storedProducts = localStorage.getItem(STORAGE_KEYS.products);
         var storedCategories = localStorage.getItem(STORAGE_KEYS.categories);
         var storedVouchers = localStorage.getItem(STORAGE_KEYS.vouchers);
@@ -907,7 +1145,6 @@
         var categoriesData = storedCategories ? JSON.parse(storedCategories) : JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
         var vouchersData = storedVouchers ? JSON.parse(storedVouchers) : JSON.parse(JSON.stringify(DEFAULT_VOUCHERS));
 
-        // ✅ SYNC: Jika admin update data, website otomatis reload
         window.addEventListener('storage', function(e) {
             if (e.key === STORAGE_KEYS.products || e.key === STORAGE_KEYS.vouchers || e.key === STORAGE_KEYS.categories) {
                 location.reload();
@@ -918,11 +1155,9 @@
         var cart = [];
         var activeCategory = 'all';
 
-        // ============ ✅ RENDER CATEGORY TABS ============
         function renderCategoryTabs() {
             var container = document.getElementById('categoryTabs');
             var html = '<button class="cat-tab' + (activeCategory === 'all' ? ' active' : '') + '" onclick="filterCategory(\'all\', this)"><i class="fas fa-th-large"></i> Semua <span class="tab-count">' + productsData.length + '</span></button>';
-            
             for (var i = 0; i < categoriesData.length; i++) {
                 var cat = categoriesData[i];
                 var count = 0;
@@ -941,7 +1176,6 @@
             renderProducts();
         }
 
-        // ============ ✅ RENDER VOUCHER HINTS (DINAMIS) ============
         function renderVoucherHints() {
             var container = document.getElementById('voucherHints');
             if (!container) return;
@@ -963,13 +1197,12 @@
             container.innerHTML = html;
         }
 
-        // ============ RENDER PRODUCTS ============
         function renderProducts() {
             var grid = document.getElementById('productsGrid');
             var filtered = activeCategory === 'all' ? productsData : productsData.filter(function(p) { return p.categoryId === activeCategory; });
             
             if (filtered.length === 0) {
-                grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--gray-600);"><i class="fas fa-box-open" style="font-size:3rem; color:var(--gray-200); margin-bottom:15px; display:block;"></i><h3 style="color:var(--dark); margin-bottom:8px;">Tidak ada produk</h3><p style="font-size:0.9rem;">Produk untuk kategori ini belum tersedia</p></div>';
+                grid.innerHTML = '<div class="products-empty"><i class="fas fa-box-open"></i><h3>Tidak ada produk</h3><p>Produk untuk kategori ini belum tersedia</p></div>';
                 return;
             }
 
@@ -984,13 +1217,13 @@
                         '<div class="product-category"><i class="fas ' + (p.categoryIcon || 'fa-tag') + '"></i> ' + escapeHtml(p.category || 'Umum') + '</div>' +
                         '<h3 class="product-name">' + escapeHtml(p.name) + '</h3>' +
                         '<p class="product-desc">' + escapeHtml(p.desc) + '</p>' +
-                        '<div class="product-rating"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span><span class="rating-text">' + (p.rating || '5.0') + ' (' + (p.reviews || 0) + ' ulasan)</span></div>' +
+                        '<div class="product-rating"><span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span><span class="rating-text">' + (p.rating || '5.0') + ' (' + (p.reviews || 0) + ')</span></div>' +
                         renderStockIndicator(p) +
                         '<div class="product-footer">' +
                             '<div class="product-price"><small>Rp ' + formatNumber(p.originalPrice) + '</small>Rp ' + formatNumber(p.price) + '</div>' +
                             (isDisabled 
                                 ? '<button class="btn-order" disabled><i class="fas fa-times-circle"></i> Habis</button>'
-                                : '<button class="btn-order" onclick="addToOrder(\'' + p.id + '\', this)"><i class="fas fa-cart-plus"></i> + Keranjang</button>') +
+                                : '<button class="btn-order" onclick="addToOrder(\'' + p.id + '\', this)"><i class="fas fa-cart-plus"></i> <span>+ Keranjang</span></button>') +
                         '</div>' +
                     '</div>' +
                 '</div>';
@@ -1005,10 +1238,10 @@
             var stockText = '', barClass = '', badgeHtml = '';
             
             if (stock <= 0) {
-                stockText = '<span class="stock-text out"><i class="fas fa-times-circle"></i> Stok Habis</span>';
+                stockText = '<span class="stock-text out"><i class="fas fa-times-circle"></i> Habis</span>';
                 barClass = 'danger'; percent = 0;
             } else if (stock <= 5) {
-                stockText = '<span class="stock-text danger"><i class="fas fa-exclamation-triangle"></i> Sisa ' + stock + '!</span>';
+                stockText = '<span class="stock-text danger"><i class="fas fa-exclamation-triangle"></i> Sisa ' + stock + '</span>';
                 barClass = 'danger';
                 badgeHtml = '<div class="stock-badge-indicator"><i class="fas fa-fire"></i> Segera Habis</div>';
             } else if (stock <= 10) {
@@ -1016,7 +1249,7 @@
                 barClass = 'warning';
                 badgeHtml = '<div class="stock-badge-indicator warning"><i class="fas fa-box-open"></i> Terbatas</div>';
             } else {
-                stockText = '<span class="stock-text"><i class="fas fa-box"></i> Stok: ' + stock + '</span>';
+                stockText = '<span class="stock-text"><i class="fas fa-box"></i> ' + stock + '</span>';
             }
             
             return '<div class="stock-indicator"><div class="stock-bar"><div class="stock-bar-fill ' + barClass + '" style="width:' + percent + '%"></div></div>' + stockText + '</div>' + badgeHtml;
@@ -1029,30 +1262,25 @@
             return null;
         }
 
-        // ============ ADD TO ORDER ============
         function addToOrder(productId, btnElement) {
             var product = findProduct(productId);
             if (!product || product.stock <= 0) {
                 showNotification('Stok produk habis! 😢', 'error');
                 return;
             }
-            
             var existingItem = null;
             for (var i = 0; i < cart.length; i++) {
                 if (cart[i].id === productId) { existingItem = cart[i]; break; }
             }
-            
             var currentQtyInCart = existingItem ? existingItem.qty : 0;
             if (currentQtyInCart >= product.stock) {
                 showNotification('Stok tidak mencukupi! (maks: ' + product.stock + ')', 'error');
                 return;
             }
-            
             if (btnElement) {
                 createFlyingItem(btnElement);
                 buttonFeedback(btnElement);
             }
-            
             if (existingItem) {
                 existingItem.qty += 1;
             } else {
@@ -1065,12 +1293,10 @@
                     maxStock: product.stock
                 });
             }
-            
             setTimeout(function() {
                 updateCart();
                 showNotification(product.name + ' ditambahkan! 🎉');
             }, 400);
-            
             setTimeout(function() {
                 document.getElementById('orderCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 800);
@@ -1121,19 +1347,17 @@
             var originalHTML = btn.innerHTML;
             btn.classList.add('adding');
             setTimeout(function() {
-                btn.innerHTML = '<i class="fas fa-check"></i> Ditambahkan!';
+                btn.innerHTML = '<i class="fas fa-check"></i> <span>✓</span>';
                 btn.classList.remove('adding');
                 btn.classList.add('added');
                 setTimeout(function() { btn.innerHTML = originalHTML; btn.classList.remove('added'); }, 1200);
             }, 300);
         }
 
-        // ============ CART ============
         function updateQty(index, change) {
             var item = cart[index];
             var product = findProduct(item.id);
             var newQty = item.qty + change;
-            
             if (change > 0 && product && newQty > product.stock) {
                 showNotification('Stok tidak cukup! (maks: ' + product.stock + ')', 'error');
                 return;
@@ -1200,7 +1424,6 @@
                 subtotal += itemTotal;
                 var canIncrease = product && item.qty < product.stock;
                 var canDecrease = item.qty > 1;
-                
                 html += '<div class="order-item">' +
                     '<img src="' + (item.image || '') + '" alt="' + escapeHtml(item.name) + '" class="order-item-image" loading="lazy" onerror="this.style.display=\'none\'">' +
                     '<div class="order-item-info">' +
@@ -1223,7 +1446,6 @@
             var discountAmount = 0;
             var discountRow = document.getElementById('discountRow');
             var discountAmountEl = document.getElementById('discountAmount');
-            
             if (appliedVoucher) {
                 discountAmount = appliedVoucher.discount;
                 if (discountAmount > subtotal) discountAmount = subtotal;
@@ -1232,14 +1454,12 @@
             } else {
                 discountRow.style.display = 'none';
             }
-            
             document.getElementById('subtotal').textContent = 'Rp ' + formatNumber(subtotal);
             var total = subtotal - discountAmount;
             if (total < 0) total = 0;
             document.getElementById('totalPrice').textContent = 'Rp ' + formatNumber(total);
         }
 
-        // ============ VOUCHER ============
         function toggleVoucher() {
             document.getElementById('voucherSection').classList.toggle('open');
         }
@@ -1254,18 +1474,14 @@
             var input = document.getElementById('voucherInput');
             var code = input.value.trim().toUpperCase();
             if (!code) { showVoucherMessage('Masukkan kode voucher terlebih dahulu', 'error'); return; }
-            
             var voucher = vouchersData[code];
             if (!voucher) { showVoucherMessage('❌ Kode voucher tidak valid', 'error'); return; }
-            
             var subtotal = 0;
             for (var i = 0; i < cart.length; i++) subtotal += cart[i].price * cart[i].qty;
-            
             if (voucher.minOrder > 0 && subtotal < voucher.minOrder) {
                 showVoucherMessage('❌ Minimum belanja Rp ' + formatNumber(voucher.minOrder) + ' (saat ini Rp ' + formatNumber(subtotal) + ')', 'error');
                 return;
             }
-            
             var discount = 0;
             if (voucher.type === 'percent') {
                 discount = Math.round(subtotal * voucher.value / 100);
@@ -1274,16 +1490,13 @@
                 discount = voucher.value;
             }
             if (discount > subtotal) discount = subtotal;
-            
             appliedVoucher = { code: code, desc: voucher.desc || '', discount: discount };
             input.value = '';
-            
-            showVoucherMessage('✅ Voucher berhasil diterapkan! Hemat Rp ' + formatNumber(discount), 'success');
+            showVoucherMessage('✅ Voucher berhasil! Hemat Rp ' + formatNumber(discount), 'success');
             document.getElementById('appliedCode').textContent = code;
             document.getElementById('appliedDesc').textContent = voucher.desc || 'Hemat Rp ' + formatNumber(discount);
             document.getElementById('voucherApplied').classList.add('show');
             document.getElementById('voucherActiveBadge').style.display = 'inline-flex';
-            
             updateSummary(subtotal);
             setTimeout(function() { hideVoucherMessage(); }, 3000);
         }
@@ -1326,50 +1539,36 @@
             }
         });
 
-        // ============ KONFIRMASI PESANAN ============
         function showConfirmation() {
             var nama = document.getElementById('inputNama').value.trim();
             var phone = document.getElementById('inputPhone').value.trim();
             var alamat = document.getElementById('inputAlamat').value.trim();
             var catatan = document.getElementById('inputCatatan').value.trim();
-            
             if (!nama) { showNotification('Mohon isi Nama Lengkap!', 'error'); document.getElementById('inputNama').focus(); return; }
             if (!phone) { showNotification('Mohon isi No. WhatsApp!', 'error'); document.getElementById('inputPhone').focus(); return; }
             if (!alamat) { showNotification('Mohon isi Alamat Lengkap!', 'error'); document.getElementById('inputAlamat').focus(); return; }
-            
             document.getElementById('confirmNama').textContent = nama;
             document.getElementById('confirmPhone').textContent = phone;
             document.getElementById('confirmAlamat').textContent = alamat;
-            
             if (catatan) {
                 document.getElementById('confirmCatatan').textContent = catatan;
                 document.getElementById('confirmCatatanRow').style.display = 'flex';
             } else {
                 document.getElementById('confirmCatatanRow').style.display = 'none';
             }
-            
             var confirmItems = document.getElementById('confirmItems');
             var html = '', subtotal = 0;
             for (var i = 0; i < cart.length; i++) {
                 var item = cart[i];
                 var itemTotal = item.price * item.qty;
                 subtotal += itemTotal;
-                html += '<div class="confirm-item">' +
-                    '<div class="confirm-item-left">' +
-                        '<span class="confirm-item-name">' + escapeHtml(item.name) + '</span>' +
-                        '<span class="confirm-item-qty">' + item.qty + ' x Rp ' + formatNumber(item.price) + '</span>' +
-                    '</div>' +
-                    '<span class="confirm-item-price">Rp ' + formatNumber(itemTotal) + '</span>' +
-                '</div>';
+                html += '<div class="confirm-item"><div class="confirm-item-left"><span class="confirm-item-name">' + escapeHtml(item.name) + '</span><span class="confirm-item-qty">' + item.qty + ' x Rp ' + formatNumber(item.price) + '</span></div><span class="confirm-item-price">Rp ' + formatNumber(itemTotal) + '</span></div>';
             }
             confirmItems.innerHTML = html;
-            
             var discountAmount = appliedVoucher ? appliedVoucher.discount : 0;
             if (discountAmount > subtotal) discountAmount = subtotal;
-            
             var confirmSummary = document.getElementById('confirmSummary');
             var confirmDiscountRow = document.getElementById('confirmDiscountRow');
-            
             if (appliedVoucher && discountAmount > 0) {
                 confirmSummary.style.display = 'block';
                 document.getElementById('confirmSubtotal').textContent = 'Rp ' + formatNumber(subtotal);
@@ -1378,11 +1577,9 @@
             } else {
                 confirmSummary.style.display = 'none';
             }
-            
             var total = subtotal - discountAmount;
             if (total < 0) total = 0;
             document.getElementById('confirmTotal').textContent = 'Rp ' + formatNumber(total);
-            
             document.getElementById('modalConfirm').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -1391,51 +1588,40 @@
             document.getElementById('modalConfirm').classList.remove('active');
             document.body.style.overflow = '';
         }
-        
         document.getElementById('modalConfirm').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
 
-        // ============ SEND TO WHATSAPP ============
         function sendToWhatsApp() {
             var nama = document.getElementById('inputNama').value.trim();
             var phone = document.getElementById('inputPhone').value.trim();
             var alamat = document.getElementById('inputAlamat').value.trim();
             var catatan = document.getElementById('inputCatatan').value.trim();
-            
             var subtotal = 0;
             for (var i = 0; i < cart.length; i++) subtotal += cart[i].price * cart[i].qty;
-            
             var discountAmount = appliedVoucher ? appliedVoucher.discount : 0;
             if (discountAmount > subtotal) discountAmount = subtotal;
             var total = subtotal - discountAmount;
             if (total < 0) total = 0;
-            
             var now = new Date();
             var dateStr = now.getFullYear() + ('0' + (now.getMonth() + 1)).slice(-2) + ('0' + now.getDate()).slice(-2);
             var randomStr = Math.random().toString(36).substring(2, 7).toUpperCase();
             var orderId = 'YOCHI-' + dateStr + '-' + randomStr;
-            
             var storedOrders = localStorage.getItem(STORAGE_KEYS.orders);
             var ordersList = storedOrders ? JSON.parse(storedOrders) : [];
-            
             var orderData = {
                 id: orderId,
                 timestamp: now.getTime(),
                 buyer: { nama: nama, phone: phone, alamat: alamat, catatan: catatan },
-                items: cart.map(function(item) {
-                    return { id: item.id, name: item.name, price: item.price, qty: item.qty, image: item.image };
-                }),
+                items: cart.map(function(item) { return { id: item.id, name: item.name, price: item.price, qty: item.qty, image: item.image }; }),
                 subtotal: subtotal,
                 voucher: appliedVoucher ? appliedVoucher.code : null,
                 discount: discountAmount,
                 total: total,
                 status: 'pending'
             };
-            
             ordersList.unshift(orderData);
             localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(ordersList));
-            
             var message = '🛒 *PESANAN BARU - ' + STORE_NAME + '*\n';
             message += '━━━━━━━━━━━━━━━━━━━━━\n\n';
             message += '📋 *ID Order: ' + orderId + '*\n';
@@ -1447,14 +1633,12 @@
             message += 'Alamat : ' + alamat + '\n';
             if (catatan) message += 'Catatan : ' + catatan + '\n';
             message += '\n📦 *DETAIL PESANAN*\n─────────────────\n';
-            
             for (var j = 0; j < cart.length; j++) {
                 var item = cart[j];
                 var itemTotal = item.price * item.qty;
                 message += (j + 1) + '. *' + item.name + '*\n';
                 message += '   ' + item.qty + ' x Rp ' + formatNumber(item.price) + ' = *Rp ' + formatNumber(itemTotal) + '*\n\n';
             }
-            
             message += '─────────────────\n';
             message += '💵 Subtotal: Rp ' + formatNumber(subtotal) + '\n';
             if (appliedVoucher) {
@@ -1465,15 +1649,12 @@
             message += '🚚 Ongkir: Dikonfirmasi kemudian\n\n';
             message += '━━━━━━━━━━━━━━━━━━━━━\n';
             message += 'Terima kasih! 🙏';
-            
             window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message), '_blank');
-            
             for (var k = 0; k < cart.length; k++) {
                 var product = findProduct(cart[k].id);
                 if (product) product.stock = Math.max(0, product.stock - cart[k].qty);
             }
             localStorage.setItem(STORAGE_KEYS.products, JSON.stringify(productsData));
-            
             cart = [];
             appliedVoucher = null;
             updateCart();
@@ -1481,18 +1662,15 @@
             renderCategoryTabs();
             closeModal();
             resetVoucherUI();
-            
             document.getElementById('inputNama').value = '';
             document.getElementById('inputPhone').value = '';
             document.getElementById('inputAlamat').value = '';
             document.getElementById('inputCatatan').value = '';
-            
             setTimeout(function() {
                 showNotification('Pesanan #' + orderId + ' berhasil dikirim! 🎉', 'success');
             }, 500);
         }
 
-        // ============ NOTIFICATION ============
         function showNotification(text, type) {
             type = type || 'success';
             var notification = document.createElement('div');
@@ -1507,12 +1685,10 @@
             }, 3000);
         }
 
-        // ============ UTILITIES ============
         function formatNumber(num) { return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
         function escapeHtml(text) { if (!text) return ''; var div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-        // ============ SCROLL EVENTS ============
         window.addEventListener('scroll', function() {
             var navbar = document.getElementById('navbar');
             var scrollTop = document.getElementById('scrollTop');
@@ -1553,7 +1729,6 @@
                     ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
                     this.appendChild(ripple);
                     setTimeout(function() { ripple.remove(); }, 600);
-
                     var targetId = this.getAttribute('href').substring(1);
                     var target = document.getElementById(targetId);
                     if (target) {
@@ -1598,7 +1773,6 @@
             }
         }
 
-        // ============ INIT ============
         window.addEventListener('load', function() {
             document.getElementById('loader').classList.add('hidden');
             createParticles();
