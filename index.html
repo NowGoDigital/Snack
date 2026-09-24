@@ -580,9 +580,25 @@
             .cta-container { padding: 50px 6%; border-radius: 0; }
             .cta-container h2 { font-size: 1.5rem; }
             .cta-container p { font-size: 0.95rem; }
+            
             .footer { padding: 40px 5% 100px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 30px; padding-bottom: 30px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px 18px; padding-bottom: 30px; }
+            /* Baris 1: Profil | Kontak */
+            .footer-grid > .footer-brand { grid-column: 1; grid-row: 1; }
+            .footer-grid > .footer-col:last-child { grid-column: 2; grid-row: 1; }
+            /* Baris 2: Menu | Produk */
+            .footer-grid > .footer-col:nth-child(2) { grid-column: 1; grid-row: 2; }
+            .footer-grid > .footer-col:nth-child(3) { grid-column: 2; grid-row: 2; }
+            /* Penyesuaian ukuran agar muat & rapi di layar sempit */
+            .footer-brand h3 { font-size: 1.15rem; margin-bottom: 10px; }
+            .footer-brand p { font-size: 0.8rem; margin-bottom: 14px; }
+            .footer-socials { gap: 8px; }
+            .footer-socials a { width: 34px; height: 34px; font-size: 0.85rem; }
+            .footer-col h4 { font-size: 0.92rem; margin-bottom: 14px; }
+            .footer-col ul li { margin-bottom: 9px; }
+            .footer-col ul li a { font-size: 0.82rem; }
             .footer-bottom { flex-direction: column; gap: 10px; text-align: center; padding-bottom: 20px; }
+            
             .wa-float { bottom: calc(100px + env(safe-area-inset-bottom)); width: 50px; height: 50px; font-size: 1.5rem; left: 15px; }
             .scroll-top { bottom: calc(100px + env(safe-area-inset-bottom)); right: 15px; width: 45px; height: 45px; }
             .modal-box { border-radius: 20px; max-height: 85vh; }
