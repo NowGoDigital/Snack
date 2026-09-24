@@ -149,9 +149,7 @@
         .about::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(45,138,78,0.08) 0%, transparent 70%); border-radius: 50%; animation: float-deco 8s ease-in-out infinite; }
         .about::after { content: ''; position: absolute; bottom: -150px; left: -150px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(232,114,42,0.06) 0%, transparent 70%); border-radius: 50%; animation: float-deco 10s ease-in-out infinite 2s; }
         @keyframes float-deco { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(30px, -30px) scale(1.1); } }
-
         .about-container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
-
         .about-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 80px; }
         .about-story { animation: fadeInUp 0.8s ease; }
         .about-story-label { display: inline-flex; align-items: center; gap: 8px; background: var(--light-green); color: var(--primary-green); padding: 8px 18px; border-radius: 25px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
@@ -170,7 +168,7 @@
         .about-image-badge-text strong { font-size: 1.1rem; color: var(--dark); font-weight: 700; }
         .about-image-badge-text span { font-size: 0.8rem; color: var(--gray-600); }
 
-        /* ===== WHY CHOOSE — ELEGANT REDESIGN ===== */
+        /* ===== WHY CHOOSE — ELEGANT ===== */
         .about-why { margin-top: 60px; }
         .about-why-header { text-align: center; margin-bottom: 55px; }
         .about-why-header .section-subtitle { display: inline-flex; align-items: center; gap: 10px; color: var(--primary-green); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 18px; position: relative; padding: 0 20px; }
@@ -184,23 +182,27 @@
 
         /* Elegant Checklist Grid — 3 kolom */
         .checklist-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
-        .checklist-item { background: white; border-radius: 18px; padding: 36px 30px 32px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1); position: relative; overflow: hidden; }
+        .checklist-item { background: white; border-radius: 18px; padding: 32px 28px 28px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1); position: relative; overflow: hidden; }
         .checklist-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-green); transform: scaleX(0); transform-origin: left; transition: transform 0.45s ease; }
         .checklist-item:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(45,138,78,0.12); border-color: rgba(45,138,78,0.15); }
         .checklist-item:hover::before { transform: scaleX(1); }
 
-        .checklist-top { display: flex; align-items: center; justify-content: space-between; }
-        .checklist-icon { flex-shrink: 0; width: 56px; height: 56px; background: var(--light-green); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.4s cubic-bezier(0.34, 1.4, 0.64, 1); }
+        /* Header baris: Icon + Nomor + Judul sejajar */
+        .checklist-head { display: flex; align-items: center; gap: 14px; }
+        .checklist-icon { flex-shrink: 0; width: 52px; height: 52px; background: var(--light-green); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; transition: all 0.4s cubic-bezier(0.34, 1.4, 0.64, 1); }
         .checklist-icon i { color: var(--primary-green); transition: color 0.4s ease; }
         .checklist-item:hover .checklist-icon { background: var(--gradient-green); transform: scale(1.08) rotate(-6deg); box-shadow: 0 10px 24px rgba(45,138,78,0.3); }
         .checklist-item:hover .checklist-icon i { color: white; }
-        .checklist-number { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--gray-200); line-height: 1; letter-spacing: -1px; transition: color 0.4s ease; user-select: none; }
-        .checklist-item:hover .checklist-number { color: rgba(45,138,78,0.18); }
+        .checklist-number { flex-shrink: 0; font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; color: var(--gray-300); line-height: 1; letter-spacing: -0.5px; transition: color 0.4s ease; user-select: none; }
+        .checklist-item:hover .checklist-number { color: rgba(45,138,78,0.35); }
+        .checklist-head .checklist-content { flex: 1; min-width: 0; }
+        .checklist-head .checklist-content h4 { font-size: 1.05rem; font-weight: 700; color: var(--dark); letter-spacing: -0.2px; line-height: 1.35; margin: 0; }
 
-        .checklist-content h4 { font-size: 1.12rem; font-weight: 700; color: var(--dark); margin-bottom: 12px; letter-spacing: -0.2px; position: relative; padding-bottom: 12px; }
-        .checklist-content h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 28px; height: 2px; background: var(--gradient-green); border-radius: 2px; transition: width 0.4s ease; }
-        .checklist-item:hover .checklist-content h4::after { width: 48px; }
-        .checklist-content p { color: var(--gray-600); line-height: 1.75; font-size: 0.9rem; margin: 0; font-weight: 400; }
+        /* Body: deskripsi rata kiri-kanan */
+        .checklist-body { border-top: 1px solid var(--gray-200); padding-top: 16px; position: relative; }
+        .checklist-body::before { content: ''; position: absolute; top: -1px; left: 0; width: 28px; height: 2px; background: var(--gradient-green); border-radius: 2px; transition: width 0.4s ease; }
+        .checklist-item:hover .checklist-body::before { width: 48px; }
+        .checklist-body p { color: var(--gray-600); line-height: 1.8; font-size: 0.88rem; margin: 0; font-weight: 400; text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; }
 
         /* PRODUCTS */
         .products { padding:60px 5%; background:var(--gray-100); position:relative; }
@@ -281,7 +283,6 @@
         .order-item-image { width:70px; height:70px; border-radius:12px; object-fit:cover; flex-shrink:0; }
         .order-item-info { flex:1; }
         .order-item-name { font-weight:600; font-size:0.95rem; color:var(--dark); margin-bottom:4px; }
-        .order-item-variant { font-size:0.8rem; color:var(--gray-600); margin-bottom:8px; }
         .order-item-price { font-weight:700; color:var(--primary-green); }
         .order-item-qty { display:flex; align-items:center; gap:10px; }
         .qty-btn { width:32px; height:32px; border:1px solid var(--gray-200); background:white; border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:0.9rem; transition:all 0.2s; color:var(--dark); font-family:'Poppins',sans-serif; }
@@ -449,8 +450,6 @@
         @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
         .reveal { opacity:0; transform:translateY(30px); transition:all 0.8s ease; }
         .reveal.active { opacity:1; transform:translateY(0); }
-        @keyframes slideInRight { from{transform:translateX(100px);opacity:0} to{transform:translateX(0);opacity:1} }
-        @keyframes slideOutRight { from{transform:translateX(0);opacity:1} to{transform:translateX(100px);opacity:0} }
 
         /* RESPONSIVE */
         @media (max-width: 1280px) { .products-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; } }
@@ -510,11 +509,13 @@
             .about-why-header .section-subtitle::before { left: -25px; width: 28px; }
             .about-why-header .section-subtitle::after { right: -25px; width: 28px; }
             .checklist-grid { grid-template-columns: 1fr; gap: 14px; }
-            .checklist-item { padding: 26px 22px 24px; gap: 14px; }
-            .checklist-icon { width: 48px; height: 48px; font-size: 1.3rem; border-radius: 13px; }
-            .checklist-number { font-size: 1.8rem; }
-            .checklist-content h4 { font-size: 1.02rem; margin-bottom: 10px; padding-bottom: 10px; }
-            .checklist-content p { font-size: 0.86rem; line-height: 1.7; }
+            .checklist-item { padding: 24px 20px 22px; gap: 14px; }
+            .checklist-head { gap: 12px; }
+            .checklist-icon { width: 46px; height: 46px; font-size: 1.25rem; border-radius: 12px; }
+            .checklist-number { font-size: 1.4rem; }
+            .checklist-head .checklist-content h4 { font-size: 0.98rem; }
+            .checklist-body { padding-top: 13px; }
+            .checklist-body p { font-size: 0.85rem; line-height: 1.75; }
             .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .product-card { border-radius: 14px; }
             .product-image-wrapper { aspect-ratio: 1 / 0.9; }
@@ -647,7 +648,6 @@
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
     <section class="about" id="about">
         <div class="about-container">
             <div class="about-intro reveal">
@@ -680,62 +680,62 @@
                 </div>
                 <div class="checklist-grid">
                     <div class="checklist-item reveal">
-                        <div class="checklist-top">
+                        <div class="checklist-head">
                             <div class="checklist-icon"><i class="fas fa-leaf"></i></div>
                             <div class="checklist-number">01</div>
+                            <div class="checklist-content"><h4>Bahan Alami Premium</h4></div>
                         </div>
-                        <div class="checklist-content">
-                            <h4>Bahan Alami Premium</h4>
+                        <div class="checklist-body">
                             <p>Menggunakan bayam dan wortel segar pilihan dari petani lokal Indonesia tanpa pestisida berbahaya. Dipanen pada waktu terbaik untuk menjaga kandungan nutrisinya.</p>
                         </div>
                     </div>
                     <div class="checklist-item reveal">
-                        <div class="checklist-top">
+                        <div class="checklist-head">
                             <div class="checklist-icon"><i class="fas fa-flask"></i></div>
                             <div class="checklist-number">02</div>
+                            <div class="checklist-content"><h4>Proses Higienis</h4></div>
                         </div>
-                        <div class="checklist-content">
-                            <h4>Proses Higienis</h4>
+                        <div class="checklist-body">
                             <p>Diolah dengan teknologi modern dan standar kebersihan tinggi. Setiap batch produksi melewati quality control ketat untuk menjamin kualitas produk terbaik.</p>
                         </div>
                     </div>
                     <div class="checklist-item reveal">
-                        <div class="checklist-top">
+                        <div class="checklist-head">
                             <div class="checklist-icon"><i class="fas fa-heart"></i></div>
                             <div class="checklist-number">03</div>
+                            <div class="checklist-content"><h4>Sehat & Bernutrisi</h4></div>
                         </div>
-                        <div class="checklist-content">
-                            <h4>Sehat & Bernutrisi</h4>
+                        <div class="checklist-body">
                             <p>Kaya vitamin dan mineral dari sayuran asli. Tanpa pengawet, tanpa pewarna buatan, cocok untuk camilan keluarga dan anak-anak setiap hari.</p>
                         </div>
                     </div>
                     <div class="checklist-item reveal">
-                        <div class="checklist-top">
+                        <div class="checklist-head">
                             <div class="checklist-icon"><i class="fas fa-certificate"></i></div>
                             <div class="checklist-number">04</div>
+                            <div class="checklist-content"><h4>Bersertifikat Halal</h4></div>
                         </div>
-                        <div class="checklist-content">
-                            <h4>Bersertifikat Halal</h4>
+                        <div class="checklist-body">
                             <p>Produk telah terdaftar dan bersertifikat halal resmi. Aman dikonsumsi seluruh anggota keluarga tanpa ragu.</p>
                         </div>
                     </div>
                     <div class="checklist-item reveal">
-                        <div class="checklist-top">
+                        <div class="checklist-head">
                             <div class="checklist-icon"><i class="fas fa-truck-fast"></i></div>
                             <div class="checklist-number">05</div>
+                            <div class="checklist-content"><h4>Pengiriman Cepat</h4></div>
                         </div>
-                        <div class="checklist-content">
-                            <h4>Pengiriman Cepat</h4>
+                        <div class="checklist-body">
                             <p>Pengiriman ke seluruh Indonesia dengan packaging khusus agar produk tetap renyah dan terjaga kualitasnya hingga sampai di tangan Anda.</p>
                         </div>
                     </div>
                     <div class="checklist-item reveal">
-                        <div class="checklist-top">
+                        <div class="checklist-head">
                             <div class="checklist-icon"><i class="fas fa-hand-holding-heart"></i></div>
                             <div class="checklist-number">06</div>
+                            <div class="checklist-content"><h4>Support UMKM Lokal</h4></div>
                         </div>
-                        <div class="checklist-content">
-                            <h4>Support UMKM Lokal</h4>
+                        <div class="checklist-body">
                             <p>Dengan membeli Youmi SNACK, Anda turut mendukung petani lokal dan pemberdayaan UMKM Indonesia untuk ekonomi yang lebih kuat.</p>
                         </div>
                     </div>
@@ -953,7 +953,7 @@
     <button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        var WHATSAPP_NUMBER = "628175761165";
+            var WHATSAPP_NUMBER = "628175761165";
         var STORE_NAME = "Youmi SNACK";
         var STORAGE_KEYS = { products: 'Youmi_products', categories: 'Youmi_categories', vouchers: 'Youmi_vouchers', orders: 'Youmi_orders' };
         var DEFAULT_CATEGORIES = [
@@ -991,7 +991,7 @@
         var cart = [];
         var activeCategory = 'all';
 
-                function renderCategoryTabs() {
+        function renderCategoryTabs() {
             var container = document.getElementById('categoryTabs');
             var html = '<button class="cat-tab' + (activeCategory === 'all' ? ' active' : '') + '" onclick="filterCategory(\'all\', this)"><i class="fas fa-th-large"></i> Semua <span class="tab-count">' + productsData.length + '</span></button>';
             for (var i = 0; i < categoriesData.length; i++) {
@@ -1220,7 +1220,6 @@
             appliedVoucher = v;
             appliedVoucher.code = found;
             input.value = '';
-            showVoucherMessage('', 'success');
             msg.classList.remove('show');
             updateVoucherUI();
             updateSummary();
