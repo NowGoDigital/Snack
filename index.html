@@ -493,8 +493,10 @@
             .hero-title .line1 { font-size: 0.5em; }
             .hero-title .line2 { white-space: normal; font-size: 0.9em; }
             .hero-tagline { font-size: 0.95rem; }
-            .hero-buttons { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; }
-            .btn-primary-hero, .btn-secondary-hero { justify-content: center; width: 100%; }
+            
+            .hero-buttons { flex-direction: row; flex-wrap: nowrap; width: 100%; max-width: 480px; margin: 0 auto; gap: 10px; }
+            .btn-primary-hero, .btn-secondary-hero { justify-content: center; width: auto; flex: 1 1 0; padding: 14px 10px; font-size: 0.9rem; gap: 8px; white-space: nowrap; }
+            
             .hero-stats { gap: 15px; flex-wrap: wrap; justify-content: center; }
             .stat-item { min-width: 80px; }
             .stat-number { font-size: 1.4rem; }
@@ -597,6 +599,9 @@
             .btn-order { padding: 5px 8px; font-size: 0.6rem; }
             .btn-order span { display: none; }
             .btn-order i { font-size: 0.7rem; }
+            .hero-buttons { gap: 8px; }
+            .btn-primary-hero, .btn-secondary-hero { padding: 12px 6px; font-size: 0.78rem; gap: 5px; }
+            .btn-primary-hero i, .btn-secondary-hero i { font-size: 0.85rem; }
         }
     </style>
 </head>
