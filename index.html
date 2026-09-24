@@ -99,7 +99,7 @@
         @keyframes success-pop { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
 
         /* HERO */
-        .hero { min-height: 100vh; background: var(--gradient-hero); position: relative; display: flex; align-items: center; overflow: hidden; padding-top: 80px; padding-bottom: 40px; }
+        .hero { min-height: 100vh; background: var(--gradient-hero); position: relative; display: flex; align-items: center; overflow: hidden; padding-top: 70px; padding-bottom: 30px; }
         .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 200%; background: radial-gradient(ellipse, rgba(45,138,78,0.15) 0%, transparent 70%); animation: pulse-glow 4s ease-in-out infinite; }
         .hero::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 60%; height: 150%; background: radial-gradient(ellipse, rgba(232,114,42,0.1) 0%, transparent 70%); animation: pulse-glow 4s ease-in-out infinite 2s; }
         @keyframes pulse-glow { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:1;transform:scale(1.05)} }
@@ -145,7 +145,7 @@
         @keyframes fadeInRight { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
 
         /* ========== ABOUT SECTION (NEW STYLE) ========== */
-        .about { padding: 120px 5%; background: linear-gradient(135deg, #f8fffa 0%, #ffffff 100%); position: relative; overflow: hidden; }
+        .about { padding: 60px 5%; background: linear-gradient(135deg, #f8fffa 0%, #ffffff 100%); position: relative; overflow: hidden; }
         .about::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(45,138,78,0.08) 0%, transparent 70%); border-radius: 50%; animation: float-deco 8s ease-in-out infinite; }
         .about::after { content: ''; position: absolute; bottom: -150px; left: -150px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(232,114,42,0.06) 0%, transparent 70%); border-radius: 50%; animation: float-deco 10s ease-in-out infinite 2s; }
         @keyframes float-deco { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(30px, -30px) scale(1.1); } }
@@ -193,7 +193,7 @@
         .checklist-content p { color: var(--gray-600); line-height: 1.7; font-size: 0.95rem; margin: 0; }
 
         /* PRODUCTS */
-        .products { padding:120px 5%; background:var(--gray-100); position:relative; }
+        .products { padding:60px 5%; background:var(--gray-100); position:relative; }
         .products::before { content:''; position:absolute; top:0; left:0; right:0; height:200px; background:linear-gradient(to bottom,var(--white),var(--gray-100)); }
         .category-tabs-wrapper { max-width: 1400px; margin: 0 auto 30px; position: relative; z-index: 2; }
         .category-tabs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; -ms-overflow-style: none; justify-content: center; }
@@ -250,7 +250,7 @@
         .products-empty p { font-size: 0.9rem; }
 
         /* ORDER SECTION */
-        .order-section { padding:120px 5%; background:white; }
+        .order-section { padding:60px 5%; background:white; }
         .order-container { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
         .order-left h2 { font-family:'Playfair Display',serif; font-size:2.5rem; margin-bottom:15px; color:var(--dark); }
         .order-left p { color:var(--gray-600); line-height:1.8; margin-bottom:30px; }
@@ -380,7 +380,7 @@
         .modal-edit-note { text-align: center; margin-top: 12px; font-size: 0.8rem; color: var(--gray-600); }
         .modal-edit-note a { color: var(--primary-green); font-weight: 600; text-decoration: none; cursor: pointer; }
 
-        .testimonials { padding:120px 5%; background:var(--gradient-hero); position:relative; overflow:hidden; }
+        .testimonials { padding:60px 5%; background:var(--gradient-hero); position:relative; overflow:hidden; }
         .testimonials::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
         .testimonials .section-title { color:white; }
         .testimonials .section-desc { color:rgba(255,255,255,0.7); }
@@ -396,16 +396,16 @@
         .testimonial-role { font-size:0.8rem; color:rgba(255,255,255,0.5); }
         .testimonial-stars { color:#ffc107; font-size:0.8rem; margin-bottom:15px; }
 
-        .cta-section { padding:100px 5%; background:white; text-align:center; }
-        .cta-container { max-width:800px; margin:0 auto; background:var(--gradient-green); border-radius:30px; padding:70px 50px; position:relative; overflow:hidden; }
+        .cta-section { padding:50px 5%; background:white; text-align:center; }
+        .cta-container { max-width:800px; margin:0 auto; background:var(--gradient-green); border-radius:30px; padding:60px 50px; position:relative; overflow:hidden; }
         .cta-container::before { content:''; position:absolute; top:-50%; right:-20%; width:60%; height:200%; background:radial-gradient(ellipse,rgba(255,255,255,0.1) 0%,transparent 70%); }
         .cta-container h2 { font-family:'Playfair Display',serif; font-size:2.5rem; color:white; margin-bottom:15px; position:relative; z-index:2; }
         .cta-container p { color:rgba(255,255,255,0.9); font-size:1.1rem; margin-bottom:35px; position:relative; z-index:2; }
         .btn-cta-white { display:inline-flex; align-items:center; gap:10px; padding:18px 40px; background:white; color:var(--primary-green); text-decoration:none; border-radius:50px; font-weight:700; font-size:1.05rem; transition:all 0.3s; position:relative; z-index:2; box-shadow:0 10px 30px rgba(0,0,0,0.2); }
         .btn-cta-white:hover { transform:translateY(-3px); box-shadow:0 15px 40px rgba(0,0,0,0.3); }
 
-        .footer { background:var(--darker); padding:80px 5% 30px; color:rgba(255,255,255,0.7); }
-        .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:50px; max-width:1200px; margin:0 auto; padding-bottom:50px; border-bottom:1px solid rgba(255,255,255,0.1); }
+        .footer { background:var(--darker); padding:50px 5% 25px; color:rgba(255,255,255,0.7); }
+        .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:50px; max-width:1200px; margin:0 auto; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.1); }
         .footer-brand h3 { font-size:1.5rem; font-weight:800; color:white; margin-bottom:15px; }
         .footer-brand p { line-height:1.8; font-size:0.9rem; margin-bottom:20px; }
         .footer-socials { display:flex; gap:12px; }
@@ -416,7 +416,7 @@
         .footer-col ul li { margin-bottom:12px; }
         .footer-col ul li a { color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.9rem; transition:all 0.3s; }
         .footer-col ul li a:hover { color:var(--primary-green); padding-left:5px; }
-        .footer-bottom { max-width:1200px; margin:0 auto; padding-top:30px; display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; }
+        .footer-bottom { max-width:1200px; margin:0 auto; padding-top:25px; display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; }
 
         .scroll-top { position:fixed; bottom:30px; right:30px; width:50px; height:50px; background:var(--gradient-green); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:1.2rem; cursor:pointer; z-index:999; opacity:0; visibility:hidden; transition:all 0.3s; box-shadow:0 5px 20px rgba(45,138,78,0.4); border:none; }
         .scroll-top.visible { opacity:1; visibility:visible; }
@@ -461,7 +461,7 @@
             .navbar { display: none; }
             .bottom-nav { display: block; }
             body { padding-bottom: calc(85px + env(safe-area-inset-bottom)); }
-            .hero { padding-top: 30px; min-height: calc(100vh - 85px); padding-bottom: 60px; }
+            .hero { padding-top: 30px; min-height: calc(100vh - 85px); padding-bottom: 45px; }
             .hero-content { padding: 0 6%; }
             .hero-title { font-size: 2rem; }
             .hero-title .line1 { font-size: 0.5em; }
@@ -473,8 +473,9 @@
             .stat-item { min-width: 80px; }
             .stat-number { font-size: 1.4rem; }
             .stat-label { font-size: 0.75rem; }
-            .about, .products, .order-section, .testimonials { padding: 70px 4%; }
-            .section-header { margin-bottom: 35px; }
+            .about, .products, .order-section, .testimonials { padding: 45px 4%; }
+            .cta-section { padding: 35px 4%; }
+            .section-header { margin-bottom: 30px; }
             .section-title { font-size: 1.6rem; }
             .section-desc { font-size: 0.9rem; }
             .about-intro { margin-bottom: 50px; }
@@ -536,7 +537,7 @@
             .cta-container { padding: 40px 25px; border-radius: 20px; }
             .cta-container h2 { font-size: 1.5rem; }
             .cta-container p { font-size: 0.95rem; }
-            .footer { padding: 50px 5% 100px; }
+            .footer { padding: 40px 5% 100px; }
             .footer-grid { grid-template-columns: 1fr; gap: 30px; padding-bottom: 30px; }
             .footer-bottom { flex-direction: column; gap: 10px; text-align: center; padding-bottom: 20px; }
             .wa-float { bottom: calc(100px + env(safe-area-inset-bottom)); width: 50px; height: 50px; font-size: 1.5rem; left: 15px; }
@@ -1010,7 +1011,7 @@
 
         function findProduct(id) { for (var i = 0; i < productsData.length; i++) { if (productsData[i].id === id) return productsData[i]; } return null; }
 
-        function addToOrder(productId, btnElement) {
+                function addToOrder(productId, btnElement) {
             var product = findProduct(productId);
             if (!product || product.stock <= 0) { showNotification('Stok produk habis! 😢', 'error'); return; }
             var existingItem = null;
@@ -1019,200 +1020,463 @@
             if (currentQtyInCart >= product.stock) { showNotification('Stok tidak mencukupi! (maks: ' + product.stock + ')', 'error'); return; }
             if (btnElement) { createFlyingItem(btnElement); buttonFeedback(btnElement); }
             if (existingItem) { existingItem.qty += 1; } else { cart.push({ id: productId, name: product.name, price: product.price, image: product.imageThumb || product.image, qty: 1, maxStock: product.stock }); }
-            setTimeout(function() { updateCart(); showNotification(product.name + ' ditambahkan! 🎉'); }, 400);
-            setTimeout(function() { document.getElementById('orderCard').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 800);
+            setTimeout(function() { updateCart(); showNotification(product.name + ' ditambahkan! 🛒', 'success'); }, 500);
         }
 
-        function createFlyingItem(btnElement) {
-            var btnRect = btnElement.getBoundingClientRect(), cartIcon = document.getElementById('cartIcon');
-            if (!cartIcon) return;
-            var cartRect = cartIcon.getBoundingClientRect(), flyer = document.createElement('div');
-            flyer.className = 'flying-item'; flyer.innerHTML = '<i class="fas fa-leaf"></i>';
-            flyer.style.left = (btnRect.left + btnRect.width / 2 - 20) + 'px'; flyer.style.top = (btnRect.top + btnRect.height / 2 - 20) + 'px';
-            document.body.appendChild(flyer);
-            var startX = btnRect.left + btnRect.width / 2, startY = btnRect.top + btnRect.height / 2, endX = cartRect.left + cartRect.width / 2, endY = cartRect.top + cartRect.height / 2, duration = 800, startTime = Date.now();
-            function animate() {
-                var elapsed = Date.now() - startTime, progress = Math.min(elapsed / duration, 1), eased = 1 - Math.pow(1 - progress, 3);
-                var controlX1 = startX + (endX - startX) * 0.3, controlY1 = startY - 150, controlX2 = endX - (endX - startX) * 0.3, controlY2 = endY - 80, t = eased;
-                var x = Math.pow(1-t,3)*startX + 3*Math.pow(1-t,2)*t*controlX1 + 3*(1-t)*Math.pow(t,2)*controlX2 + Math.pow(t,3)*endX;
-                var y = Math.pow(1-t,3)*startY + 3*Math.pow(1-t,2)*t*controlY1 + 3*(1-t)*Math.pow(t,2)*controlY2 + Math.pow(t,3)*endY;
-                flyer.style.left = (x - 20) + 'px'; flyer.style.top = (y - 20) + 'px';
-                flyer.style.transform = 'scale(' + (1 - progress * 0.7) + ') rotate(' + (progress * 360) + 'deg)';
-                flyer.style.opacity = progress < 0.9 ? 1 : 1 - (progress - 0.9) * 10;
-                if (progress < 1) requestAnimationFrame(animate);
-                else { flyer.remove(); cartIcon.classList.add('cart-shake'); setTimeout(function() { cartIcon.classList.remove('cart-shake'); }, 500); }
-            }
-            requestAnimationFrame(animate);
+        function createFlyingItem(btn) {
+            var flying = document.createElement('div');
+            flying.className = 'flying-item';
+            flying.innerHTML = '<i class="fas fa-shopping-bag"></i>';
+            var rect = btn.getBoundingClientRect();
+            var targetBtn = document.getElementById('cartNavBtn') || document.querySelector('.nav-cta');
+            var targetRect = targetBtn.getBoundingClientRect();
+            flying.style.left = rect.left + 'px';
+            flying.style.top = rect.top + 'px';
+            document.body.appendChild(flying);
+            var deltaX = (targetRect.left + targetRect.width / 2) - (rect.left + 20);
+            var deltaY = (targetRect.top + targetRect.height / 2) - (rect.top + 20);
+            requestAnimationFrame(function() {
+                flying.style.transition = 'all 0.6s cubic-bezier(0.5, -0.5, 0.3, 1.2)';
+                flying.style.transform = 'translate(' + deltaX + 'px, ' + deltaY + 'px) scale(0.3)';
+                flying.style.opacity = '0.3';
+            });
+            setTimeout(function() {
+                flying.remove();
+                var cartIcon = document.getElementById('cartIcon');
+                if (cartIcon) { cartIcon.classList.add('cart-shake'); setTimeout(function() { cartIcon.classList.remove('cart-shake'); }, 500); }
+            }, 600);
         }
 
         function buttonFeedback(btn) {
-            var originalHTML = btn.innerHTML;
             btn.classList.add('adding');
-            setTimeout(function() { btn.innerHTML = '<i class="fas fa-check"></i> <span>✓</span>'; btn.classList.remove('adding'); btn.classList.add('added'); setTimeout(function() { btn.innerHTML = originalHTML; btn.classList.remove('added'); }, 1200); }, 300);
+            setTimeout(function() {
+                btn.classList.remove('adding');
+                btn.classList.add('added');
+                var originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> <span>Ditambahkan!</span>';
+                setTimeout(function() { btn.classList.remove('added'); btn.innerHTML = originalHTML; }, 1200);
+            }, 150);
         }
 
-        function updateQty(index, change) {
-            var item = cart[index], product = findProduct(item.id), newQty = item.qty + change;
-            if (change > 0 && product && newQty > product.stock) { showNotification('Stok tidak cukup! (maks: ' + product.stock + ')', 'error'); return; }
-            if (newQty <= 0) cart.splice(index, 1); else item.qty = newQty;
-            updateCart();
+        function updateCartBadge() {
+            var badge = document.getElementById('cartBadge');
+            var navBtn = document.getElementById('cartNavBtn');
+            var totalItems = 0;
+            for (var i = 0; i < cart.length; i++) { totalItems += cart[i].qty; }
+            if (!badge || !navBtn) return;
+            badge.textContent = totalItems;
+            if (totalItems > 0) {
+                if (!badge.classList.contains('show')) {
+                    badge.classList.add('show');
+                    navBtn.classList.add('has-items');
+                } else {
+                    badge.classList.remove('bump');
+                    void badge.offsetWidth;
+                    badge.classList.add('bump');
+                }
+            } else {
+                badge.classList.remove('show');
+                navBtn.classList.remove('has-items');
+            }
         }
 
         function updateCart() {
-            var cartItems = document.getElementById('cartItems'), emptyCart = document.getElementById('emptyCart'), orderSummary = document.getElementById('orderSummary'), orderForm = document.getElementById('orderForm'), btnConfirmOrder = document.getElementById('btnConfirmOrder'), orderNote = document.getElementById('orderNote'), cartBadge = document.getElementById('cartBadge'), cartNavBtn = document.getElementById('cartNavBtn'), voucherSection = document.getElementById('voucherSection');
-            var totalItems = 0; for (var i = 0; i < cart.length; i++) totalItems += cart[i].qty;
-            if (totalItems > 0) { cartBadge.textContent = totalItems > 99 ? '99+' : totalItems; cartBadge.classList.add('show'); cartBadge.classList.remove('bump'); void cartBadge.offsetWidth; cartBadge.classList.add('bump'); cartNavBtn.classList.add('has-items'); }
-            else { cartBadge.classList.remove('show'); cartNavBtn.classList.remove('has-items'); }
-            if (cart.length === 0) { emptyCart.style.display = 'block'; cartItems.innerHTML = ''; orderSummary.style.display = 'none'; orderForm.style.display = 'none'; btnConfirmOrder.style.display = 'none'; orderNote.style.display = 'none'; voucherSection.style.display = 'none'; appliedVoucher = null; resetVoucherUI(); return; }
-            emptyCart.style.display = 'none'; orderSummary.style.display = 'block'; orderForm.style.display = 'block'; btnConfirmOrder.style.display = 'flex'; orderNote.style.display = 'block'; voucherSection.style.display = 'block';
-            var html = '', subtotal = 0;
-            for (var i = 0; i < cart.length; i++) {
-                var item = cart[i], product = findProduct(item.id), itemTotal = item.price * item.qty; subtotal += itemTotal;
-                var canIncrease = product && item.qty < product.stock, canDecrease = item.qty > 1;
-                html += '<div class="order-item"><img src="' + (item.image || '') + '" alt="' + escapeHtml(item.name) + '" class="order-item-image" loading="lazy" onerror="this.style.display=\'none\'"><div class="order-item-info"><div class="order-item-name">' + escapeHtml(item.name) + '</div><div class="order-item-variant">Stok: ' + (product ? product.stock : '?') + '</div><div class="order-item-price">Rp ' + formatNumber(item.price) + '</div></div><div class="order-item-qty"><button class="qty-btn" onclick="updateQty(' + i + ', -1)"' + (!canDecrease ? ' disabled' : '') + '>\u2212</button><span class="qty-value">' + item.qty + '</span><button class="qty-btn" onclick="updateQty(' + i + ', 1)"' + (!canIncrease ? ' disabled' : '') + '>+</button></div></div>';
+            var cartItems = document.getElementById('cartItems');
+            var emptyCart = document.getElementById('emptyCart');
+            var orderSummary = document.getElementById('orderSummary');
+            var voucherSection = document.getElementById('voucherSection');
+            var orderForm = document.getElementById('orderForm');
+            var btnConfirm = document.getElementById('btnConfirmOrder');
+            var orderNote = document.getElementById('orderNote');
+
+            updateCartBadge();
+
+            if (cart.length === 0) {
+                emptyCart.style.display = 'block';
+                cartItems.innerHTML = '';
+                orderSummary.style.display = 'none';
+                voucherSection.style.display = 'none';
+                orderForm.style.display = 'none';
+                btnConfirm.style.display = 'none';
+                orderNote.style.display = 'none';
+                appliedVoucher = null;
+                updateVoucherUI();
+                return;
             }
-            cartItems.innerHTML = html; updateSummary(subtotal);
+            emptyCart.style.display = 'none';
+            orderSummary.style.display = 'block';
+            voucherSection.style.display = 'block';
+            orderForm.style.display = 'block';
+            btnConfirm.style.display = 'flex';
+            orderNote.style.display = 'block';
+
+            var html = '';
+            for (var i = 0; i < cart.length; i++) {
+                var item = cart[i];
+                html += '<div class="order-item">' +
+                    '<img src="' + item.image + '" alt="' + escapeHtml(item.name) + '" class="order-item-image" onerror="this.style.background=\'#eee\'">' +
+                    '<div class="order-item-info">' +
+                        '<div class="order-item-name">' + escapeHtml(item.name) + '</div>' +
+                        '<div class="order-item-price">Rp ' + formatNumber(item.price) + '</div>' +
+                    '</div>' +
+                    '<div class="order-item-qty">' +
+                        '<button class="qty-btn" onclick="changeQty(\'' + item.id + '\', -1)"' + (item.qty <= 1 ? '' : '') + '><i class="fas fa-minus"></i></button>' +
+                        '<span class="qty-value">' + item.qty + '</span>' +
+                        '<button class="qty-btn" onclick="changeQty(\'' + item.id + '\', 1)"' + (item.qty >= item.maxStock ? ' disabled title="Stok maksimal: ' + item.maxStock + '"' : '') + '><i class="fas fa-plus"></i></button>' +
+                    '</div>' +
+                '</div>';
+            }
+            cartItems.innerHTML = html;
+            updateSummary();
         }
 
-        function updateSummary(subtotal) {
-            var discountAmount = 0, discountRow = document.getElementById('discountRow'), discountAmountEl = document.getElementById('discountAmount');
-            if (appliedVoucher) { discountAmount = appliedVoucher.discount; if (discountAmount > subtotal) discountAmount = subtotal; discountRow.style.display = 'flex'; discountAmountEl.textContent = 'Rp ' + formatNumber(discountAmount); } else { discountRow.style.display = 'none'; }
+        function changeQty(id, delta) {
+            for (var i = 0; i < cart.length; i++) {
+                if (cart[i].id === id) {
+                    var newQty = cart[i].qty + delta;
+                    if (newQty <= 0) { cart.splice(i, 1); }
+                    else if (newQty > cart[i].maxStock) { showNotification('Stok tidak mencukupi! (maks: ' + cart[i].maxStock + ')', 'error'); return; }
+                    else { cart[i].qty = newQty; }
+                    updateCart();
+                    return;
+                }
+            }
+        }
+
+        function getSubtotal() {
+            var subtotal = 0;
+            for (var i = 0; i < cart.length; i++) { subtotal += cart[i].price * cart[i].qty; }
+            return subtotal;
+        }
+
+        function getDiscount(subtotal) {
+            if (!appliedVoucher) return 0;
+            var v = appliedVoucher;
+            if (subtotal < (v.minOrder || 0)) return 0;
+            var discount = v.type === 'percent' ? Math.floor(subtotal * v.value / 100) : v.value;
+            if (v.maxDiscount && discount > v.maxDiscount) discount = v.maxDiscount;
+            return Math.min(discount, subtotal);
+        }
+
+        function updateSummary() {
+            var subtotal = getSubtotal();
+            var discount = getDiscount(subtotal);
+            var total = subtotal - discount;
             document.getElementById('subtotal').textContent = 'Rp ' + formatNumber(subtotal);
-            var total = subtotal - discountAmount; if (total < 0) total = 0;
             document.getElementById('totalPrice').textContent = 'Rp ' + formatNumber(total);
+            var discountRow = document.getElementById('discountRow');
+            if (discount > 0) { discountRow.style.display = 'flex'; document.getElementById('discountAmount').textContent = '-Rp ' + formatNumber(discount); }
+            else { discountRow.style.display = 'none'; }
         }
 
-        function toggleVoucher() { document.getElementById('voucherSection').classList.toggle('open'); }
-        function useHint(code) { document.getElementById('voucherInput').value = code; document.getElementById('voucherInput').focus(); applyVoucher(); }
+        function toggleVoucher() {
+            var section = document.getElementById('voucherSection');
+            section.classList.toggle('open');
+        }
 
         function applyVoucher() {
-            var input = document.getElementById('voucherInput'), code = input.value.trim().toUpperCase();
+            var input = document.getElementById('voucherInput');
+            var code = input.value.trim().toUpperCase();
+            var msg = document.getElementById('voucherMessage');
             if (!code) { showVoucherMessage('Masukkan kode voucher terlebih dahulu', 'error'); return; }
-            var voucher = vouchersData[code];
-            if (!voucher) { showVoucherMessage('❌ Kode voucher tidak valid', 'error'); return; }
-            var subtotal = 0; for (var i = 0; i < cart.length; i++) subtotal += cart[i].price * cart[i].qty;
-            if (voucher.minOrder > 0 && subtotal < voucher.minOrder) { showVoucherMessage('❌ Minimum belanja Rp ' + formatNumber(voucher.minOrder) + ' (saat ini Rp ' + formatNumber(subtotal) + ')', 'error'); return; }
-            var discount = 0;
-            if (voucher.type === 'percent') { discount = Math.round(subtotal * voucher.value / 100); if (voucher.maxDiscount > 0 && discount > voucher.maxDiscount) discount = voucher.maxDiscount; }
-            else if (voucher.type === 'fixed') { discount = voucher.value; }
-            if (discount > subtotal) discount = subtotal;
-            appliedVoucher = { code: code, desc: voucher.desc || '', discount: discount };
-            input.value = ''; showVoucherMessage('✅ Voucher berhasil! Hemat Rp ' + formatNumber(discount), 'success');
-            document.getElementById('appliedCode').textContent = code; document.getElementById('appliedDesc').textContent = voucher.desc || 'Hemat Rp ' + formatNumber(discount);
-            document.getElementById('voucherApplied').classList.add('show'); document.getElementById('voucherActiveBadge').style.display = 'inline-flex';
-            updateSummary(subtotal); setTimeout(function() { hideVoucherMessage(); }, 3000);
+            var found = null;
+            var keys = Object.keys(vouchersData);
+            for (var i = 0; i < keys.length; i++) { if (keys[i].toUpperCase() === code) { found = keys[i]; break; } }
+            if (!found) { showVoucherMessage('Kode voucher tidak ditemukan atau tidak valid ❌', 'error'); return; }
+            var v = vouchersData[found];
+            var subtotal = getSubtotal();
+            if (subtotal < (v.minOrder || 0)) { showVoucherMessage('Minimal belanja Rp ' + formatNumber(v.minOrder) + ' untuk voucher ini', 'error'); return; }
+            appliedVoucher = v;
+            appliedVoucher.code = found;
+            input.value = '';
+            showVoucherMessage('', 'success');
+            msg.classList.remove('show');
+            updateVoucherUI();
+            updateSummary();
+            showNotification('Voucher ' + found + ' berhasil dipakai! 🎉', 'success');
+        }
+
+        function showVoucherMessage(text, type) {
+            var msg = document.getElementById('voucherMessage');
+            msg.className = 'voucher-message show ' + type;
+            msg.innerHTML = '<i class="fas ' + (type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle') + '"></i> ' + text;
+            if (type === 'error') setTimeout(function() { msg.classList.remove('show'); }, 4000);
+        }
+
+        function updateVoucherUI() {
+            var applied = document.getElementById('voucherApplied');
+            var inputArea = document.getElementById('voucherInputArea');
+            var badge = document.getElementById('voucherActiveBadge');
+            var section = document.getElementById('voucherSection');
+            if (appliedVoucher) {
+                applied.classList.add('show');
+                inputArea.style.display = 'none';
+                badge.style.display = 'inline-flex';
+                section.classList.add('open');
+                document.getElementById('appliedCode').textContent = appliedVoucher.code;
+                document.getElementById('appliedDesc').textContent = appliedVoucher.desc;
+            } else {
+                applied.classList.remove('show');
+                inputArea.style.display = 'block';
+                badge.style.display = 'none';
+                section.classList.remove('open');
+            }
         }
 
         function removeVoucher() {
-            appliedVoucher = null; resetVoucherUI(); showVoucherMessage('Voucher dihapus', 'success');
-            setTimeout(function() { hideVoucherMessage(); }, 2000);
-            var subtotal = 0; for (var i = 0; i < cart.length; i++) subtotal += cart[i].price * cart[i].qty; updateSummary(subtotal);
+            appliedVoucher = null;
+            updateVoucherUI();
+            updateSummary();
+            showNotification('Voucher dihapus', 'info');
         }
 
-        function resetVoucherUI() {
-            document.getElementById('voucherApplied').classList.remove('show'); document.getElementById('voucherActiveBadge').style.display = 'none';
-            document.getElementById('voucherInput').value = ''; hideVoucherMessage(); document.getElementById('voucherSection').classList.remove('open');
+        function useHint(code) {
+            var input = document.getElementById('voucherInput');
+            input.value = code;
+            applyVoucher();
         }
-
-        function showVoucherMessage(text, type) { var msgEl = document.getElementById('voucherMessage'), icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'; msgEl.className = 'voucher-message show ' + type; msgEl.innerHTML = '<i class="fas ' + icon + '"></i> ' + text; }
-        function hideVoucherMessage() { document.getElementById('voucherMessage').classList.remove('show'); }
-
-        document.addEventListener('DOMContentLoaded', function() { var vInput = document.getElementById('voucherInput'); if (vInput) vInput.addEventListener('keypress', function(e) { if (e.key === 'Enter') applyVoucher(); }); });
 
         function showConfirmation() {
-            var nama = document.getElementById('inputNama').value.trim(), phone = document.getElementById('inputPhone').value.trim(), alamat = document.getElementById('inputAlamat').value.trim(), catatan = document.getElementById('inputCatatan').value.trim();
-            if (!nama) { showNotification('Mohon isi Nama Lengkap!', 'error'); document.getElementById('inputNama').focus(); return; }
-            if (!phone) { showNotification('Mohon isi No. WhatsApp!', 'error'); document.getElementById('inputPhone').focus(); return; }
-            if (!alamat) { showNotification('Mohon isi Alamat Lengkap!', 'error'); document.getElementById('inputAlamat').focus(); return; }
-            document.getElementById('confirmNama').textContent = nama; document.getElementById('confirmPhone').textContent = phone; document.getElementById('confirmAlamat').textContent = alamat;
-            if (catatan) { document.getElementById('confirmCatatan').textContent = catatan; document.getElementById('confirmCatatanRow').style.display = 'flex'; } else { document.getElementById('confirmCatatanRow').style.display = 'none'; }
-            var confirmItems = document.getElementById('confirmItems'), html = '', subtotal = 0;
-            for (var i = 0; i < cart.length; i++) { var item = cart[i], itemTotal = item.price * item.qty; subtotal += itemTotal; html += '<div class="confirm-item"><div class="confirm-item-left"><span class="confirm-item-name">' + escapeHtml(item.name) + '</span><span class="confirm-item-qty">' + item.qty + ' x Rp ' + formatNumber(item.price) + '</span></div><span class="confirm-item-price">Rp ' + formatNumber(itemTotal) + '</span></div>'; }
-            confirmItems.innerHTML = html;
-            var discountAmount = appliedVoucher ? appliedVoucher.discount : 0; if (discountAmount > subtotal) discountAmount = subtotal;
-            var confirmSummary = document.getElementById('confirmSummary'), confirmDiscountRow = document.getElementById('confirmDiscountRow');
-            if (appliedVoucher && discountAmount > 0) { confirmSummary.style.display = 'block'; document.getElementById('confirmSubtotal').textContent = 'Rp ' + formatNumber(subtotal); confirmDiscountRow.style.display = 'flex'; document.getElementById('confirmDiscount').textContent = '- Rp ' + formatNumber(discountAmount); } else { confirmSummary.style.display = 'none'; }
-            var total = subtotal - discountAmount; if (total < 0) total = 0;
+            var nama = document.getElementById('inputNama').value.trim();
+            var phone = document.getElementById('inputPhone').value.trim();
+            var alamat = document.getElementById('inputAlamat').value.trim();
+            var catatan = document.getElementById('inputCatatan').value.trim();
+
+            if (cart.length === 0) { showNotification('Keranjang masih kosong!', 'error'); return; }
+            if (!nama) { showNotification('Nama lengkap wajib diisi!', 'error'); document.getElementById('inputNama').focus(); return; }
+            if (!phone) { showNotification('No. WhatsApp wajib diisi!', 'error'); document.getElementById('inputPhone').focus(); return; }
+            if (!alamat) { showNotification('Alamat lengkap wajib diisi!', 'error'); document.getElementById('inputAlamat').focus(); return; }
+
+            document.getElementById('confirmNama').textContent = nama;
+            document.getElementById('confirmPhone').textContent = phone;
+            document.getElementById('confirmAlamat').textContent = alamat;
+            var catatanRow = document.getElementById('confirmCatatanRow');
+            if (catatan) { catatanRow.style.display = 'flex'; document.getElementById('confirmCatatan').textContent = catatan; }
+            else { catatanRow.style.display = 'none'; }
+
+            var itemsHtml = '';
+            for (var i = 0; i < cart.length; i++) {
+                var item = cart[i];
+                itemsHtml += '<div class="confirm-item"><div class="confirm-item-left"><span class="confirm-item-name">' + escapeHtml(item.name) + '</span><span class="confirm-item-qty">' + item.qty + ' x Rp ' + formatNumber(item.price) + '</span></div><span class="confirm-item-price">Rp ' + formatNumber(item.price * item.qty) + '</span></div>';
+            }
+            document.getElementById('confirmItems').innerHTML = itemsHtml;
+
+            var subtotal = getSubtotal();
+            var discount = getDiscount(subtotal);
+            var total = subtotal - discount;
+            document.getElementById('confirmSubtotal').textContent = 'Rp ' + formatNumber(subtotal);
+            var discountRow = document.getElementById('confirmDiscountRow');
+            var summaryBox = document.getElementById('confirmSummary');
+            summaryBox.style.display = 'block';
+            if (discount > 0) { discountRow.style.display = 'flex'; document.getElementById('confirmDiscount').textContent = '-Rp ' + formatNumber(discount); }
+            else { discountRow.style.display = 'none'; }
             document.getElementById('confirmTotal').textContent = 'Rp ' + formatNumber(total);
-            document.getElementById('modalConfirm').classList.add('active'); document.body.style.overflow = 'hidden';
+
+            document.getElementById('modalConfirm').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() { document.getElementById('modalConfirm').classList.remove('active'); document.body.style.overflow = ''; }
-        document.getElementById('modalConfirm').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+        function closeModal() {
+            document.getElementById('modalConfirm').classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
         function sendToWhatsApp() {
-            var nama = document.getElementById('inputNama').value.trim(), phone = document.getElementById('inputPhone').value.trim(), alamat = document.getElementById('inputAlamat').value.trim(), catatan = document.getElementById('inputCatatan').value.trim();
-            var subtotal = 0; for (var i = 0; i < cart.length; i++) subtotal += cart[i].price * cart[i].qty;
-            var discountAmount = appliedVoucher ? appliedVoucher.discount : 0; if (discountAmount > subtotal) discountAmount = subtotal;
-            var total = subtotal - discountAmount; if (total < 0) total = 0;
-            var now = new Date(), dateStr = now.getFullYear() + ('0' + (now.getMonth() + 1)).slice(-2) + ('0' + now.getDate()).slice(-2), randomStr = Math.random().toString(36).substring(2, 7).toUpperCase(), orderId = 'Youmi-' + dateStr + '-' + randomStr;
-            var storedOrders = localStorage.getItem(STORAGE_KEYS.orders), ordersList = storedOrders ? JSON.parse(storedOrders) : [];
-            ordersList.unshift({ id: orderId, timestamp: now.getTime(), buyer: { nama: nama, phone: phone, alamat: alamat, catatan: catatan }, items: cart.map(function(item) { return { id: item.id, name: item.name, price: item.price, qty: item.qty, image: item.image }; }), subtotal: subtotal, voucher: appliedVoucher ? appliedVoucher.code : null, discount: discountAmount, total: total, status: 'pending' });
-            localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(ordersList));
-            var message = '🛒 *PESANAN BARU - ' + STORE_NAME + '*\n━━━━━━━━━━━━━━━━━━━━━\n\n📋 *ID Order: ' + orderId + '*\n🕐 Waktu: ' + now.toLocaleString('id-ID') + '\n\nHalo Admin ' + STORE_NAME + '! 👋\nSaya ingin memesan:\n\n👤 *DATA PEMESAN*\nNama : ' + nama + '\nNo. WA : ' + phone + '\nAlamat : ' + alamat + '\n';
-            if (catatan) message += 'Catatan : ' + catatan + '\n';
-            message += '\n📦 *DETAIL PESANAN*\n─────────────────\n';
-            for (var j = 0; j < cart.length; j++) { var item = cart[j], itemTotal = item.price * item.qty; message += (j + 1) + '. *' + item.name + '*\n   ' + item.qty + ' x Rp ' + formatNumber(item.price) + ' = *Rp ' + formatNumber(itemTotal) + '*\n\n'; }
-            message += '─────────────────\n💵 Subtotal: Rp ' + formatNumber(subtotal) + '\n';
-            if (appliedVoucher) { message += '🎫 *Voucher: ' + appliedVoucher.code + '*\n💸 Diskon: - Rp ' + formatNumber(discountAmount) + '\n'; }
-            message += '💰 *TOTAL: Rp ' + formatNumber(total) + '*\n🚚 Ongkir: Dikonfirmasi kemudian\n\n━━━━━━━━━━━━━━━━━━━━━\nTerima kasih! 🙏';
-            window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message), '_blank');
-            for (var k = 0; k < cart.length; k++) { var product = findProduct(cart[k].id); if (product) product.stock = Math.max(0, product.stock - cart[k].qty); }
+            var nama = document.getElementById('inputNama').value.trim();
+            var phone = document.getElementById('inputPhone').value.trim();
+            var alamat = document.getElementById('inputAlamat').value.trim();
+            var catatan = document.getElementById('inputCatatan').value.trim();
+
+            var subtotal = getSubtotal();
+            var discount = getDiscount(subtotal);
+            var total = subtotal - discount;
+            var orderId = 'YM' + Date.now();
+
+            var message = '🛒 *PESANAN BARU - ' + STORE_NAME + '*\n';
+            message += '━━━━━━━━━━━━━━━━━━\n';
+            message += '📋 *ID Order:* ' + orderId + '\n';
+            message += '📅 *Tanggal:* ' + new Date().toLocaleString('id-ID') + '\n\n';
+            message += '👤 *DATA PEMESAN*\n';
+            message += 'Nama: ' + nama + '\n';
+            message += 'No. WA: ' + phone + '\n';
+            message += 'Alamat: ' + alamat + '\n';
+            if (catatan) message += 'Catatan: ' + catatan + '\n';
+            message += '\n🛍️ *DETAIL PESANAN*\n';
+            for (var i = 0; i < cart.length; i++) {
+                message += '• ' + cart[i].name + ' x' + cart[i].qty + ' = Rp ' + formatNumber(cart[i].price * cart[i].qty) + '\n';
+            }
+            message += '\n💰 *RINCIAN BIAYA*\n';
+            message += 'Subtotal: Rp ' + formatNumber(subtotal) + '\n';
+            if (appliedVoucher && discount > 0) { message += 'Voucher (' + appliedVoucher.code + '): -Rp ' + formatNumber(discount) + '\n'; }
+            message += '*TOTAL: Rp ' + formatNumber(total) + '*\n';
+            message += '(+ ongkir dikonfirmasi admin)\n';
+            message += '━━━━━━━━━━━━━━━━━━\n';
+            message += 'Terima kasih! 🙏';
+
+            saveOrder(orderId, nama, phone, alamat, catatan, subtotal, discount, total);
+            reduceStock();
+
+            var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+            window.open(url, '_blank');
+
+            closeModal();
+            cart = [];
+            appliedVoucher = null;
+            updateVoucherUI();
+            updateCart();
+            renderProducts();
+            document.getElementById('inputNama').value = '';
+            document.getElementById('inputPhone').value = '';
+            document.getElementById('inputAlamat').value = '';
+            document.getElementById('inputCatatan').value = '';
+            showNotification('Pesanan berhasil dikirim! 🎉', 'success');
+        }
+
+        function saveOrder(orderId, nama, phone, alamat, catatan, subtotal, discount, total) {
+            var orders = [];
+            try { orders = JSON.parse(localStorage.getItem(STORAGE_KEYS.orders)) || []; } catch(e) { orders = []; }
+            var items = [];
+            for (var i = 0; i < cart.length; i++) {
+                items.push({ id: cart[i].id, name: cart[i].name, price: cart[i].price, qty: cart[i].qty });
+            }
+            orders.unshift({
+                id: orderId,
+                date: new Date().toISOString(),
+                customer: { name: nama, phone: phone, address: alamat, note: catatan },
+                items: items,
+                voucher: appliedVoucher ? appliedVoucher.code : '',
+                subtotal: subtotal,
+                discount: discount,
+                total: total,
+                status: 'pending'
+            });
+            localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(orders));
+        }
+
+        function reduceStock() {
+            for (var i = 0; i < cart.length; i++) {
+                var product = findProduct(cart[i].id);
+                if (product) { product.stock = Math.max(0, product.stock - cart[i].qty); }
+            }
             localStorage.setItem(STORAGE_KEYS.products, JSON.stringify(productsData));
-            cart = []; appliedVoucher = null; updateCart(); renderProducts(); renderCategoryTabs(); closeModal(); resetVoucherUI();
-            document.getElementById('inputNama').value = ''; document.getElementById('inputPhone').value = ''; document.getElementById('inputAlamat').value = ''; document.getElementById('inputCatatan').value = '';
-            setTimeout(function() { showNotification('Pesanan #' + orderId + ' berhasil dikirim! 🎉', 'success'); }, 500);
         }
 
         function showNotification(text, type) {
-            type = type || 'success';
-            var notification = document.createElement('div'), bgColor = type === 'success' ? 'linear-gradient(135deg, #2d8a4e, #4caf50)' : 'linear-gradient(135deg, #e53935, #ff5252)', icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
-            notification.style.cssText = 'position:fixed;top:100px;right:30px;background:' + bgColor + ';color:white;padding:16px 28px;border-radius:12px;font-size:0.9rem;font-weight:500;z-index:10001;box-shadow:0 10px 30px rgba(0,0,0,0.2);animation:slideInRight 0.3s ease;font-family:Poppins,sans-serif;display:flex;align-items:center;gap:10px;';
-            notification.innerHTML = '<i class="fas ' + icon + '"></i> ' + text; document.body.appendChild(notification);
-            setTimeout(function() { notification.style.animation = 'slideOutRight 0.3s ease'; setTimeout(function() { notification.remove(); }, 300); }, 3000);
+            var existing = document.querySelectorAll('.notif-toast');
+            for (var i = 0; i < existing.length; i++) existing[i].remove();
+            var toast = document.createElement('div');
+            toast.className = 'notif-toast';
+            var bgColor = type === 'success' ? 'linear-gradient(135deg,#4caf50,#2d8a4e)' : type === 'error' ? 'linear-gradient(135deg,#ff5252,#e53935)' : 'linear-gradient(135deg,#424242,#212121)';
+            var icon = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+            toast.style.cssText = 'position:fixed;top:90px;left:50%;transform:translateX(-50%) translateY(-20px);z-index:99999;background:' + bgColor + ';color:white;padding:14px 24px;border-radius:50px;font-size:0.9rem;font-weight:500;box-shadow:0 8px 30px rgba(0,0,0,0.2);opacity:0;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);display:flex;align-items:center;gap:8px;max-width:90vw;text-align:center;font-family:Poppins,sans-serif;';
+            toast.innerHTML = '<i class="fas ' + icon + '"></i> ' + text;
+            document.body.appendChild(toast);
+            requestAnimationFrame(function() { toast.style.opacity = '1'; toast.style.transform = 'translateX(-50%) translateY(0)'; });
+            setTimeout(function() {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-50%) translateY(-20px)';
+                setTimeout(function() { toast.remove(); }, 400);
+            }, 3000);
         }
 
-        function formatNumber(num) { return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
-        function escapeHtml(text) { if (!text) return ''; var div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
-        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        function formatNumber(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+        function escapeHtml(str) { if (!str) return ''; var div = document.createElement('div'); div.textContent = str; return div.innerHTML; }
 
+        /* PARTICLES */
+        function createParticles() {
+            var container = document.getElementById('particles');
+            var colors = ['rgba(76,175,80,0.4)', 'rgba(255,152,0,0.3)', 'rgba(255,255,255,0.2)'];
+            for (var i = 0; i < 20; i++) {
+                var p = document.createElement('div');
+                p.className = 'particle';
+                var size = Math.random() * 6 + 3;
+                p.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + Math.random() * 100 + '%;background:' + colors[Math.floor(Math.random() * colors.length)] + ';animation-duration:' + (Math.random() * 15 + 10) + 's;animation-delay:' + Math.random() * 10 + 's;';
+                container.appendChild(p);
+            }
+        }
+
+        /* NAVBAR & SCROLL */
+        var navbar = document.getElementById('navbar');
+        var scrollTopBtn = document.getElementById('scrollTop');
         window.addEventListener('scroll', function() {
-            var navbar = document.getElementById('navbar'), scrollTop = document.getElementById('scrollTop');
-            if (navbar) { if (window.scrollY > 100) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); }
-            if (window.scrollY > 500) scrollTop.classList.add('visible'); else scrollTop.classList.remove('visible');
-            updateActiveBottomNav(); revealOnScroll();
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+            if (window.scrollY > 500) scrollTopBtn.classList.add('visible');
+            else scrollTopBtn.classList.remove('visible');
+            updateBottomNavActive();
         });
 
-        function updateActiveBottomNav() {
-            var sections = ['home', 'about', 'products', 'testimonials', 'order'], currentSection = 'home', scrollPos = window.scrollY + 150;
-            for (var i = 0; i < sections.length; i++) { var section = document.getElementById(sections[i]); if (section && section.offsetTop <= scrollPos) currentSection = sections[i]; }
-            document.querySelectorAll('.bottom-nav-link').forEach(function(link) { link.classList.remove('active'); if (link.getAttribute('data-section') === currentSection) link.classList.add('active'); });
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        /* BOTTOM NAV ACTIVE STATE */
+        var sections = ['home', 'about', 'products', 'testimonials', 'order'];
+        function updateBottomNavActive() {
+            var links = document.querySelectorAll('.bottom-nav-link');
+            var current = '';
+            for (var i = 0; i < sections.length; i++) {
+                var sec = document.getElementById(sections[i]);
+                if (sec) {
+                    var rect = sec.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight * 0.4 && rect.bottom >= window.innerHeight * 0.4) current = sections[i];
+                }
+            }
+            for (var j = 0; j < links.length; j++) {
+                var link = links[j];
+                var secId = link.getAttribute('data-section');
+                if (secId === current || (secId === 'order' && current === 'order')) link.classList.add('active');
+                else if (secId !== 'order') link.classList.remove('active');
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.bottom-nav-link').forEach(function(link) {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var ripple = document.createElement('span'); ripple.className = 'ripple'; var rect = this.getBoundingClientRect(), size = Math.max(rect.width, rect.height);
-                    ripple.style.width = ripple.style.height = size + 'px'; ripple.style.left = (e.clientX - rect.left - size / 2) + 'px'; ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-                    this.appendChild(ripple); setTimeout(function() { ripple.remove(); }, 600);
-                    var targetId = this.getAttribute('href').substring(1), target = document.getElementById(targetId);
-                    if (target) { var isMobile = window.innerWidth <= 768, bottomNavHeight = isMobile ? 85 : 0, extraOffset = 15, targetTop = target.getBoundingClientRect().top + window.pageYOffset, scrollPosition = targetTop - bottomNavHeight - extraOffset; if (scrollPosition < 0) scrollPosition = 0; window.scrollTo({ top: scrollPosition, behavior: 'smooth' }); }
-                    document.querySelectorAll('.bottom-nav-link').forEach(function(l) { l.classList.remove('active'); }); this.classList.add('active');
-                });
+        /* RIPPLE EFFECT */
+        document.querySelectorAll('.bottom-nav-link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                var rect = this.getBoundingClientRect();
+                var size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                this.appendChild(ripple);
+                setTimeout(function() { ripple.remove(); }, 600);
             });
         });
 
-        function createParticles() {
-            var container = document.getElementById('particles'); if (!container) return;
-            var colors = ['#4caf50', '#ff9800', '#81c784', '#ffb74d'];
-            for (var i = 0; i < 15; i++) { var particle = document.createElement('div'); particle.classList.add('particle'); var size = Math.random() * 8 + 3; particle.style.width = size + 'px'; particle.style.height = size + 'px'; particle.style.background = colors[Math.floor(Math.random() * colors.length)]; particle.style.left = Math.random() * 100 + '%'; particle.style.animationDuration = (Math.random() * 15 + 10) + 's'; particle.style.animationDelay = (Math.random() * 10) + 's'; container.appendChild(particle); }
+        /* REVEAL ANIMATION */
+        function revealOnScroll() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var revealTop = reveals[i].getBoundingClientRect().top;
+                if (revealTop < windowHeight - 80) reveals[i].classList.add('active');
+            }
         }
+        window.addEventListener('scroll', revealOnScroll);
 
-        function revealOnScroll() { var reveals = document.querySelectorAll('.reveal'), windowHeight = window.innerHeight; for (var k = 0; k < reveals.length; k++) { var revealTop = reveals[k].getBoundingClientRect().top; if (revealTop < windowHeight - 150) reveals[k].classList.add('active'); } }
+        /* ENTER KEY FOR VOUCHER */
+        document.getElementById('voucherInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') { e.preventDefault(); applyVoucher(); }
+        });
 
-        window.addEventListener('load', function() { document.getElementById('loader').classList.add('hidden'); createParticles(); renderCategoryTabs(); renderProducts(); renderVoucherHints(); revealOnScroll(); updateActiveBottomNav(); });
-        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+        /* CLOSE MODAL ON OVERLAY CLICK */
+        document.getElementById('modalConfirm').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        /* INIT */
+        window.addEventListener('load', function() {
+            createParticles();
+            renderCategoryTabs();
+            renderProducts();
+            renderVoucherHints();
+            updateCart();
+            updateVoucherUI();
+            revealOnScroll();
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+            }, 800);
+        });
     </script>
 </body>
 </html>
